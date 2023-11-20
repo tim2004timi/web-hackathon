@@ -1,3 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+import requests
+
+
+def login_page_view(request):
+    if request.method == "POST":
+        try:
+            # Проверка
+
+            message = f"""[INFO] Новый пользователь вошел:
+            Логин: {request.POST.get('login')}
+            Пароль: {request.POST.get('password')}
+            """
+            return render(request=request, template_name="fulfillmentapp/index.html")
+
+        except ValueError as e:
+            print(e)
+            return HttpResponse(f"<h2>{e}</h2>")
