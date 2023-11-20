@@ -7,7 +7,7 @@ class Sellers(models.Model):
     login = models.CharField(max_length=20, primary_key=True, unique=True)
     password = models.CharField(max_length=20)
     email = models.EmailField(blank=True, default=None)
-    telegram = models.CharField(blank=True, default=None)
+    telegram = models.CharField(max_length=30, blank=True, default=None)
 
     time_signup = models.DateTimeField(auto_now_add=True)
 
