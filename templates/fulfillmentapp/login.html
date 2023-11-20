@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../static/css/login.css/reset.css">
+    <link rel="stylesheet" href="../../static/css/login.css/style.css">
+</head>
+<body>
+    <div class="login">
+        <div class="container">
+            <div class="login__content">
+                <h1 class="login__title">Вход</h1>
+                <form class="login__form" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="login__input" placeholder="Логин">
+                    <input type="password" class="login__input" placeholder="Пароль">
+                    <button type="submit" class="login__btn">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
