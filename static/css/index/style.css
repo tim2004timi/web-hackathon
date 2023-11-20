@@ -1,0 +1,141 @@
+html {
+    box-sizing: border-box;
+}
+*
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.title{
+    font-size: 36px;
+    text-align: center;
+}
+body{
+    font-family: 'Inter', sans-serif;
+    color: #001e64;
+}
+.header{
+    background: linear-gradient(to right, #0372a6, #1989ae);
+}
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.header__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.logo__text{
+    font-size: 40px;
+}
+.menu__list{
+    display: flex;
+    gap: 46px;
+}
+.menu__list-link{
+    font-size: 20px;
+}
+.telegram__container{
+    display: flex;
+    align-items: center;
+}
+.telegram__text{
+    color: #fff;
+    margin-right: 10px;
+}
+.log__btn{
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+.services{
+    padding: 50px 0 20px;
+}
+.services__title{
+    margin-bottom: 30px;
+}
+.services__items{
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.services__item{
+    width: 100%;
+    height: 160px;
+    padding: 20px 30px;
+    box-shadow: 0px 0px 19px 0px rgba(181,181,181,1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.services__item-title{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.services__item-text{
+    width: 80%;
+}
+.about{
+    padding: 40px 0;
+}
+.about__title{
+    margin-bottom: 40px;
+}
+.about__text-items{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1040px;
+    margin: 0 auto;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.about__text-item{
+    width: 400px;
+    margin-bottom: 20px;
+}
+.about__text-item:last-child{
+    width: 81%;
+}
+.price{
+    padding: 50px 0 30px;
+    background: linear-gradient(to right, #245999, #2895ba);
+    color: #EAEAEA;
+}
+.price__title{
+    margin-bottom: 40px;
+}
+.price__wrapper{
+    display: flex;
+    gap: 100px;
+}
+.price__items{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.price__items:first-child{    
+    gap: 25px;
+}
+.price__items:nth-child(2){    
+    gap: 13px;
+}
+.price__items:last-child{    
+    gap: 64px;
+}
+.price__item-title{
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.price__item-text{
+    margin-bottom: 10px;
+}
