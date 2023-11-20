@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Sellers(models.Model):
+class Seller(models.Model):
     name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     login = models.CharField(max_length=20, primary_key=True, unique=True)
@@ -17,10 +17,10 @@ class Sellers(models.Model):
         return self.login
 
 
-class Goods(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True, default=None)
-    owner = models.ForeignKey("Sellers", on_delete=models.CASCADE)
+    owner = models.ForeignKey("Seller", on_delete=models.CASCADE)
 
     time_create = models.DateTimeField(auto_now_add=True)
 
