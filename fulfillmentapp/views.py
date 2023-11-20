@@ -11,10 +11,10 @@ def login_page_view(request):
         try:
             # Проверка
 
-            message = f"""[INFO] Новый пользователь вошел:
-            Логин: {request.POST.get('login')}
-            Пароль: {request.POST.get('password')}
-            """
+            message = f"[INFO] Новый пользователь вошел\n\tЛогин: {request.POST.get('login')}\n\tПароль: {request.POST.get('password')}"
+            print(message)
+
+            return render(request=request, template_name="fulfillmentapp/index.html")
 
         except ValueError as e:
             print(e)

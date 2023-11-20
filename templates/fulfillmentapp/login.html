@@ -13,10 +13,10 @@
         <div class="container">
             <div class="login__content">
                 <h1 class="login__title">Вход</h1>
-                <form class="login__form" method="post">
+                <form class="login__form" action="" method="POST">
                     {% csrf_token %}
-                    <input type="text" class="login__input" placeholder="Логин">
-                    <input type="password" class="login__input" placeholder="Пароль">
+                    <input type="text" name="login" class="login__input" placeholder="Логин">
+                    <input type="password" name="password" class="login__input" placeholder="Пароль">
                     <button type="submit" class="login__btn">Войти</button>
                 </form>
             </div>
