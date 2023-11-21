@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -80,7 +81,7 @@ DATABASES = {
         'NAME': 'fastway',
         'USER': 'main',
         'PASSWORD': 'zxcvb',
-        'HOST': '192.168.19.143',
+        'HOST': '192.168.1.139',
         'PORT': 5432,
     }
 }
@@ -108,11 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
-USE_I18N = False
+USE_I18N = True
 
 USE_TZ = True
 
