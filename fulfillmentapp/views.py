@@ -3,6 +3,10 @@ from django.shortcuts import render, HttpResponse
 import requests
 
 
+def home_page_view(request):
+    return render(request=request, template_name="fulfillmentapp/index.html")
+
+
 def login_page_view(request):
     if request.method == "GET":
         return render(request=request, template_name="fulfillmentapp/login.html")
