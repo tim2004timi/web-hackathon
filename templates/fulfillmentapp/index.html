@@ -7,176 +7,219 @@
     <title>FastWay</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/index/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <div class="header__content">
-                <a class="logo">
-                    <p class="logo__text">FastWay</p>
-                </a>
+            <div class="header__top">
                 <nav class="menu">
                     <ul class="menu__list">
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">Услуги</a>
+                        <li class="menu__item">
+                            <a href="#uslugi" class="menu__link">услуги</a>
                         </li>
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">О нас</a>
-                        </li>
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">Цены</a>
-                        </li>
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">FAQ</a>
+                        <li class="menu__item">
+                            <a href="#cena" class="menu__link">цены</a>
                         </li>
                     </ul>
                 </nav>
-                <div class="telegram__container">
-                    <p class="telegram__text">Telegram:</p>
-                    <a href="https://t.me/FastWayNotification_bot" class="telegram__link">
-                        <svg width="41" height="32" viewBox="0 0 41 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M40.1983 0.801981C39.8065 0.317828 39.1568 0.138283 38.5791 0.353737L1.88723 13.8038C1.1542 14.0741 0.639673 14.7294 0.544153 15.5142C0.449549 16.2952 0.788904 17.053 1.4255 17.4892L6.67024 21.1209C7.17836 21.4729 7.83174 21.5107 8.37586 21.2194L19.7528 15.1337L10.8859 21.8496C10.4697 22.1651 10.221 22.6681 10.221 23.195V29.4159C10.221 30.0576 10.5679 30.6455 11.1264 30.9507C11.6858 31.2559 12.3615 31.2256 12.8928 30.8702L16.8774 28.1891L20.7959 30.8993C21.1392 31.138 21.5481 31.2637 21.9607 31.2637C22.1002 31.2637 22.2403 31.2491 22.3782 31.22C22.9285 31.1036 23.4152 30.7588 23.714 30.274L40.3146 2.50704C40.6378 1.97243 40.5914 1.2883 40.1983 0.801981ZM21.8732 28.7655L17.8152 25.9587C17.533 25.7631 17.2076 25.6653 16.8826 25.6653C16.5646 25.6653 16.2463 25.7591 15.9677 25.9467L12.5659 28.2355V23.546L28.2229 11.6871C28.9221 11.1574 29.0982 10.1934 28.6322 9.44491C28.1659 8.6964 27.2323 8.44348 26.4605 8.85644L7.64955 18.9187L3.21352 15.8469L37.0016 3.46142L21.8732 28.7655Z" fill="#fff"></path>
-                        </svg>                  
-                    </a>
+                <a class="logo">
+                    <img src="{% static 'img/index/Лого.png' %}" alt="logo" class="logo__img">
+                </a>
+                <a href="#contacti" class="contacts">контакты</a>
+                <a href="{% url 'login' %}" class="signin__btn">войти</a>
+            </div>
+        </div>
+    </header>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">ДОСТАВКА И УПАКОВКА<br>ДЛЯ МАРКЕТПЛЕЙСОВ</h1>
+                <p class="header__text"><b>FastWay</b> - это надёжный фулфилмент сервис. Мы осуществляем полный<br>комплекс услуг по логистике ваших товаров</p>
+                <a href="#contacti" class="application__btn btn">оставить заявку</a>
+                <div class="header__img-wrapper">
+                    <img src="{% static 'img/index/header__img.png' %}" alt="header img" class="header__img">
                 </div>
-                <a href="{% url 'login' %}" class="log__btn">Войти</a>
             </div>
         </div>
     </header>
     <main class="main">
-        <section class="services">
+        <section class="work" id="uslugi">
             <div class="container">
-                <h2 class="services__title title">Наши услуги</h2>
-                <div class="services__items">
-                    <div class="services__item">
-                        <h2 class="services__item-title">Забор товара от поставщика</h2>
-                        <p class="services__item-text">Оформим забор товара от Вашего поставщика, проверим каждую единицу на целостность и примем на ответственное хранение</p>
+                <h2 class="work__title title">как мы работаем?</h2>
+                <div class="work__items">
+                    <div class="work__item">
+                        <div class="work__content">
+                            <p class="work__number">1</p>
+                            <div class="work__info">
+                                <p class="work__info-title">ПРИЁМ ТОВАРА</p>
+                                <p class="work__info-text">Мы заберём ваш товар с Садовода, ТЯК Москва или Южных ворот, либо вы можете привезти его сами. Если вы находитесь не в Москве, вы можете отправить нам товар любой транспортной компаниейи мы его примем.</p>
+                            </div>
+                        </div>
+                        <div class="work__img-wrapper">
+                            <img src="{% static 'img/index/work__img-1.png' %}" alt="work img" class="work__img">
+                        </div>
                     </div>
-                    <div class="services__item">
-                        <h2 class="services__item-title">Бесплатное хранение на складе</h2>
-                        <p class="services__item-text">Обеспечим бесплатное хранение ваших товаров на время обработки технического задания на упаковку товаров для маркетплейсов</p>
+                    <div class="work__item">
+                        <div class="work__img-wrapper">
+                            <img src="{% static 'img/index/work__img-2.png' %}" alt="work img" class="work__img">
+                        </div>
+                        <div class="work__content">
+                            <p class="work__number">2</p>
+                            <div class="work__info">
+                                <p class="work__info-title">ИНСПЕКЦИЯ ПОСТАВКИ</p>
+                                <p class="work__info-text">Мы пересчитаем ваш товар и тщательно проверим каждую единицу на брак, убедимся что товарный вид и качество соответствуют всем стандартам.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="services__item">
-                        <h2 class="services__item-title">Фулфлимент FBO & FBS</h2>
-                        <p class="services__item-text">Ежедневная отгрузка заказов по системе FBO, а также работы со своего склада. Интеграция со всеми МП для правильной работы по FBS</p>
+                    <div class="work__item">
+                        <div class="work__content">
+                            <p class="work__number">3</p>
+                            <div class="work__info">
+                                <p class="work__info-title">УПАКОВКА И ДОСТАВКА</p>
+                                <p class="work__info-text">Поможем подобрать лучший тип упаковки для вашего товара, рассортируем, упакуем согласно всем требованиям маркетплейс, промаркируем,и доставим в кратчайшие сроки.</p>
+                            </div>
+                        </div>
+                        <div class="work__img-wrapper">
+                            <img src="{% static 'img/index/work__img-3.png' %}" alt="work img" class="work__img">
+                        </div>
                     </div>
                 </div>
-                <div class="services__items">
-                    <div class="services__item">
-                        <h2 class="services__item-title">Упаковка товаров</h2>
-                        <p class="services__item-text">Упакуем товары для маркетплейсов в термоусадочную пленку, пакеты Zip-lock и курьерские, ПВХ-рукав, пузырчатую пленку</p>
+            </div>
+        </section>
+        <section class="price" id="cena">
+            <div class="container">
+                <h2 class="price__title title">цены</h2>
+                <div class="price__columns">
+                    <div class="price__column">
+                        <div class="price__item">
+                            <p class="price__item-title">ТАРИФЫ FBO</p>
+                            <p class="price__text">Тариф включает: приемку, пересчет, маркировку, внешняя визуальную проверку на брак, короба 40*40*60<br>
+                                8 - от 2000 шт (для товаров, которым требуется только маркировка, до 40 см по сумме сторон)</p>
+                            <div class="price__container">
+                                <div class="price__wrapper price__wrapper--fbo">
+                                    <p class="price__price-number">17 - от 1000 шт</p>
+                                    <p class="price__price-number">23 - от 500 шт</p>
+                                    <p class="price__price-number">29 - от 250 шт</p>
+                                    <p class="price__price-number">37 - от 100 шт</p>
+                                    <p class="price__price-number">60 - от 1 шт</p>
+                                </div>
+                                <div class="price__wrapper-text">
+                                    <p class="price__container-text">Рассчитывается: исходя из количества в одной поставке, а не из общего количества, которое вы привезетеЦена указана за 1 артикул</p>
+                                    <p class="price__container-text">При размере более 60 см по сумме сторон добавляется коэффициент 7% за каждый см</p>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="price__item">
+                            <p class="price__item-title">ТАРИФЫ FBS</p>
+                            <div class="price__wrapper price__wrapper--fbs">
+                                <p class="price__info"><b>15</b> - маркировка, доставка</p>
+                                <p class="price__info"><b>30</b> - упаковка, маркировка, доставка</p>
+                            </div>
+                            <p class="price__item-title price__item-title--chranenie">ХРАНЕНИЕ</p>
+                            <div class="price__wrapper price__wrapper--chranenie">
+                                <p class="price__info"><b>300</b> - сути за 1 палету (16 коробов 60*40)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="services__item">
-                        <h2 class="services__item-title">Отгрузка каждый день</h2>
-                        <p class="services__item-text">Благодаря наличию собственного парка автомобилей мы часто и быстро доставляем товары до основных складов маркетплейсов - у вас никогда не будет аутофстока</p>
-                    </div>
-                    <div class="services__item">
-                        <h2 class="services__item-title">Прием возврата</h2>
-                        <p class="services__item-text">При поступлении возврата на склад мы самостоятельно переупаковываем и принимаем обратно на баланс</p>
+                    <div class="price__column">
+                        <div class="price__item">
+                            <p class="price__item-title">УПАКОВКА</p>
+                            <div class="price__wrapper price__wrapper--upakovka">
+                                <p class="price__info--plenka_i_paket">от 3 - бопп-пакет</p>
+                                <p class="price__info--plenka_i_paket">от 5 - запаяная пленка / курьер-пакет / черный стрейтч / термоусадка / зиплок пакет</p>
+                                <p class="price__info--plenka_i_paket">от 10 - бабл-пленка</p>
+                                <br>
+                                <p class="price__info"><b>3</b> - упаковка в вашу тару</p>
+                                <p class="price__info"><b>3</b> - вложение визитки / подарка</p>
+                                <p class="price__info"><b>4</b> - дополнительный отдельный пересчет</p>
+                                <p class="price__info"><b>5</b> - комплектовка набора</p>
+                                <p class="price__info"><b>5</b> - навес маркировка бирки / 2 - белая бирка</p>
+                                <p class="price__info"><b>7</b> - сборка коробки / 2 - скотч</p>
+                                <p class="price__info"><b>13</b> - детальная проверка товара</p>
+                                <br>
+                                <p class="price__info"><b>40</b> - отпаривание</p>
+                                <p class="price__info"><b>500</b> - снятие обрешетки с палеты</p>
+                                <p class="price__info"><b>0</b> - первые 3 дня, далее 15₽ хранение короба / 100₽ хранение паллеты - в сутки</p>
+                                <p class="price__info"><b>1000</b> - мутация готовой поставки</p>
+                            </div>
+                            <p class="price__item-title price__item-title--kontent">КОНТЕНТ</p>
+                            <div class="price__wrapper price__wrapper--kontent">
+                                <p class="price__info"><b>350</b> - самовыкуп с отзывом с живого аккаунта</p>
+                                <p class="price__info"><b>700</b> - создание карточки товара</p>
+                                <p class="price__info"><b>15000</b>+ 2% - ведение личного кабинета 1 месяц</p>
+                                <p class="price__info">> создание карточек товара</p>
+                                <p class="price__info">> аналитика конкурентов, ведение поставок</p>
+                                <p class="price__info">> достройка внутренней и внешней рекламы</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="about">
-            <div class="container">
-                <h2 class="about__title title">О нас</h2>
-                <div class="about__text-items">
-                    <div class="about__text-item">
-                        <p class="about__text">Мы - ведущая компания по предоставлению услуг фулфилмента, специализирующаяся на эффективной и надежной обработке и доставке заказов. Наша цель - помочь бизнесам развиваться и достигать успеха, обеспечивая им высококачественное выполнение заказов и оперативную доставку.</p>
-                    </div>
-                    <div class="about__text-item">
-                        <p class="about__text">Мы понимаем, что каждый бизнес уникален, поэтому мы предлагаем индивидуальные решения, которые полностью соответствуют потребностям и требованиям наших клиентов. Наша команда профессионалов имеет богатый опыт в сфере фулфилмента и всегда готова предложить наилучшие решения для оптимизации процессов обработки заказов.
-                        </p>
-                    </div>    
-                    <div class="about__text-item">
-                        <p class="about__text">
-                            Мы гордимся партнерством с различными компаниями, от малого бизнеса до крупных корпораций. Наша репутация основана на долгосрочных отношениях с нашими клиентами и их доверии к нам.<br>
-                            Если вы ищете надежного партнера по фулфилменту, который гарантирует высокое качество обслуживания и оперативную доставку, обратитесь к нам. Мы с удовольствием поможем вам оптимизировать процессы обработки заказов и доставки, чтобы вы могли сосредоточиться на развитии своего бизнеса.
-                        </p>
-                    </div>
-                </div>    
-            </div>
-        </section>
-        <section class="price">
-            <div class="container">
-                <h2 class="price__title title">Цены</h2>
-                <div class="price__wrapper">
-                    <div class="price__items">
-                        <div class="price__item">
-                            <h2 class="price__item-title">ТАРИФЫ FBO</h2>
-                            <p class="price__item-text">Тариф включает:  приемку, пересчет, маркировку, внешняя визуальную проверку на брак, короба 40*40*60 </p>
-                            <p class="price__item-text">8 - от 2000 шт (для товаров, которым требуется только маркировка, до 40 см по сумме сторон)
-                                <p class="price__item-text">17 - от 1000 шт</p>
-                                <p class="price__item-text">23 - от 500 шт</p>
-                                <p class="price__item-text">29 - от 250 шт</p>
-                                <p class="price__item-text">37 - от 100 шт</p>
-                                <p class="price__item-text">60 - от 1 шт</p>
-                            </p>
-                            <p class="price__item-text">Рассчитывается:  исходя из количества в одной поставке, а не из общего количества, которое вы привезете<br>
-                            Цена указана за 1 артикул</p>
-                            <p class="price__item-text">При размере более 60 см по сумме сторон добавляется коэффициент 7% за каждый см </p>
-                        </div>
-                        <div class="price__item">
-                            <h2 class="price__item-title">ТАРИФЫ FBS</h2>
-                            <p class="price__item-text">15 - маркировка, доставка</p>
-                            <p class="price__item-text">30 - упаковка, маркировка, доставка</p>
-                        </div>
-                        <div class="price__item">
-                            <h2 class="price__item-title">Хранение</h2>
-                            <p class="price__item-text">300 - сути за 1 палету (16 коробов 60*40)</p>
-                        </div>
-                    </div>
-                    <div class="price__items">
-                        <div class="price__item">
-                            <h2 class="price__item-title">УПАКОВКА</h2>
-                            <p class="price__item-text">от 3 - бопп-пакет</p>
-                            <p class="price__item-text">от 5 - запаяная пленка / курьер-пакет / черный стрейтч / термоусадка / зиплок пакет</p>
-                            <p class="price__item-text">от 10 - бабл-пленка </p>
-                        </div>
-                        <div class="price__item">
-                            <h2 class="price__item-title">Дополнительнo</h2>
-                            <p class="price__item-text">3  - упаковка в вашу тару</p>
-                            <p class="price__item-text">3  - вложение визитки / подарка</p>
-                            <p class="price__item-text">4  - дополнительный отдельный пересчет</p>
-                            <p class="price__item-text">5  - комплектовка набора</p>
-                            <p class="price__item-text">5  - навес маркировка бирки / 2 - белая бирка</p>
-                            <p class="price__item-text">7  - сборка коробки / 2 - скотч</p>
-                            <p class="price__item-text">13  - детальная проверка товара</p>
-                            <p class="price__item-text">33  - удаление ниток, проверка швов, проверка молний и других элементов</p>
-                            <p class="price__item-text">40  - отпаривание</p>
-                            <p class="price__item-text">500  - снятие обрешетки с палеты</p>
-                            <p class="price__item-text">0   - первые 3 дня, далее 15₽ хранение короба / 100₽ хранение паллеты - в сутки</p>
-                            <p class="price__item-text">1000  - мутация готовой поставки</p>
-                        </div>
-                    </div>
-                    <div class="price__items">
-                        <div class="price__item">
-                            <h2 class="price__item-title">Дополнительнo</h2>
-                            <p class="price__item-text">500 - забор товара по Москве от 5 кметров (грузчики и въезд на территорию оплачивается отдельно)</p>
-                            <p class="price__item-text">1000 - забор товара по Москве от 2 кметров (грузчики и въезд на территорию оплачивается отдельно)</p>
-                            <p class="price__item-text">500 - забор товара с ПВЗ (любое количество единиц до 0,5 кубометра)</p>
-                            <p class="price__item-text">от 500 - доставка по всей России</p>
-                            <p class="price__item-text">от 500 - доставка на OZON / Яндекс Маркет</p>
-                            <p class="price__item-text">1300 - VIP сдача монопалеты</p>
-                        </div>    
-                        <div class="price__item">
-                            <h2 class="price__item-title">Контент</h2>
-                            <p class="price__item-text">350 - самовыкуп с отзывом с живого аккаунта на разные пвз с разных карт</p>
-                            <p class="price__item-text">700 - создание карточки товара</p>
-                            <p class="price__item-text">15000 + 2% - ведение личного кабинета 1 месяц (со второго месяца)</p>
-                            <p class="price__item-text">> создание карточек товара</p>
-                            <p class="price__item-text">> аналитика конкурентов, ведение поставок</p>
-                            <p class="price__item-text">> работа с отзывами и вопросами</p>
-                            <p class="price__item-text">> достройка внутренней и внешней рекламы</p>
-                        </div>    
-                    </div>
-                </div>    
-            </div>
-        </section>
-        <!-- section. -->
     </main>
+    <footer class="footer" id="contacti">
+        <div class="container">
+            <div class="footer__booking">
+                <div class="footer__contacts">
+                    <h3 class="footer__contacts-title">контакты</h3>
+                    <div class="footer__items">
+                        <div class="footer__tel">
+                            <p class="footer__tel-text">Контактный телефон:</p>
+                            <a href="tel:+79999999999" class="footer__tel-link">+7 999 999 99 99</a>
+                        </div>
+                        <div class="footer__mail">
+                            <p class="footer__mail-text">почта:</p>
+                            <a href="mailto:example@yandex.ru" class="footer__mail-link">example@yandex.ru</a>
+                        </div>
+                        <div class="footer__adress">
+                            <p class="footer__adress-text">склад:</p>
+                            <p class="footer__adress-geo">Москва, 1-й пр. Перова поля 5</p>
+                        </div>
+                    </div>
+                    <div class="socials__container">
+                        <a href="https://t.me/alfa_timoha" class="telegram__btn">
+                            <img src="{% static 'img/index/telegram__btn.png' %}" alt="telegram" class="telegram__img">
+                        </a>
+                        <a href="#" class="whatsapp__btn">
+                            <img src="{% static 'img/index/whatsapp__btn.png' %}" alt="whatsapp" class="whatsapp__img">
+                        </a>
+                        <a href="https://vk.com/alfa.timoha" class="vk__btn">
+                            <img src="{% static 'img/index/vk__btn.png' %}" alt="vk" class="vk__img">
+                        </a>
+                    </div>
+                </div>
+                <form class="footer__form" method="POST">
+                    {% csrf_token %}
+                    <h3 class="footer__form-title">свяжитесь с нами</h3>
+                    <div class="footer__form-container">
+                        <div class="footer__input-wrapper">
+                            <p class="tel__input-text">ваш номер телефона:</p>
+                            <input type="tel" class="footer__input" name="phone_number">
+                        </div>
+                        <div class="footer__input-wrapper">
+                            <p class="mail__input-text">почта:</p>
+                            <input type="email" class="footer__input" name="email">
+                        </div>
+                        <div class="footer__input-wrapper">
+                            <p class="product__input-text">ваше имя:</p>
+                            <input type="text" class="footer__input" name="name">
+                        </div>
+                    </div>
+                    <div class="footer-application__btn-wrapper">
+                        <button type="submit" class="footer-application__btn btn">оставить заявку</button>
+                    </div>    
+                </form>
+            </div>
+            <div class="footer__logo-wrapper">
+                <a class="footer__logo">
+                    <img src="{% static 'img/index/logo__footer.png' %}" alt="logo" class="footer__logo-img">
+                </a>
+            </div>    
+        </div>
+    </footer>
 </body>
 </html>

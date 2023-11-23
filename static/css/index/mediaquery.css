@@ -1,0 +1,227 @@
+@media (max-width: 1583px) {
+    body{
+        font-size: 18px;
+    }
+    .title{
+        font-size: 34px;
+    }
+    .header{
+        padding: 5px 0 5px;
+    }
+    .container{
+        max-width: 1200px;
+    }
+    .header__top{
+        padding: 13px 0 10px
+    }
+    .menu{
+        margin-right: 631px;
+    }
+    .menu__list{
+        gap: 150px;
+    }
+    .logo__img{
+        width: 220px;
+    }
+    .contacts{
+        margin-right: 140px;
+    }
+    .header__title{
+        font-size: 50px;
+    }
+    .header__text{
+        font-size: 16px;
+        margin-bottom: 70px;
+    }
+    .header__img-wrapper{
+        margin-top: 60px;
+    }
+    .work{
+        margin-bottom: 50px;
+    }
+    .work__content,
+    .work__img-wrapper{
+        width: 600px;
+    }
+    .work__info-title{
+        font-size: 30px;
+    }
+    .price{
+        padding: 40px 0 60px;
+    }
+    .price__column{
+        gap: 62px;
+    }
+    .price__item{
+        max-width: 600px;
+    }
+    .price__text{
+        margin-bottom: 25px;
+    }
+    .price__container{
+        gap: 25px;
+    }
+    .price__price-number + .price__price-number{
+        margin-top: 16px;
+    }
+    .price__wrapper-text{
+        width: 243px;
+    }
+    .footer{
+        padding: 60px 0 20px;
+    }
+    .footer__booking{
+        max-width: 900px;
+        gap: 100px;
+        margin-bottom: 80px;
+    }
+    .footer__contacts{
+        max-width: 400px;
+    }
+    .footer__form{
+        max-width: 400px;
+    }
+    .footer__contacts-title,
+    .footer__form-title{
+        font-size: 30px;
+    }
+    .footer__items{
+        gap: 55px;
+    }
+    .footer__tel-text,
+    .footer__mail-text,
+    .footer__adress-text{
+    font-size: 20px;
+    }
+    .tel__input-text,
+    .mail__input-text,
+    .product__input-text{
+        margin-bottom: 5px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1280px) {
+    body{
+        font-size: 16px;
+    }
+    .title{
+        font-size: 30px;
+    }
+    .header{
+        padding: 8px 0 5px;
+    }
+    .header + .header{
+        padding: 80px 0 20px;
+    }
+    .header__top{
+        padding: 6px 0 6px;
+    }
+    .container{
+        max-width: 1120px;
+    }
+    .menu{
+        margin-right: 588px
+    }
+    .menu__list{
+        gap: 140px;
+    }
+    .logo__img{
+        width: 170px;
+    }
+    .header__content{
+        margin-bottom: 20px;
+    }
+    .contacts{
+        margin-right: 140px;
+    }
+    .work__items{
+        gap: 10px;
+    }
+    .work__item{
+        gap: 119px;
+    }
+    .work__content,
+    .work__img-wrapper{
+        width: 500px;
+        padding: 20px;
+    }
+    .work__content:first-child{
+        gap: 13px;
+    }
+    .work__content:nth-child(2) {
+        box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.25) inset;
+    }
+    .work__info-title{
+        font-size: 24px;
+    }
+    .price__column{
+        gap: 75px;
+    }
+    .price__item{
+        max-width: 550px;
+        padding: 20px;
+    }
+    .price__item-title{
+        font-size: 20px;
+    }
+    .price__item-title--chranenie{
+        margin-top: 40px;
+    }
+    .price__text{
+        margin-bottom: 25px;
+    }
+    .price__container{
+        gap: 25px;
+    }
+    .price__price-number + .price__price-number{
+        margin-top: 16px;
+    }
+    .footer__booking{
+        max-width: 800px;
+        gap: 100px;
+        margin-bottom: 60px;
+    }
+    .footer__contacts{
+        max-width: 400px;
+    }
+    .footer__contacts-title,
+    .footer__form-title{
+        font-size: 24px;
+    }
+    .footer__items{
+        gap: 40px;
+        margin-bottom: 54px;
+    }
+    .footer__tel-text,
+    .footer__mail-text,
+    .footer__adress-text{
+        font-size: 16px;
+    }
+    .telegram__img,
+    .whatsapp__img,
+    .vk__img{
+        width: 60px;
+        height: 60px;
+    }
+    .footer__form{
+        max-width: 400px;
+    }
+    .footer__form-container{
+        gap: 33px;
+        margin-bottom: 69px
+    }
+    .tel__input-text,
+    .mail__input-text,
+    .product__input-text{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .footer__input{
+        width: 190px;
+        height: 26px;
+    }
+    .footer-application__btn{
+        font-size: 18px;
+    }
+}

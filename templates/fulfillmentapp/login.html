@@ -5,24 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/login/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/login/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/mediaquery.css' %}">
 </head>
 <body>
-    <div class="login">
-        <div class="container">
-            <div class="login__content">
-                <h1 class="login__title">Вход</h1>
-                <form method="post" action="{% url 'login' %}">
-                  {% csrf_token %}
-                  {{ form.username.label_tag }} {{ form.username }}
-                  <br>
-                  {{ form.password.label_tag }} {{ form.password }}
-                  <br>
-                  <button type="submit">Login</button>
-              </form>
+    <main class="main">
+        <section class="booking">
+            <div class="container">
+                <div class="booking__wrapper">
+                    <div class="back-btn__container">
+                        <a href="{% url 'home' %}" class="back-btn">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </a>
+                    </div>
+                    <a class="logo">
+                        <img src="{% static 'img/login/logo.png' %}" alt="logo" class="logo__img">
+                    </a>
+                    <form class="booking__form" method="POST">
+                        {% csrf_token %}
+                        <input type="text" class="booking__input" placeholder="логин" name="username">
+                        <input type="password" class="booking__input" placeholder="пароль" name="password">
+                        <button type="submit" class="signin__btn">войти</button>
+                    </form>
+                </div>    
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>
