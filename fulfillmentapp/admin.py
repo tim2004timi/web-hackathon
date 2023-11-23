@@ -1,22 +1,44 @@
 from django.contrib import admin
-from .models import Seller, Product, Delivery, Operator
+from django.forms import ModelForm
 
-
-@admin.register(Seller)
-class SellerAdmin(admin.ModelAdmin):
-    list_display = ("name", "last_name", "login", "password", "email", "telegram", "time_signup")
+from .models import Product, Delivery, Operator, Seller
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("article", "name", "size", "color", "numbers", "seller", "status", "delivery")
+    search_fields = ["article", "name", "size", "color", "numbers", "status"]
 
 
 @admin.register(Delivery)
 class DeliveryAdmin(admin.ModelAdmin):
     list_display = ("product", "address", "date", "driver_fio", "qr")
+    search_fields = ["product", "address", "date", "driver_fio"]
 
 
-@admin.register(Operator)
+class SellerAdminForm(ModelForm):
+    class Meta:
+        model = Seller
+        exclude = ['user']
+
+
+class SellerAdmin(admin.ModelAdmin):
+    form = SellerAdminForm
+    list_display = ("name", "last_name", "username", "password", "email", "telegram", "time_signup")
+    search_fields = ["name", "last_name", "username", "email", "telegram"]
+
+
+class OperatorAdminForm(ModelForm):
+    class Meta:
+        model = Operator
+        exclude = ['user']
+
+
 class OperatorAdmin(admin.ModelAdmin):
-    list_display = ("login", "password")
+    form = OperatorAdminForm
+    list_display = ('username', 'password')
+    search_fields = ['username']
+
+
+admin.site.register(Operator, OperatorAdmin)
+admin.site.register(Seller, SellerAdmin)
