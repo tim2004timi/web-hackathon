@@ -15,6 +15,8 @@ def home_page_view(request):
 def login_page_view(request):
     if request.method == "GET":
         if request.user.is_authenticated:
+            if request.user.is_superuser:
+                return redirect("/admin/")
             return redirect("main")
         return render(request, template_name="fulfillmentapp/login.html")
 
@@ -29,6 +31,8 @@ def login_page_view(request):
         if user is not None:
             login(request, user)
             print(f"[INFO] Пользователь вошел")
+            if user.is_superuser:
+                return redirect('/admin/')
             return redirect('main')
         else:
             data = {"error": True}

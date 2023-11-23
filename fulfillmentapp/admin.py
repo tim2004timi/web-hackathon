@@ -19,7 +19,7 @@ class DeliveryAdmin(admin.ModelAdmin):
 class SellerAdminForm(ModelForm):
     class Meta:
         model = Seller
-        exclude = ['user']
+        exclude = ['user', "telegram_chat_id"]
 
 
 class SellerAdmin(admin.ModelAdmin):

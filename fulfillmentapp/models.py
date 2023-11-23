@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
 from django.core.validators import MaxValueValidator
-from django.contrib.auth.models import AbstractUser, Permission, Group, User
+from django.contrib.auth.models import User
 
 
 class Seller(models.Model):
@@ -14,7 +14,6 @@ class Seller(models.Model):
     telegram = models.CharField(max_length=30, blank=True, default=None, verbose_name="Телеграм")
     telegram_chat_id = models.CharField(default="", blank=True)
     time_signup = models.DateTimeField(auto_now_add=True)
-    # last_login = models.DateTimeField("last login", blank=True, null=True)
 
     objects = models.Manager()
 
@@ -40,7 +39,6 @@ class Operator(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     username = models.CharField(max_length=20, primary_key=True, unique=True, verbose_name="Логин")
     password = models.CharField(max_length=20, verbose_name="Пароль")
-    # last_login = models.DateTimeField("last login", blank=True, null=True)
 
     objects = models.Manager()
 

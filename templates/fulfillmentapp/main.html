@@ -5,6 +5,9 @@
     <title>Профиль</title>
 </head>
 <body>
-    <a href="{% url 'logout' %}">logout</a>
+    <div><a>{{ user.get_username }}</a></div>
+    <div>
+        <a href="{% url 'logout' %}">Выйти</a>
+    </div>
 </body>
 </html>
