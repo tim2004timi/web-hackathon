@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 
-from .models import Product, Delivery, Operator, Seller
+from .models import Product, Delivery, Operator, Seller, CallAssistant
 
 
 @admin.register(Product)
@@ -40,5 +40,18 @@ class OperatorAdmin(admin.ModelAdmin):
     search_fields = ['username']
 
 
+class AssistantAdminForm(ModelForm):
+    class Meta:
+        model = Operator
+        exclude = ['telegram_chat_id']
+
+
+class AssistantAdmin(admin.ModelAdmin):
+    form = AssistantAdminForm
+    list_display = ('telegram',)
+    search_fields = ['telegram']
+
+
 admin.site.register(Operator, OperatorAdmin)
 admin.site.register(Seller, SellerAdmin)
+admin.site.register(CallAssistant, AssistantAdmin)

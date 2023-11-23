@@ -95,3 +95,15 @@ class Delivery(models.Model):
     class Meta:
         verbose_name = "Отгрузка"
         verbose_name_plural = "Отгрузки"
+
+
+class CallAssistant(models.Model):
+    telegram = models.CharField(max_length=30, blank=True, default=None, verbose_name="Телеграм")
+    telegram_chat_id = models.CharField(default="", blank=True)
+
+    def __str__(self):
+        return f"{self.telegram}"
+
+    class Meta:
+        verbose_name = "Ассистент"
+        verbose_name_plural = "Ассистенты"
