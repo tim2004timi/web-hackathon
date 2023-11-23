@@ -1,14 +1,16 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-
+from fulfillmentapp.management.commands.bot import send_registration_request
+import asyncio
 
 def home_page_view(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         email = request.POST.get('email')
         name = request.POST.get('name')
-        print(f"[INFO] Заявка\n\tНомер: {phone_number}\n\tПочта: {email}\n\tИмя: {name}")
-
+        message = f"Новая заявка!\n\tНомер: {phone_number}\n\tПочта: {email}\n\tИмя: {name}"
+        asyncio.run(send_registration_request(message))
+        print(f"[INFO] {message}")
     return render(request=request, template_name="fulfillmentapp/index.html")
 
 
