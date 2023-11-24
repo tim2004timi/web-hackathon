@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'fastway',
         'USER': 'main',
         'PASSWORD': 'zxcvb',
-        'HOST': '192.168.1.139',
+        'HOST': '192.168.1.138',
         'PORT': 5432,
     }
 }

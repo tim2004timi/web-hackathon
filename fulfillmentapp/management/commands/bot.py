@@ -24,8 +24,8 @@ def get_assistants_chat_ids() -> list[str]:
 
 
 @sync_to_async
-def get_user_by_telegram(tg_usename: str, model: Type[Model]) -> Model:
-    return model.objects.filter(telegram=tg_usename).first()
+def get_user_by_telegram(tg_username: str, model: Type[Model]) -> Model:
+    return model.objects.filter(telegram=tg_username).first()
 
 
 @sync_to_async
@@ -44,10 +44,10 @@ async def send_registration_request(message: str) -> None:
 async def auth(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message = update.message
     tg_username = message.from_user.name
-    if user := await get_user_by_telegram(tg_usename=tg_username, model=Seller):
+    if user := await get_user_by_telegram(tg_username=tg_username, model=Seller):
         await auth_sellers(user=user, update=update)
         await message.reply_text(f"Теперь Вы можете получать уведомления в этот чат!")
-    elif user := await get_user_by_telegram(tg_usename=tg_username, model=CallAssistant):
+    elif user := await get_user_by_telegram(tg_username=tg_username, model=CallAssistant):
         await auth_assistants(user=user, update=update)
         await message.reply_text(f"Теперь Вы можете получать заявки в этот чат!")
     else:
