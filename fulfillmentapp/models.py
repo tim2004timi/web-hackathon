@@ -1,6 +1,5 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
-from django.core.validators import MaxValueValidator
 from django.contrib.auth.models import User
 
 
@@ -31,7 +30,7 @@ class Seller(models.Model):
         Поле для почты продавца (заказчика).
 
     telegram: CharField
-        Поле для логина продавца (заказчика).
+        Поле для username telegram продавца (заказчика).
         Пригодиться для интерфейса через мессенджер telegram.
         Через telegram отправляются новые уведомления пользователям о новых изменениях.
 
@@ -188,7 +187,7 @@ class Product(models.Model):
 
 class Delivery(models.Model):
     """
-    Модель поставки.
+    Модель отгрузки.
     В нее входят данные о товаре, дате, адресе, ФИО водителя, номер авто и штрих-коде.
     ----------
 
@@ -238,9 +237,25 @@ class Delivery(models.Model):
 
 
 class CallAssistant(models.Model):
+    """
+    Модель ассистента по заявкам на регистрации.
+    Ассистентам приходят сообщения в telegram с данными заявок на регистрацию продавцов (заказчиков).
+    ----------
+
+    Атрибуты:
+    telegram: CharField
+        Поле для username telegram ассистента.
+        Пригодиться для интерфейса через мессенджер telegram.
+        Через telegram отправляются новые заявки на регистрацию.
+
+    telegram_chat_id: CharField
+        Поле для ID чата в telegram ассистента.
+        Оно пустое по дефолту, но при первом сообщение пользователя оно заполняется.
+    """
     telegram = models.CharField(max_length=30, blank=True, default=None, verbose_name="Телеграм")
     telegram_chat_id = models.CharField(default="", blank=True)
 
+    # Объявление дефолтного manager для ORM
     objects = models.Manager()
 
     def __str__(self):
