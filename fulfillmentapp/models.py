@@ -5,6 +5,36 @@ from django.contrib.auth.models import User
 
 
 class Seller(models.Model):
+    """
+    Модель продавца (заказчика)
+    ----------
+    Атрибуты:
+    user: OneToOneField
+        Связь один к одному с User из django.contrib.auth.models.User
+
+    name: CharField
+        Поле для имени продавца (заказчика)
+
+    last_name: CharField
+        Поле для фамилии продавца (заказчика)
+
+    username: CharField
+        Поле для логина продавца (заказчика)
+
+    password: CharField
+        Поле для пароля продавца (заказчика)
+
+    email: EmailField
+        Поле для почты продавца (заказчика)
+
+    telegram: CharField
+        Поле для логина продавца (заказчика)
+        Пригодиться для интерфейса через мессенджер telegram
+        Через telegram отправляются новые уведомления пользователям о новых изменениях
+
+    telegram_chat_id: CharField
+        Поле для чат ID продавца (заказчика)
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name="seller")
     name = models.CharField(max_length=30, verbose_name="Имя")
     last_name = models.CharField(max_length=30, verbose_name="Фамилия")
