@@ -5,14 +5,11 @@
     .title{
         font-size: 34px;
     }
-    .header{
-        padding: 5px 0 5px;
-    }
     .container{
         max-width: 1200px;
     }
     .header__top{
-        padding: 13px 0 10px
+        padding: 15px 0 10px
     }
     .menu{
         margin-right: 631px;
@@ -20,11 +17,18 @@
     .menu__list{
         gap: 150px;
     }
+    .menu__link{
+        font-size: 16px;
+    }
     .logo__img{
-        width: 220px;
+        height: 75px;
     }
     .contacts{
         margin-right: 140px;
+        font-size: 16px;
+    }
+    .signin__btn{
+        font-size: 16px;
     }
     .header__title{
         font-size: 50px;
@@ -93,6 +97,9 @@
     .footer__adress-text{
     font-size: 20px;
     }
+    .footer__form-container{
+        margin-bottom: 76px;
+    }
     .tel__input-text,
     .mail__input-text,
     .product__input-text{
@@ -127,7 +134,7 @@
         gap: 140px;
     }
     .logo__img{
-        width: 170px;
+        height: 70px;
     }
     .header__content{
         margin-bottom: 20px;
@@ -209,7 +216,7 @@
     }
     .footer__form-container{
         gap: 33px;
-        margin-bottom: 69px
+        margin-bottom: 60px
     }
     .tel__input-text,
     .mail__input-text,

@@ -19,6 +19,9 @@
         height: 30px;
         font-size: 18px;
     }
+    .invalid-text{
+        font-size: 16px;
+    }
     .signin__btn{
         font-size: 20px;
         padding: 10px;
@@ -45,6 +48,9 @@
         width: 300px;
         height: 27px;
         font-size: 16px;
+    }
+    .invalid-text{
+        font-size: 14px;
     }
     .signin__btn{
         font-size: 18px;
