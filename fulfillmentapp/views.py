@@ -122,6 +122,13 @@ def operator_page_view(request: HttpRequest):
     return render(request=request, template_name="fulfillmentapp/operator.html", context=data)
 
 
+@user_passes_test(test_func=check_is_seller, login_url="/login/")
+def main_product_slug_page_view(request: HttpRequest, product_slug: str):
+    """View карточки товара"""
+
+    article = int(product_slug.split("-")[1])
+
+
 def logout_page_view(request: HttpRequest):
     """View логаута пользователя"""
 

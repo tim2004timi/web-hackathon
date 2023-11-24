@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Seller(models.Model):
@@ -176,6 +177,9 @@ class Product(models.Model):
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
+
+    def get_absolute_url(self):
+        return reverse("product-slug", kwargs={"product_slug": f"product-{self.article}"})
 
     def __str__(self):
         return self.name
