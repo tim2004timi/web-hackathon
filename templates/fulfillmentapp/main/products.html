@@ -39,13 +39,16 @@
             </div>
         </div>    
     </header>
-    <!-- <div>
+
+
+    <div>
         <div>
-            <a>Добро пожаловать {{ user.get_username }}!</a>
+            <a>Добро пожаловать <b>{{ user.get_username }}!</b></a>
         </div>
         <div>
-            <a href="{% url 'logout' %}"> Выйти из аккаунта</a></div>
+            <a href="{% url 'logout' %}" style="color: #2F5CE8"> Выйти из аккаунта</a>
         </div>
+    </div>
     <br>
     <div>
         <form method="POST">
@@ -66,6 +69,7 @@
                     <th>Цвет</th>
                     <th>Размер</th>
                     <th>Статус</th>
+                    <th>Кнопка</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +80,13 @@
                     <td>{{ product.color }}</td>
                     <td>{{ product.size }}</td>
                     <td>{{ product.status }}</td>
+                    <td><a href="{{ product.get_absolute_url }}" style="color: #2F5CE8">Подробнее</a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-    </div> -->
+    </div>
+
+
 </body>
 </html>

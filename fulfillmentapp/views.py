@@ -127,6 +127,9 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
     """View карточки товара"""
 
     article = int(product_slug.split("-")[1])
+    product = Product.objects.get(article=article)
+    fields = list(product.__dict__.values())[1:]
+    return HttpResponse(f"<h1>{fields}</h1>")
 
 
 def logout_page_view(request: HttpRequest):
