@@ -28,7 +28,7 @@ def login_page_view(request):
                 return redirect("/admin/")
             try:
                 _ = user.seller
-                return redirect('main')
+                return redirect('main-products')
             except Exception:
                 pass
             try:
@@ -53,7 +53,7 @@ def login_page_view(request):
             if user.is_superuser:
                 return redirect('/admin/')
             elif check_is_seller(user):
-                return redirect('main')
+                return redirect('main-products')
             elif check_is_operator(user):
                 return redirect('operator')
 
@@ -65,7 +65,7 @@ def login_page_view(request):
 
 
 @user_passes_test(check_is_seller, login_url="/login/")
-def main_page_view(request):
+def main_products_page_view(request):
     if request.method == "POST":
         name = request.POST.get("name")
         numbers = request.POST.get("numbers")
@@ -80,7 +80,7 @@ def main_page_view(request):
     data = {
         "products": products
     }
-    return render(request=request, template_name="fulfillmentapp/main.html", context=data)
+    return render(request=request, template_name="fulfillmentapp/main/products.html", context=data)
 
 
 @user_passes_test(check_is_operator, login_url="/login/")

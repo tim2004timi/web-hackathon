@@ -30,7 +30,9 @@
                         {% csrf_token %}
                         <input type="text" class="booking__input" placeholder="логин" name="username">
                         <input type="password" class="booking__input" placeholder="пароль" name="password">
+                        {% if error %}
                         <p class="invalid-text">Неверный логин или пароль</p>
+                        {% endif %}
                         <button type="submit" class="signin__btn">войти</button>
                     </form>
                 </div>    
