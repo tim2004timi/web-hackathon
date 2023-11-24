@@ -37,11 +37,13 @@ h3{
     font-weight: 700;
 }
 .header{
-    padding: 20px 0 15px;
+    /* padding: 10px 0 5px; */
     position: sticky;
     top: 0;
     background-color: #FFF;
     z-index: 10;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(20px);
 }
 .header + .header{
     position: static;
@@ -55,7 +57,7 @@ h3{
     display: flex;
     align-items: center;
     position: relative;
-    padding: 30px 0 30px;
+    padding: 25px 0 20px;
 }
 .menu{
     margin-right: 892px;
@@ -72,6 +74,9 @@ h3{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+.logo__img{
+    height: 90px;
 }
 .contacts{
     margin-right: 160px;
@@ -291,6 +296,7 @@ h3{
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-bottom: 59px;
 }
 .tel__input-text,
 .mail__input-text,
@@ -307,9 +313,6 @@ h3{
     background: rgba(255, 255, 255, 0.30);
     font-size: 18px;
 }
-.footer__form-container{
-    margin-bottom: 97px;
-}
 .footer-application__btn-wrapper{
     text-align: center;
 }
@@ -317,6 +320,10 @@ h3{
     border: 1px solid rgba(255, 255, 255, 0.50);
     background: #000;
     font-size: 24px;
+    cursor: pointer;
+}
+.footer-application__btn:hover{
+    background-image: linear-gradient(to right, #29323c, #4e4376);
 }
 .footer__logo-wrapper{
     text-align: center;

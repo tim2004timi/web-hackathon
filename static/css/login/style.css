@@ -47,7 +47,7 @@ a{
     display: flex;
     flex-direction: column;
     gap: 21px;
-    margin: 53px 0 43px;
+    margin-top: 53px;
     align-items: center;
 }
 .booking__input{
@@ -61,6 +61,13 @@ a{
     line-height: normal;
     padding-left: 15px;
 }
+.invalid-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: red;
+}
 .signin__btn{
     border-radius: 100px;
     border: 1px solid rgba(255, 255, 255, 0.50);
@@ -69,7 +76,10 @@ a{
     color: #FFF;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
+}
+.signin__btn:hover{
+    background-image: linear-gradient(to right, #29323c, #4e4376);
 }
