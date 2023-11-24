@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Операторы</title>
+</head>
+<body>
+<div>
+    <div>
+        <a>Добро пожаловать {{ user.get_username }}!</a>
+    </div>
+    <div>
+        <a href="{% url 'logout' %}"> Выйти из аккаунта</a>
+    </div>
+    <br>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Цвет</th>
+                <th>Размер</th>
+                <th>Продавец</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.numbers }}</td>
+                <td>{{ product.color }}</td>
+                <td>{{ product.size }}</td>
+                <td>{{ product.seller }}</td>
+                <td>{{ product.status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
