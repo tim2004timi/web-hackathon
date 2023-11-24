@@ -133,5 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/main/"
 LOGOUT_REDIRECT_URL = "/"
 
-
+# Токен telegram бота
 TOKEN = '6655276522:AAGf8wyt2A1kp_lVTT37hTuTKZEZkW0o_4E'
