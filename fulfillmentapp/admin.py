@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Delivery)
 class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ("product", "address", "date", "driver_fio", "qr")
+    list_display = ("product", "address", "date", "driver_fio", "barcode")
     search_fields = ["product", "address", "date", "driver_fio"]
 
 
