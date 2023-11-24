@@ -1,10 +1,14 @@
+"""
+Модуль с классами для редактирования админ панели
+"""
+
+
 from django.contrib import admin
 from django.forms import ModelForm
 
 from .models import Product, Delivery, Operator, Seller, CallAssistant
 
 
-@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("article", "name", "size", "color", "numbers", "seller", "status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
@@ -55,3 +59,4 @@ class AssistantAdmin(admin.ModelAdmin):
 admin.site.register(Operator, OperatorAdmin)
 admin.site.register(Seller, SellerAdmin)
 admin.site.register(CallAssistant, AssistantAdmin)
+admin.site.register(Product, ProductAdmin)
