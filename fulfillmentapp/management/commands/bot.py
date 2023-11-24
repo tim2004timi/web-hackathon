@@ -12,10 +12,10 @@ from telegram import Update, Bot
 from fulfillmentapp.models import Seller, CallAssistant
 from asgiref.sync import sync_to_async
 from django.db.models import Model, Q
-
+import logging
 
 bot = Bot(token=settings.TOKEN)
-
+logger = logging.getLogger("bot.events")
 
 @sync_to_async
 def get_assistants_chat_ids() -> list[str]:
@@ -37,6 +37,7 @@ def set_telegram_chat_id(user: Model, chat_id: int) -> None:
 async def send_registration_request(message: str) -> None:
     assistants_chat_ids = await get_assistants_chat_ids()
     print("[INFO] Заявка отправлена в колл центр")
+    logger.info(f"New registration request: '{message}' was sent to call center")
     for chat_id in assistants_chat_ids:
         await bot.send_message(chat_id=chat_id, text=message)
 

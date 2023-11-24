@@ -86,6 +86,55 @@ DATABASES = {
     }
 }
 
+#Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': (u'%(asctime)-s %(levelname)s [%(name)s]: %(message)s'),
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+            'encoding': 'utf-8',
+        },
+    },
+    'handlers': {
+        'db': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/sql_logs.log',
+            'formatter': 'default'
+        },
+        'requests': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/dj_requests.log',
+            'formatter': 'default',
+        },
+        'bot': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/bot_logs.log',
+            'formatter': 'default',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['db'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.server': {
+            'handlers': ['requests'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'bot.events': {
+            'handlers': ['bot'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
