@@ -6,3 +6,6 @@ from .main_products_page_view import *
 from .main_requests_page_view import *
 from .operator_products_page_view import *
 from .main_bills_page_view import *
+from .main_redirect_view import *
+from .operator_redirect_view import *
+from .page_not_found_view import *
