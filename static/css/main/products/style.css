@@ -30,14 +30,9 @@ a{
 }
 .header__top{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     position: relative;
-}
-.logo{
-    margin-right: 268px;
-}
-.menu{
-    margin-right: calc()
 }
 .menu__list{
     display: flex;
