@@ -22,7 +22,7 @@
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="{% url 'main-products' %}" class="menu__link">товары</a>
+                            <a href="{% url 'main-products' %}" class="menu__link selected__page">товары</a>
                         </li>
                         <li class="menu__item">
                             <a href="{% url 'main-bills'%}" class="menu__link">счета</a>
@@ -40,7 +40,7 @@
                     <div class="cabinet__container">
                         <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
                         <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
-                        <a href="#" class="exit__btn">выйти</a>
+                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
                     </div>
                     <div class="telegram">
                         <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
@@ -50,54 +50,51 @@
             </div>
         </div>    
     </header>
-
-
-    <div>
-        <div>
-            <a>Добро пожаловать <b>{{ user.get_username }}!</b></a>
+    <main class="main">
+        <div class="table">
+            <div class="container">
+                <div class="filter">
+                    <a href="все" class="all__btn btn selected__filter">все</a>
+                    <a href="в пути" class="way__btn btn">в пути</a>
+                    <a href="ожидает заявку на отгрузку" class="wait-application__btn btn">ожидает заявку на отгрузку</a>
+                    <a href="ожидает штрихкод" class="wait-barcode__btn btn">ожидает штрихкод</a>
+                    <a href="ожидают оплаты" class="wait-pay__btn btn">ожидают оплаты</a>
+                </div>
+                <div class="table__content">
+                    <div class="sorting">
+                        <p class="sorting__title">сортировка</p>
+                        <a href="название" class="name__btn btn selected__sorting">название</a>
+                        <a href="артикул" class="article__btn btn">артикул</a>
+                        <a href="дата создания" class="date__btn btn">дата создания</a>
+                        <a href="статус" class="status__btn btn">статус</a>
+                        <a href="количество" class="count__btn btn">количество</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Артикул</th>
+                                <th>Дата создания</th>
+                                <th>Статус</th>
+                                <th>количество</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.numbers }}</td>
+                                <td>{{ product.color }}</td>
+                                <td>{{ product.size }}</td>
+                                <td>{{ product.status }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>  
+            </div>      
         </div>
-        <div>
-            <a href="{% url 'logout' %}" style="color: #2F5CE8"> Выйти из аккаунта</a>
-        </div>
-    </div>
-    <br>
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text"  placeholder="название" name="name">
-            <input type="text"  placeholder="количество" name="numbers">
-            <input type="text"  placeholder="цвет" name="color">
-            <input type="text"  placeholder="размер" name="size">
-            <button type="submit" class="signin__btn">Добавить товар</button>
-        </form>
-    </div>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Количество</th>
-                    <th>Цвет</th>
-                    <th>Размер</th>
-                    <th>Статус</th>
-                    <th>Кнопка</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.numbers }}</td>
-                    <td>{{ product.color }}</td>
-                    <td>{{ product.size }}</td>
-                    <td>{{ product.status }}</td>
-                    <td><a href="{{ product.get_absolute_url }}" style="color: #2F5CE8">Подробнее</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
+    </main>
     <script src="{% static 'js/main/products/main.js' %}"></script>
 </body>
 </html>

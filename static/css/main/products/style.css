@@ -23,6 +23,7 @@ a{
     background: linear-gradient(180deg, #5341C5 0%, #14BBFD 100%);
     backdrop-filter: blur(20px);
     padding: 6px 0 7px;
+    margin-bottom: 40px;
 }
 .container{
     max-width: 1718px;
@@ -31,7 +32,6 @@ a{
 .header__top{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     position: relative;
 }
 .menu__list{
@@ -42,6 +42,9 @@ a{
     font-size: 32px;
     font-weight: 600;
     line-height: normal;
+}
+.selected__page{
+    color: #FFF;
 }
 .cabinet__btn{
     display: flex;
@@ -57,7 +60,6 @@ a{
     font-weight: 600;
     line-height: normal;
     padding: 0;
-    width: 215px;
 }
 .cabinet__popup{
     border-radius: 50px;
