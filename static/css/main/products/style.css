@@ -19,6 +19,11 @@ a{
     text-decoration: none;
     color: inherit;
 }
+.btn{
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    padding: 5px 30px;
+}
 .header{
     background: linear-gradient(180deg, #5341C5 0%, #14BBFD 100%);
     backdrop-filter: blur(20px);
@@ -61,15 +66,28 @@ a{
     line-height: normal;
     padding: 0;
 }
+.cabinet__popup-wrapper{
+    position: absolute;
+}
 .cabinet__popup{
     border-radius: 50px;
-    border: 2px solid rgba(0, 0, 0, 0.20);
+    border: 2px solid rgba(0, 0, 0, 0.25);
     background: #FFF;
     position: absolute;
-    right: 0;
-    bottom: -320px;
+    right: 125px;
+    bottom: -249px;
     padding: 55px 45px 45px 61px;
     display: none;
+    z-index: 20;
+}
+.cabinet__overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 1;
 }
 .cabinet__popup-open{
     display: block;
@@ -99,10 +117,45 @@ a{
 }
 .exit__btn:hover{
     background: #000;
+    color: #fff;
 }
 .telegram{
     display: flex;
     align-items: center;
     gap: 10px;
     margin-left: 12px;
+}
+.main__overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+.table{
+    margin-bottom: 100px;
+}
+.filter{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.filter__btn{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+}
+.table__content{
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    font-size: 20px;
+}
+.sorting{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 25px 0 25px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
+    justify-content: center;
 }

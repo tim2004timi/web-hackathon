@@ -35,18 +35,20 @@
                 <button class="cabinet__btn">
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
-                </button>
-                <div class="cabinet__popup">
-                    <div class="cabinet__container">
-                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
-                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
-                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                </button> 
+                <div class="cabinet__popup-wrapper">
+                    <div class="cabinet__popup">
+                        <div class="cabinet__container">
+                            <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                            <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                            <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                        </div>
+                        <div class="telegram">
+                            <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
+                            <p class="telegram__text">телеграм бот для уведомлений</p>
+                        </div>
                     </div>
-                    <div class="telegram">
-                        <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
-                        <p class="telegram__text">телеграм бот для уведомлений</p>
-                    </div>
-                </div>
+                </div>    
             </div>
         </div>    
     </header>
@@ -54,11 +56,11 @@
         <div class="table">
             <div class="container">
                 <div class="filter">
-                    <a href="все" class="all__btn btn selected__filter">все</a>
-                    <a href="в пути" class="way__btn btn">в пути</a>
-                    <a href="ожидает заявку на отгрузку" class="wait-application__btn btn">ожидает заявку на отгрузку</a>
-                    <a href="ожидает штрихкод" class="wait-barcode__btn btn">ожидает штрихкод</a>
-                    <a href="ожидают оплаты" class="wait-pay__btn btn">ожидают оплаты</a>
+                    <a href="все" class="all__btn btn filter__btn selected__filter">все</a>
+                    <a href="в пути" class="way__btn btn filter__btn">в пути</a>
+                    <a href="ожидает заявку на отгрузку" class="wait-application__btn btn filter__btn">ожидает заявку на отгрузку</a>
+                    <a href="ожидает штрихкод" class="wait-barcode__btn btn filter__btn">ожидает штрихкод</a>
+                    <a href="ожидают оплаты" class="wait-pay__btn btn filter__btn">ожидают оплаты</a>
                 </div>
                 <div class="table__content">
                     <div class="sorting">
