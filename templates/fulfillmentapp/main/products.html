@@ -65,11 +65,11 @@
         <div class="table">
             <div class="container">
                 <div class="filter">
-                    <a href="все" class="all__btn btn filter__btn selected__filter">все</a>
-                    <a href="в пути" class="way__btn btn filter__btn">в пути</a>
-                    <a href="ожидает заявку на отгрузку" class="wait-application__btn btn filter__btn">ожидает заявку на отгрузку</a>
-                    <a href="ожидает штрихкод" class="wait-barcode__btn btn filter__btn">ожидает штрихкод</a>
-                    <a href="ожидают оплаты" class="wait-pay__btn btn filter__btn">ожидают оплаты</a>
+                    <a href="{% url 'main-products-clear-data' filter='все' sorting=sorting %}" class="all__btn btn filter__btn selected__filter">все</a>
+                    <a href="{% url 'main-products-clear-data' filter='в пути' sorting=sorting %}" class="way__btn btn filter__btn">в пути</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает заявку на отгрузку' sorting=sorting %}" class="wait-application__btn btn filter__btn">ожидает заявку на отгрузку</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает штрихкод' sorting=sorting %}" class="wait-barcode__btn btn filter__btn">ожидает штрихкод</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает оплаты' sorting=sorting %}" class="wait-pay__btn btn filter__btn">ожидает оплаты</a>
                 </div>
                 <div class="table__content">
                     <div class="sorting">

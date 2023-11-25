@@ -8,6 +8,7 @@ urlpatterns = [
     path("logout/", logout_page_view, name="logout"),
     path("main/", main_redirect_view, name="main-redirect"),
     path('main/products', main_products_page_view, name="main-products"),
+    path('main/products/<str:filter>/<str:sorting>', main_products_page_view, name="main-products-clear-data"),
     path('main/bills', main_bills_page_view, name="main-bills"),
     path('main/requests', main_requests_page_view, name="main-requests"),
     path("main/product/<slug:product_slug>/", main_product_slug_page_view, name="product-slug"),
