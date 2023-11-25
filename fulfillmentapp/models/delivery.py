@@ -11,6 +11,10 @@ class Delivery(models.Model):
     product: OneToOneField
         Связь OneToOne с товаром для которого осуществляется поставка.
 
+    seller: ForeignKey
+        Хозяин товара (продавец).
+        Связь ManyToOne.
+
     address: TextField
         Поле для адреса доставки.
 
@@ -34,6 +38,10 @@ class Delivery(models.Model):
                                    on_delete=models.CASCADE,
                                    primary_key=True,
                                    verbose_name="Товар")
+    seller = models.ForeignKey("Seller",
+                               on_delete=models.CASCADE,
+                               related_name="deliveries",
+                               verbose_name="Продавец")
     address = models.TextField(verbose_name="Адрес")
     driver_fio = models.CharField(max_length=50, verbose_name="ФИО водителя")
     car_number = models.CharField(max_length=20, verbose_name="Номер авто")

@@ -23,7 +23,7 @@ def main_products_page_view(request: HttpRequest):
         # Создаем в БД новый товар
         Product.objects.create(name=name, numbers=numbers, color=color, size=size, status=status, seller=seller)
 
-    seller = request.user.seller
+    seller = get_seller(user=request.user)
     products = Product.objects.filter(seller=seller)
     name = seller.name
     last_name = seller.last_name
@@ -31,7 +31,7 @@ def main_products_page_view(request: HttpRequest):
         "products": products,
         "user": {
             "name": name,
-            "last": last_name
+            "last_name": last_name
         },
     }
 
