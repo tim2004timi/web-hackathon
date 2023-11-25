@@ -3,23 +3,24 @@
     check_is_seller(user: User) -> bool
     check_is_operator(user: User) -> bool
 """
+from typing import Union
 
 from django.contrib.auth.models import User
 
+from fulfillmentapp.models import Seller, Operator
 
-def check_is_seller(user: User) -> bool:
+
+def get_seller(user: User) -> Union[Seller, None]:
     """Функция проверки пользователя, является ли он продавцом"""
     try:
-        _ = user.seller
-        return True
+        return user.seller
     except Exception:
-        return False
+        return None
 
 
-def check_is_operator(user: User) -> bool:
+def get_operator(user: User) -> Union[Operator, None]:
     """Функция проверки пользователя, является ли он оператором"""
     try:
-        _ = user.operator
-        return True
+        return user.operator
     except Exception:
-        return False
+        return None
