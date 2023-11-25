@@ -53,7 +53,7 @@
                             <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
                         </div>
                         <div class="telegram">
-                            <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
+                            <a href="" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
                             <p class="telegram__text">телеграм бот для уведомлений</p>
                         </div>
                     </div>
@@ -73,33 +73,38 @@
                 </div>
                 <div class="table__content">
                     <div class="sorting">
-                        <p class="sorting__title">сортировка</p>
+                        <p class="sorting__title">сортировка:</p>
                         <a href="название" class="name__btn btn selected__sorting">название</a>
                         <a href="артикул" class="article__btn btn">артикул</a>
                         <a href="дата создания" class="date__btn btn">дата создания</a>
                         <a href="статус" class="status__btn btn">статус</a>
                         <a href="количество" class="count__btn btn">количество</a>
                     </div>
-                    <table>
+                    <table class="table__container">
                         <thead>
-                            <tr>
-                                <th>Название</th>
-                                <th>Артикул</th>
-                                <th>Дата создания</th>
-                                <th>Статус</th>
-                                <th>количество</th>
+                            <tr class="table__head-rows">
+                                <th class="table__head-row table__head-row--name">название</th>
+                                <th class="table__head-row table__head-row--article">артикул</th>
+                                <th class="table__head-row table__head-row--date">дата создания</th>
+                                <th class="table__head-row table__head-row--status">статус товара</th>
+                                <th class="table__head-row table__head-row--count">количество</th>
+                                <th class="table__head-row table__head-row--actions">действия</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for product in products %}
-                            <tr>
-                                <td>{{ product.name }}</td>
-                                <td>{{ product.numbers }}</td>
-                                <td>{{ product.color }}</td>
-                                <td>{{ product.size }}</td>
-                                <td>{{ product.status }}</td>
+                        <!-- {% for product in products %} -->
+                            <tr class="table__content-rows">
+                                <td class="table__content-row__container">
+                                    <table class="table__content-row table__content-row--img" >1</table>
+                                    <table class="table__content-row table__content-row--name">2</table>
+                                </td>
+                                <td class="table__content-row table__content-row--article">3</td>
+                                <td class="table__content-row table__content-row--date">4</td>
+                                <td class="table__content-row table__content-row--status">5</td>
+                                <td class="table__content-row table__content-row--count">6</td>
+                                <td class="table__content-row table__content-row--actions">7</td>
                             </tr>
-                        {% endfor %}
+                        <!-- {% endfor %} -->
                         </tbody>
                     </table>
                 </div>  
