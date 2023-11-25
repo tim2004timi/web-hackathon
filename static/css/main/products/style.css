@@ -9,7 +9,10 @@ html {
 }
 body{
     font-family: 'Montserrat', sans-serif;
-    color: #000
+    color: #000;
+    font-size: 20px;
+    line-height: normal;
+    font-weight: 400;
 }
 a{
     font-family: inherit;
@@ -27,8 +30,14 @@ a{
 }
 .header__top{
     display: flex;
-    gap: 257px;
     align-items: center;
+    position: relative;
+}
+.logo{
+    margin-right: 268px;
+}
+.menu{
+    margin-right: calc()
 }
 .menu__list{
     display: flex;
@@ -39,18 +48,64 @@ a{
     font-weight: 600;
     line-height: normal;
 }
-.cabinet__container{
-    display: flex;
-    align-items: center;
-}
 .cabinet__btn{
     display: flex;
     align-items: center;
     gap: 22px;
     cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
 }
 .cabinet__btn-text{
     font-size: 24px;
     font-weight: 600;
     line-height: normal;
+    padding: 0;
+    width: 215px;
+}
+.cabinet__popup{
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    background: #FFF;
+    position: absolute;
+    right: 0;
+    bottom: -320px;
+    padding: 55px 45px 45px 61px;
+    display: none;
+}
+.cabinet__popup-open{
+    display: block;
+}
+.cabinet__container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 39px;
+}
+.cabinet__popup-img{
+    margin-right: 25px;
+    width: 66px;
+}
+.cabinet__popup-text{
+    margin-right: 76px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+}
+.exit__btn{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 30px;
+    padding: 10px;
+    border: 1px solid #000;
+}
+.exit__btn:hover{
+    background: #000;
+}
+.telegram{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 12px;
 }
