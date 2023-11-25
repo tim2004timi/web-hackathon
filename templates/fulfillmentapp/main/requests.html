@@ -22,20 +22,40 @@
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="{% url 'main-products' %}" class="menu__link">товары</a>
+                            <a href="{% url 'main-products' %}" class="menu__link
+                            {% if selected_page == 'товары' %}
+                            selected__page
+                            {% endif %}">товары</a>
                         </li>
                         <li class="menu__item">
-                            <a href="{% url 'main-bills'%}" class="menu__link">счета</a>
+                            <a href="{% url 'main-bills'%}" class="menu__link
+                            {% if selected_page == 'счета' %}
+                            selected__page
+                            {% endif %}">счета</a>
                         </li>
                         <li class="menu__item">
-                            <a href="{% url 'main-requests'%}" class="menu__link">запросы на отгрузку</a>
+                            <a href="{% url 'main-requests'%}" class="menu__link
+                            {% if selected_page == 'запросы на отгрузку' %}
+                            selected__page
+                            {% endif %}">запросы на отгрузку</a>
                         </li>
                     </ul>
                 </nav>
-                <buttom class="cabinet__btn">
-                    <p class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</p>
-                    <img src="{% static 'img/main/products/cabinet__btn.png' %}" alt="cabinet" class="cabinet__btn-img">
-                </buttom>
+                <button class="cabinet__btn">
+                    <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
+                    <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
+                </button>
+                <div class="cabinet__popup">
+                    <div class="cabinet__container">
+                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                    </div>
+                    <div class="telegram">
+                        <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
+                        <p class="telegram__text">телеграм бот для уведомлений</p>
+                    </div>
+                </div>
             </div>
         </div>    
     </header>
@@ -87,6 +107,6 @@
         </table>
     </div> -->
 
-
+<script src="{% static 'js/main/products/main.js' %}"></script>
 </body>
 </html>

@@ -28,6 +28,7 @@ def main_products_page_view(request: HttpRequest):
     name = seller.name
     last_name = seller.last_name
     data = {
+        "selected_page": "товары",
         "products": products,
         "user": {
             "name": name,

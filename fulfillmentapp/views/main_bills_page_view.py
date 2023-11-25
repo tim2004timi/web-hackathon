@@ -13,6 +13,7 @@ def main_bills_page_view(request: HttpRequest):
     name = seller.name
     last_name = seller.last_name
     data = {
+        "selected_page": "счета",
         "bills": None,
         "user": {
             "name": name,
