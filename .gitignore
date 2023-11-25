@@ -2,6 +2,7 @@
 **/__pycache__
 __pycache__
 *__*
+!__init__
 *.pyc
 venv
 *.log

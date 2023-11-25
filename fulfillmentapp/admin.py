@@ -4,7 +4,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 
-from .models import Product, Delivery, Operator, Seller, CallAssistant
+from .models import *
 
 
 class ProductAdmin(admin.ModelAdmin):
