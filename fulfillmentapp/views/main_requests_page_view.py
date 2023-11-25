@@ -15,6 +15,7 @@ def main_requests_page_view(request: HttpRequest):
     name = seller.name
     last_name = seller.last_name
     data = {
+        "selected_page": "запросы на отгрузку",
         "bills": None,
         "user": {
             "name": name,
