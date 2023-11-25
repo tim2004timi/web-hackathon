@@ -32,10 +32,21 @@
                         </li>
                     </ul>
                 </nav>
-                <buttom class="cabinet__btn">
-                    <p class="cabinet__btn-text">Иван Иванов</p>
-                    <img src="{% static 'img/main/products/cabinet__btn.png' %}" alt="cabinet" class="cabinet__btn-img">
-                </buttom>
+                <button class="cabinet__btn">
+                    <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name }}</span>
+                    <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
+                </button>
+                <div class="cabinet__popup">
+                    <div class="cabinet__container">
+                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                        <a href="#" class="exit__btn">выйти</a>
+                    </div>
+                    <div class="telegram">
+                        <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
+                        <p class="telegram__text">телеграм бот для уведомлений</p>
+                    </div>
+                </div>
             </div>
         </div>    
     </header>
@@ -87,6 +98,6 @@
         </table>
     </div> -->
 
-
+    <script src="{% static 'js/main/products/main.js' %}"></script>
 </body>
 </html>
