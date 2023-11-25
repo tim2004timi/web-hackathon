@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main/products/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/products/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <a class="logo">
+                    <img src="{% static 'img/main/products/logo.png' %}" alt="logo" class="logo__img">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="{% url 'main/products' %}" class="menu__link">товары</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'main/bills' %}" class="menu__link">счета</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'main/requests' %}" class="menu__link">запросы на отгрузку</a>
+                        </li>
+                    </ul>
+                </nav>
+                <buttom class="cabinet__btn">
+                    <p class="cabinet__btn-text">Иван Иванов</p>
+                    <img src="{% static 'img/main/products/cabinet__btn.png' %}" alt="cabinet" class="cabinet__btn-img">
+                </buttom>
+            </div>
+        </div>    
+    </header>
+
+    <h1>requests</h1>
+    <!-- <div>
+        <div>
+            <a>Добро пожаловать <b>{{ user.get_username }}!</b></a>
+        </div>
+        <div>
+            <a href="{% url 'logout' %}" style="color: #2F5CE8"> Выйти из аккаунта</a>
+        </div>
+    </div>
+    <br>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text"  placeholder="название" name="name">
+            <input type="text"  placeholder="количество" name="numbers">
+            <input type="text"  placeholder="цвет" name="color">
+            <input type="text"  placeholder="размер" name="size">
+            <button type="submit" class="signin__btn">Добавить товар</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Цвет</th>
+                    <th>Размер</th>
+                    <th>Статус</th>
+                    <th>Кнопка</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.numbers }}</td>
+                    <td>{{ product.color }}</td>
+                    <td>{{ product.size }}</td>
+                    <td>{{ product.status }}</td>
+                    <td><a href="{{ product.get_absolute_url }}" style="color: #2F5CE8">Подробнее</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div> -->
+
+
+</body>
+</html>

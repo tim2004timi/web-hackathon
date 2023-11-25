@@ -17,7 +17,7 @@
         <div class="container">
             <div class="header__top">
                 <a class="logo">
-                    <img src="../../../static/img/main/products/logo.png" alt="logo" class="logo__img">
+                    <img src="{% static 'img/main/products/logo.png' %}" alt="logo" class="logo__img">
                 </a>
                 <nav class="menu">
                     <ul class="menu__list">
@@ -25,23 +25,23 @@
                             <a href="#" class="menu__link">товары</a>
                         </li>
                         <li class="menu__item">
-                            <a href="#" class="menu__link">счета</a>
+                            <a href='#'class="menu__link">счета</a>
                         </li>
                         <li class="menu__item">
-                            <a href="#" class="menu__link">запросы на отгрузку</a>
+                            <a href='#' class="menu__link">запросы на отгрузку</a>
                         </li>
                     </ul>
                 </nav>
                 <buttom class="cabinet__btn">
                     <p class="cabinet__btn-text">Иван Иванов</p>
-                    <img src="../../../static/img/main/products/cabinet__btn.png" alt="cabinet" class="cabinet__btn-img">
+                    <img src="{% static 'img/main/products/cabinet__btn.png' %}" alt="cabinet" class="cabinet__btn-img">
                 </buttom>
             </div>
         </div>    
     </header>
 
 
-    <div>
+    <!-- <div>
         <div>
             <a>Добро пожаловать <b>{{ user.get_username }}!</b></a>
         </div>
@@ -85,7 +85,7 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div> -->
 
 
 </body>
