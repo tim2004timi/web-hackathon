@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/main/products/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main/products/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/bills/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/bills/style.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
 </head>
 <body>
@@ -47,8 +47,8 @@
         <section class="bills">
             <div class="container">
                 <div class="btn__container">
-                    <a href="#" class="topay__btn selected__btn">к оплате</a>
-                    <a href="#" class="history__btn">история</a>
+                    <a href="#" class="topay__btn btn selected__btn">к оплате</a>
+                    <a href="#" class="history__btn btn">история</a>
                 </div>
                 <div class="bills__items">
                     <div class="bill__item">
@@ -57,7 +57,14 @@
                         <p class="bill__data">24.11.23</p>
                         <p class="bill__price">30 000 ₽</p>
                     </div>
+                    <div class="bill__item">
+                        <p class="bill__item-title">Перевозка</p>
+                        <a href="#" class="bill__ticket">просмотреть квитанцию</a>
+                        <p class="bill__data">24.11.23</p>
+                        <p class="bill__price">20 000 ₽</p>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
