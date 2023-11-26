@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+import setting_secrets
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@emmn%cc&o&0pt*rc)wu0+varw#&r(2f8j6t@jzyp=ocbg_=!6'
+SECRET_KEY = setting_secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = setting_secrets.DEBUG
 
-ALLOWED_HOSTS = ["*"]
+if DEBUG:
+    INTERNAL_IPS = ["127.0.0.1"]
+
+ALLOWED_HOSTS = setting_secrets.ALLOWED_HOSTS
 
 
 # Application definition
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fulfillmentapp',
+    "debug_toolbar", 
 ]
 
 MIDDLEWARE = [
@@ -49,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -75,18 +82,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-        'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fastway',
-        'USER': 'main',
-        'PASSWORD': 'zxcvb',
-        'HOST': '192.168.1.138',
-        'PORT': 5432,
-    }
-}
+DATABASES = setting_secrets.DATABASES
 
-#Logging
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -136,6 +134,8 @@ LOGGING = {
     },
 }
 
+CACHES = setting_secrets.CACHES
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -183,4 +183,4 @@ LOGIN_REDIRECT_URL = "/main/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Токен telegram бота
-TOKEN = '6655276522:AAGf8wyt2A1kp_lVTT37hTuTKZEZkW0o_4E'
+TOKEN = setting_secrets.TOKEN

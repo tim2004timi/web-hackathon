@@ -46,8 +46,11 @@ class Delivery(models.Model):
     driver_fio = models.CharField(max_length=50, verbose_name="ФИО водителя")
     car_number = models.CharField(max_length=20, verbose_name="Номер авто")
     date = models.DateField(verbose_name="Дата")
-    barcode = models.ImageField(default=None, blank=True, verbose_name="Штрих-код")
     time_created = models.DateTimeField(auto_now_add=True)
+    label = models.FileField(default=None, null=True, blank=True, verbose_name="Этикетка")
+    marketplace_barcode = models.ImageField(null=True, verbose_name="Штрих-код для маркетплейса")
+    wrapper_barcode = models.ImageField(default=None, null=True, blank=True, verbose_name="Штрих-код для тары")
+    bill = models.FileField(default=None, null=True, blank=True, verbose_name="Счет")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
