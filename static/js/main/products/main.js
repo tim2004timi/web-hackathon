@@ -8,13 +8,13 @@ const backBtn = document.querySelector('.back-btn');
 const backBtnCabinet = document.querySelector('.back-btn-cabinet');
 
 
-cabinetBtn.addEventListener('click', (e)=>{
-    e.stopPropagation();
+cabinetBtn.addEventListener('click', ()=>{
     cabinetPopup.classList.add('cabinet__popup-open');
-    cabinetPopupWrapper.classList.add('cabinet__overlay');
+    // cabinetPopupWrapper.classList.add('cabinet__overlay');
 });
 
 backBtnCabinet.addEventListener('click', ()=>{
+    cabinetPopup.classList.remove('cabinet__popup-open');
     cabinetPopupWrapper.classList.remove('cabinet__overlay');
 })
 

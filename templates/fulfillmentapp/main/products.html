@@ -44,26 +44,26 @@
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
                 </button> 
-                <div class="cabinet__popup-wrapper">
-                    <div class="cabinet__popup">
-                        <div class="back-btn__container">
-                            <button class="back-btn-cabinet">
-                                <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
-                                назад
-                            </button>
-                        </div> 
-                        <div class="cabinet__container">
-                            <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
-                            <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
-                            <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
-                        </div>
-                        <div class="telegram">
-                            <a href="https://t.me/FastWayNotification_bot" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
-                            <p class="telegram__text">телеграм бот для уведомлений</p>
-                        </div>
-                    </div>
-                </div>    
             </div>
+            <div class="cabinet__popup-wrapper">
+                <div class="cabinet__popup">
+                    <div class="back-btn__container">
+                        <button class="back-btn-cabinet">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </button>
+                    </div> 
+                    <div class="cabinet__container">
+                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                    </div>
+                    <div class="telegram">
+                        <a href="https://t.me/FastWayNotification_bot" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
+                        <p class="telegram__text">телеграм бот для уведомлений</p>
+                    </div>
+                </div>
+            </div>    
         </div>    
     </header>
     <main class="main">
@@ -126,11 +126,9 @@
                             </table>
                         </div> 
                     </div>   
-                    <div class="product__container">
-                        <button class="product__btn">
-                            <img src="{% static 'img/main/products/product__btn.png' %}" alt="add btn" class="product__img">
-                        </button>
-                    </div>
+                    <button class="product__btn">
+                        <img src="{% static 'img/main/products/product__btn.png' %}" alt="add btn" class="product__img">
+                    </button>
                     <div class="product-add__wrapper">
                         <div class="product-add__container">
                             <div class="back-btn__container">
