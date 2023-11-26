@@ -36,13 +36,22 @@ class Product(models.Model):
         Поле для даты регистрации товара.
         Заполняется автоматически.
     """
+    STATUSES = (
+        ('В пути до нас', 'В пути до нас'),
+        ('Ожидает заявку на отгрузку', 'Ожидает заявку на отгрузку'),
+        ('В процессе подтверждения', 'В процессе подтверждения'),
+        ('Ожидает штрихкод для тары', 'Ожидает штрихкод для тары'),
+        ('Отгружено, ожидает оплаты', 'Отгружено, ожидает оплаты'),
+        ('Оплата подтверждена', 'Оплата подтверждена'),
+    )
+
     article = models.AutoField(primary_key=True, verbose_name="Артикль")
     name = models.CharField(default=None, max_length=30, verbose_name="Название")
     size = models.CharField(default=None, max_length=30, verbose_name="Размер (20*20*30)")
     color = models.CharField(default=None, max_length=30, verbose_name="Цвет")
     numbers = models.IntegerField(default=1, verbose_name="Кол-во")
     seller = models.ForeignKey("Seller", on_delete=models.CASCADE, related_name="products", verbose_name="Продавец")
-    status = models.CharField(max_length=40, default="В пути до вас", blank=True, verbose_name="Статус")
+    status = models.CharField(max_length=40, default="В пути до нас", choices=STATUSES, verbose_name="Статус")
     time_created = models.DateTimeField(auto_now_add=True)
 
     # Объявление дефолтного manager для ORM
