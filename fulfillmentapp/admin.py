@@ -27,7 +27,7 @@ class DeliveryAdminForm(ModelForm):
 
 class DeliveryAdmin(admin.ModelAdmin):
     form = DeliveryAdminForm
-    list_display = ("product", "address", "date", "driver_fio", "barcode")
+    list_display = ("product", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
 
 
