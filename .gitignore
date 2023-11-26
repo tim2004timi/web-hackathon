@@ -1,7 +1,7 @@
 .idea
 **/__pycache__
 __pycache__
-*__*
+__*
 !__init__.py
 *.pyc
 venv
