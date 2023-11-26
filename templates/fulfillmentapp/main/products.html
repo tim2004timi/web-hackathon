@@ -29,7 +29,7 @@
                         </li>
                         <li class="menu__item">
                             <a href="{% url 'main-bills'%}" class="menu__link
-                            {% if selected_page == 'счета' %}
+                            {% if selected_page == 'счета' %}input
                             selected__page
                             {% endif %}">счета</a>
                         <li class="menu__item">
@@ -40,12 +40,24 @@
                         </li>
                     </ul>
                 </nav>
+            </div>
+        </div>    
+    </header>
+    <main class="main">
+        <div class="table">
+            <div class="container">
                 <button class="cabinet__btn">
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
                 </button> 
                 <div class="cabinet__popup-wrapper">
                     <div class="cabinet__popup">
+                        <div class="back-btn__container">
+                            <button class="back-btn-cabinet">
+                                <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                                назад
+                            </button>
+                        </div> 
                         <div class="cabinet__container">
                             <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
                             <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
@@ -57,12 +69,6 @@
                         </div>
                     </div>
                 </div>    
-            </div>
-        </div>    
-    </header>
-    <main class="main">
-        <div class="table">
-            <div class="container">
                 <div class="table__box">
                     <div class="table__wrapper">
                         <div class="filter">

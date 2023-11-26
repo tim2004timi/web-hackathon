@@ -34,6 +34,11 @@ a{
 .container{
     max-width: 1718px;
     margin: 0 auto;
+    position: relative;
+}
+.header .container{
+    max-width: 1241px;
+    margin-left: 102px;
 }
 .header__top{
     display: flex;
@@ -51,11 +56,14 @@ a{
     line-height: normal;
 }
 .selected__page{
-    padding: 7px 18px 20px;
+    padding: 7px 18px 17px;
     border-radius: 20px 20px 0 0;
     background: #FFF;
 }
 .cabinet__btn{
+    position: absolute;
+    top: -94px;
+    right: 0px;
     display: flex;
     align-items: center;
     gap: 22px;
@@ -69,6 +77,10 @@ a{
     font-weight: 600;
     line-height: normal;
     padding: 0;
+    pointer-events: none;
+}
+.cabinet__btn-img{
+    pointer-events: none;
 }
 .cabinet__popup-wrapper{
     position: absolute;
@@ -76,13 +88,22 @@ a{
 .cabinet__popup{
     border-radius: 50px;
     border: 2px solid rgba(0, 0, 0, 0.25);
-    background: #FFF;
+    background: rgb(255, 255, 255);
     position: absolute;
     right: 125px;
-    bottom: -249px;
+    top: 100;
     padding: 55px 45px 45px 61px;
     display: none;
     z-index: 20;
+}
+.back-btn-cabinet{
+    border: none;
+    background-color: transparent;
+    color: #6A6A6A;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
 }
 .cabinet__overlay{
     position: fixed;
@@ -118,6 +139,10 @@ a{
     border-radius: 30px;
     padding: 10px;
     border: 1px solid #000;
+}
+.exit__btn:hover{
+    background: #000;
+    color: #fff;
 }
 .exit__btn:hover{
     background: #000;
@@ -259,7 +284,7 @@ a{
     cursor: pointer;
 }
 .product-add__wrapper{
-
+    position: absolute;
 }
 .product-add__overlay{
     position: fixed;
