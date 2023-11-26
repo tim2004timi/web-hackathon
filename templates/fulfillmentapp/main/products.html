@@ -40,12 +40,6 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
-        </div>    
-    </header>
-    <main class="main">
-        <div class="table">
-            <div class="container">
                 <button class="cabinet__btn">
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
@@ -69,6 +63,12 @@
                         </div>
                     </div>
                 </div>    
+            </div>
+        </div>    
+    </header>
+    <main class="main">
+        <div class="table">
+            <div class="container">
                 <div class="table__box">
                     <div class="table__wrapper">
                         <div class="filter">
@@ -107,8 +107,8 @@
                                 {% for product in products %}
                                     <tr class="table__content-rows">
                                         <td class="table__content-row__container">
-                                            <table class="table__content-row table__content-row--img" >*</table>
-                                            <table class="table__content-row table__content-row--name">{{ product.name }}</table>
+                                            <div class="table__content-row table__content-row--img" style=""></div>
+                                            <p class="table__content-row table__content-row--name">{{ product.name }}</p>
                                         </td>
                                         <td class="table__content-row--devider"></td>
                                         <td class="table__content-row table__content-row--article">{{ product.article }}</td>
