@@ -7,13 +7,26 @@ from django.forms import ModelForm
 from .models import *
 
 
+class ProductAdminForm(ModelForm):
+    class Meta:
+        model = Product
+        exclude = []
+
+
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("article", "name", "size", "color", "numbers", "seller", "status", "delivery")
+    form = ProductAdminForm
+    list_display = ("article", "name", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
 
 
-@admin.register(Delivery)
+class DeliveryAdminForm(ModelForm):
+    class Meta:
+        model = Delivery
+        exclude = ["seller"]
+
+
 class DeliveryAdmin(admin.ModelAdmin):
+    form = DeliveryAdminForm
     list_display = ("product", "address", "date", "driver_fio", "barcode")
     search_fields = ["product", "address", "date", "driver_fio"]
 
@@ -58,3 +71,4 @@ admin.site.register(Operator, OperatorAdmin)
 admin.site.register(Seller, SellerAdmin)
 admin.site.register(CallAssistant, AssistantAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Delivery, DeliveryAdmin)
