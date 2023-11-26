@@ -138,6 +138,11 @@ a{
 .table{
     margin-bottom: 100px;
 }
+.table__box{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
 .filter{
     display: flex;
     gap: 40px;
@@ -156,7 +161,8 @@ a{
     border-radius: 50px;
     border: 2px solid rgba(0, 0, 0, 0.20);
     font-size: 20px;
-    max-width: 1636px;
+    /* min-width: 1500px; */
+    width: 100%;
 }
 .sorting{
     display: flex;
@@ -164,6 +170,7 @@ a{
     align-items: center;
     padding: 25px 0 25px;
     margin-left: 125px;
+    font-weight: 500;
 }
 .sorting__title{
     margin-right: 135px;
@@ -174,50 +181,173 @@ a{
 .table__head-rows{
     background: #F8F8F8;
     font-weight: 500;
+    border-top: 2px solid rgba(0, 0, 0, 0.20);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
+    position: relative;
 }
 .table__head-row{
-    border-right: 1px solid rgba(0, 0, 0, 0.50);
+    color: #797979;
+}
+.table__head-row--devider{
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.50);
+    bottom: 16px;
+    opacity: 0.5;
 }
 .table__head-row--name{
-    padding: 15px 100px 15px 150px;
+    max-width: 352px;
 }
 .table__head-row--article{
-    padding: 15px 50px 15px 50px;
+   max-width: 183px;
 }
 .table__head-row--date{
-    padding: 15px 68px 15px 70px;
+    max-width: 290px;
 }
 .table__head-row--status{
-    padding: 15px 89px 15px 92px;
+    max-width: 324px;
 }
 .table__head-row--count{
-    padding: 15px 50px 15px 50px;
+    max-width: 223px;
 }
 .table__head-row--actions{
-    padding: 15px 96px 15px 50px;
-    border-right: none;
+    max-width: 246px;
+}
+.table__content-rows{
+    position: relative;
+}
+.table__content-row--devider{
+    width: 1px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.50);
+    opacity: 0.5;
 }
 .table__content-row__container{
     display: flex;
     justify-content: space-around;
     padding: 25px 0 25px 0;
 }
+.table__content-row--name{
+    font-weight: 600;
+}
 .table__content-row--article,
 .table__content-row--date,
 .table__content-row--status,
-.table__content-row--count,
-.table__content-row--actions{
+.table__content-row--count{
     text-align: center;
 }
-.table__content-row--date{
-
-}
-.table__content-row--status{
-
-}
-.table__content-row--count{
-
+.table__content-row--article{
+    color: #797979;
 }
 .table__content-row--actions{
+    border-right: none;
+    padding-left: 50px;
+}
+.product__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.product__btn{
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+.product-add__wrapper{
 
+}
+.product-add__overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+.product-add__container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    background: #FFF;
+    padding: 40px;
+    display: none;
+
+}
+.product-add__show{
+    display: block;
+}
+.back-btn__container{
+    text-align: left;
+    margin-bottom: 43px;
+}
+.back-btn{
+    border: none;
+    background-color: transparent;
+    color: #6A6A6A;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+.product-add__form{
+    display: flex;
+    gap: 132px;
+    align-items: end;
+}
+.product-add__content{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+.pruduct-add__name-container,
+.pruduct-add__count-container,
+.pruduct-add__size-container,
+.pruduct-add__color-container{
+    display: flex;
+    align-items: center;
+    color: #717171;
+    font-weight: 700;
+}
+.add-inp{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+    font-size: 20px;
+}
+.add-inp:focus-visible{
+    
+}
+.product-add__name-input{
+    margin-left: 21px;
+    width: 311px;
+}
+.product-add__count-input{
+    margin-left: 75px;
+    width: 69px;
+}
+.product-add__size-input{
+    width: 69px;
+}
+.product-add__size-input:first-child{
+    margin-left: 121px;
+}
+.product-add__color-input{
+    width: 311px;
+    margin-left: 149px;
+}
+.product-add__btn{
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    background: #000;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: #FFF;
+    cursor: pointer;
 }
