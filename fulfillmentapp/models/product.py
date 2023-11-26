@@ -46,11 +46,11 @@ class Product(models.Model):
     )
 
     CIRCLE_COLORS_STYLES = {
-        'В пути до нас': 'back',
-        'Ожидает заявку на отгрузку': 'Добавить заявку',
-        'В процессе подтверждения': '',
-        'Ожидает штрихкод для тары': 'Добавить штрихкод',
-        'Отгружено, ожидает оплаты': 'Ожидает оплаты',
+        'В пути до нас': 'background: rgba(64, 117, 255, 0.50)',
+        'Ожидает заявку на отгрузку': 'background: #C02F66',
+        'В процессе подтверждения': 'background: #EF4284',
+        'Ожидает штрихкод для тары': 'background: #AC416A',
+        'Отгружено, ожидает оплаты': 'background: #797979',
         'Оплата подтверждена': '',
     }
 
@@ -63,11 +63,11 @@ class Product(models.Model):
         'Оплата подтверждена': '',
     }
 
-    BUTTON_COLORS = {
+    BUTTON_COLORS_STYLES = {
         'В пути до нас': '',
-        'Ожидает заявку на отгрузку': '',
-        'В процессе подтверждения': '',
-        'Ожидает штрихкод для тары': '',
+        'Ожидает заявку на отгрузку': 'color: #C02F66',
+        'В процессе подтверждения': 'color: #EF4284',
+        'Ожидает штрихкод для тары': 'color: #824F77',
         'Отгружено, ожидает оплаты': '',
         'Оплата подтверждена': '',
     }
@@ -86,6 +86,15 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product-slug", kwargs={"product_slug": f"product-{self.article}"})
+
+    def get_circle_style(self):
+        return self.CIRCLE_COLORS_STYLES[self.status]
+
+    def get_button_text(self):
+        return self.BUTTONS[self.status]
+
+    def get_button_style(self):
+        return self.BUTTON_COLORS_STYLES[self.status]
 
     def __str__(self):
         return self.name

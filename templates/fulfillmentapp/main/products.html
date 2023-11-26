@@ -107,7 +107,7 @@
                                 {% for product in products %}
                                     <tr class="table__content-rows">
                                         <td class="table__content-row__container">
-                                            <div class="table__content-row table__content-row--img" style=""></div>
+                                            <div class="table__content-row table__content-row--img" style="{{ product.get_circle_style }}"></div>
                                             <p class="table__content-row table__content-row--name">{{ product.name }}</p>
                                         </td>
                                         <td class="table__content-row--devider"></td>
@@ -119,7 +119,12 @@
                                         <td class="table__content-row--devider"></td>
                                         <td class="table__content-row table__content-row--count">{{ product.numbers }} шт</td>
                                         <td class="table__content-row--devider"></td>
-                                        <td class="table__content-row table__content-row--actions"><a href="{{ product.get_absolute_url }}" style="color: #2222aa;text-decoration: underline;">кнопка</a></td>
+                                        <td class="table__content-row table__content-row--actions">
+                                            <a href="{{ product.get_absolute_url }}"
+                                               style="{{ product.get_button_style }}">
+                                                {{ product.get_button_text }}
+                                            </a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
