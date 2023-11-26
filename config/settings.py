@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-import secrets
+import setting_secrets
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = setting_secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = secrets.DEBUG
+DEBUG = setting_secrets.DEBUG
 
-ALLOWED_HOSTS = secrets.ALLOWED_HOSTS
+ALLOWED_HOSTS = setting_secrets.ALLOWED_HOSTS
 
 
 # Application definition
@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = secrets.DATABASES
+DATABASES = setting_secrets.DATABASES
 
-#Logging
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -176,4 +176,4 @@ LOGIN_REDIRECT_URL = "/main/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Токен telegram бота
-TOKEN = secrets.TOKEN
+TOKEN = setting_secrets.TOKEN
