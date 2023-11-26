@@ -10,12 +10,12 @@ from .models import *
 class ProductAdminForm(ModelForm):
     class Meta:
         model = Product
-        exclude = ["status"]
+        exclude = []
 
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ("article", "name", "size", "color", "numbers", "seller", "status", "delivery")
+    list_display = ("article", "name", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
 
 

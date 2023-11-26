@@ -7,7 +7,7 @@ from fulfillmentapp.models import Product
 
 
 @user_passes_test(test_func=get_seller, login_url="/login/")
-def main_products_page_view(request: HttpRequest, **kwargs):
+def main_products_page_view(request: HttpRequest):
     """View главной страницы продавца с товарами"""
 
     if request.method == "POST":
@@ -23,19 +23,15 @@ def main_products_page_view(request: HttpRequest, **kwargs):
         # Создаем в БД новый товар
         Product.objects.create(name=name, numbers=numbers, color=color, size=size, status=status, seller=seller)
 
-    print(kwargs)
     seller = get_seller(user=request.user)
-    products = Product.objects.filter(seller=seller)
-    name = seller.name
-    last_name = seller.last_name
     data = {
-        "filter": None,
+        "filter": "все",
         "sorting": None,
         "selected_page": "товары",
-        "products": products,
+        "products": Product.objects.filter(seller=seller),
         "user": {
-            "name": name,
-            "last_name": last_name
+            "name": seller.name,
+            "last_name": seller.last_name
         },
     }
 
