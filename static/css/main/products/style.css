@@ -199,14 +199,18 @@ a{
 }
 .table__content-row__container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 25px 0 25px 0;
 }
-.table__content-row--article{
+.table__content-row--article,
+.table__content-row--date,
+.table__content-row--status,
+.table__content-row--count,
+.table__content-row--actions{
     text-align: center;
 }
 .table__content-row--date{
-    padding: 25px 68px 25px 67px;
+
 }
 .table__content-row--status{
 
