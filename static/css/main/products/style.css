@@ -269,12 +269,17 @@ a{
     text-align: center;
 }
 .product__btn{
-    position: sticky;
-    bottom: 0;
+    position: fixed;
+    bottom: 2.5vh;
+    right: 1.5vw;
     border: none;
     background: transparent;
     padding: 0;
     cursor: pointer;
+}
+.product__img{
+    width: 4.4vw;
+    height: auto;
 }
 .product-add__wrapper{
     position: absolute;

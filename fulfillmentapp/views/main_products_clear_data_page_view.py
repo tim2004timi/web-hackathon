@@ -36,10 +36,15 @@ def main_products_clear_data_page_view(request: HttpRequest, seller=None, **kwar
 
     # Фильтр товаров
     if status and status != "все":
-        new_status = status.capitalize()
         if status == "в пути":
-            new_status += " до нас"
-        products = products.filter(status=new_status)
+            new_status = "в пути до нас"
+        elif status == "ожидает штрихкод":
+            new_status = "ожидает штрихкод для тары"
+        elif status == "ожидает штрихкод":
+            new_status = "ожидает штрихкод для тары"
+        else:
+            new_status = "отгружено, ожидает оплаты"
+        products = products.filter(status=new_status.capitalize())
 
     # Сортировка товаров
     if sorting != "None":
