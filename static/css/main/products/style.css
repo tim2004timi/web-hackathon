@@ -188,8 +188,6 @@ a{
     border-radius: 50px;
     border: 2px solid rgba(0, 0, 0, 0.20);
     font-size: 20px;
-    /* min-width: 1500px; */
-    width: 100%;
 }
 .sorting{
     display: flex;
@@ -214,6 +212,7 @@ a{
 }
 .table__head-row{
     color: #797979;
+    padding: 15px 0 15px;
 }
 .table__head-row--devider{
     position: absolute;
@@ -225,22 +224,22 @@ a{
     opacity: 0.5;
 }
 .table__head-row--name{
-    max-width: 352px;
+    width: 17.7vw;
 }
 .table__head-row--article{
-   max-width: 183px;
+    width: 9.2vw;    
 }
 .table__head-row--date{
-    max-width: 290px;
+    width: 14.6vw;
 }
 .table__head-row--status{
-    max-width: 324px;
+    width: 16.3vw;
 }
 .table__head-row--count{
-    max-width: 223px;
+    width: 11.3vw;
 }
 .table__head-row--actions{
-    max-width: 246px;
+    width: 16vw;
 }
 .table__content-rows{
     position: relative;
