@@ -79,7 +79,7 @@ a{
 .cabinet__popup{
     border-radius: 50px;
     border: 2px solid rgba(0, 0, 0, 0.25);
-    background: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     position: absolute;
     right: 0;
     top: 0;
@@ -161,6 +161,7 @@ a{
     justify-content: space-between;
     position: relative;
     gap: 19px;
+    align-items: end;
 }
 .filter{
     display: flex;
@@ -267,12 +268,9 @@ a{
 .table__content-row--actions{
     text-align: center;
 }
-.product__container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
 .product__btn{
+    position: sticky;
+    bottom: 0;
     border: none;
     background: transparent;
     padding: 0;
@@ -315,6 +313,8 @@ a{
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
+    position: sticky;
+
 }
 .product-add__form{
     display: flex;
