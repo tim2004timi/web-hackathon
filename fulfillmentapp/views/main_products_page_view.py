@@ -24,14 +24,14 @@ def main_products_page_view(request: HttpRequest):
         Product.objects.create(name=name, numbers=numbers, color=color, size=size, status=status, seller=seller)
 
     seller = get_seller(user=request.user)
-    products = Product.objects.filter(seller=seller)
-    name = seller.name
-    last_name = seller.last_name
     data = {
-        "products": products,
+        "filter": "все",
+        "sorting": None,
+        "selected_page": "товары",
+        "products": Product.objects.filter(seller=seller),
         "user": {
-            "name": name,
-            "last_name": last_name
+            "name": seller.name,
+            "last_name": seller.last_name
         },
     }
 

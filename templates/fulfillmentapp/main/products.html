@@ -22,82 +22,95 @@
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="{% url 'main-products' %}" class="menu__link">товары</a>
+                            <a href="{% url 'main-products' %}" class="menu__link
+                            {% if selected_page == 'товары' %}
+                            selected__page
+                            {% endif %}">товары</a>
                         </li>
                         <li class="menu__item">
-                            <a href="{% url 'main-bills'%}" class="menu__link">счета</a>
+                            <a href="{% url 'main-bills'%}" class="menu__link
+                            {% if selected_page == 'счета' %}
+                            selected__page
+                            {% endif %}">счета</a>
                         </li>
                         <li class="menu__item">
-                            <a href="{% url 'main-requests'%}" class="menu__link">запросы на отгрузку</a>
+                            <a href="{% url 'main-requests'%}" class="menu__link
+                            {% if selected_page == 'запросы на отгрузку' %}
+                            selected__page
+                            {% endif %}">запросы на отгрузку</a>
                         </li>
                     </ul>
                 </nav>
                 <button class="cabinet__btn">
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
-                </button>
-                <div class="cabinet__popup">
-                    <div class="cabinet__container">
-                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
-                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
-                        <a href="#" class="exit__btn">выйти</a>
+                </button> 
+                <div class="cabinet__popup-wrapper">
+                    <div class="cabinet__popup">
+                        <div class="cabinet__container">
+                            <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                            <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                            <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                        </div>
+                        <div class="telegram">
+                            <a href="https://t.me/FastWayNotification_bot" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
+                            <p class="telegram__text">телеграм бот для уведомлений</p>
+                        </div>
                     </div>
-                    <div class="telegram">
-                        <img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img">
-                        <p class="telegram__text">телеграм бот для уведомлений</p>
-                    </div>
-                </div>
+                </div>    
             </div>
         </div>    
     </header>
-
-
-    <!-- <div>
-        <div>
-            <a>Добро пожаловать <b>{{ user.get_username }}!</b></a>
+    <main class="main">
+        <div class="table">
+            <div class="container">
+                <div class="filter">
+                    <a href="{% url 'main-products-clear-data' filter='все' sorting=sorting %}" class="all__btn btn filter__btn {% if filter == 'все' %} selected__filter {% endif %}">все</a>
+                    <a href="{% url 'main-products-clear-data' filter='в пути' sorting=sorting %}" class="way__btn btn filter__btn {% if filter == 'в пути' %} selected__filter {% endif %}">в пути</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает заявку на отгрузку' sorting=sorting %}" class="wait-application__btn btn filter__btn {% if filter == 'ожидает заявку на отгрузку' %} selected__filter {% endif %}">ожидает заявку на отгрузку</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает штрихкод' sorting=sorting %}" class="wait-barcode__btn btn filter__btn {% if filter == 'ожидает штрихкод' %} selected__filter {% endif %}">ожидает штрихкод</a>
+                    <a href="{% url 'main-products-clear-data' filter='ожидает оплаты' sorting=sorting %}" class="wait-pay__btn btn filter__btn {% if filter == 'ожидает оплаты' %} selected__filter {% endif %}">ожидает оплаты</a>
+                </div>
+                <div class="table__content">
+                    <div class="sorting">
+                        <p class="sorting__title">сортировка</p>
+                        <a href="{% url 'main-products-clear-data' filter=filter sorting='name' %}" class="name__btn btn {% if sorting == 'name' %} selected__sorting {% endif %}">название</a>
+                        <a href="{% url 'main-products-clear-data' filter=filter sorting='article' %}" class="article__btn btn {% if sorting == 'article' %} selected__sorting {% endif %}">артикул</a>
+                        <a href="{% url 'main-products-clear-data' filter=filter sorting='time_created' %}" class="date__btn btn {% if sorting == 'time_created' %} selected__sorting {% endif %}">дата создания</a>
+                        <a href="{% url 'main-products-clear-data' filter=filter sorting='status' %}" class="status__btn btn {% if sorting == 'status' %} selected__sorting {% endif %}">статус</a>
+                        <a href="{% url 'main-products-clear-data' filter=filter sorting='numbers' %}" class="count__btn btn {% if sorting == 'numbers' %} selected__sorting {% endif %}">количество</a>
+                    </div>
+                    <table class="table__container">
+                        <thead>
+                            <tr class="table__head-rows">
+                                <th class="table__head-row table__head-row--name">название</th>
+                                <th class="table__head-row table__head-row--article">артикул</th>
+                                <th class="table__head-row table__head-row--date">дата создания</th>
+                                <th class="table__head-row table__head-row--status">статус товара</th>
+                                <th class="table__head-row table__head-row--count">количество</th>
+                                <th class="table__head-row table__head-row--actions">действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         {% for product in products %}
+                            <tr class="table__content-rows">
+                                <td class="table__content-row__container">
+                                    <table class="table__content-row table__content-row--img" >*</table>
+                                    <table class="table__content-row table__content-row--name">{{ product.name }}</table>
+                                </td>
+                                <td class="table__content-row table__content-row--article">{{ product.article }}</td>
+                                <td class="table__content-row table__content-row--date">{{ product.time_created }}</td>
+                                <td class="table__content-row table__content-row--status">{{ product.status }}</td>
+                                <td class="table__content-row table__content-row--count">{{ product.numbers }}</td>
+                                <td class="table__content-row table__content-row--actions"><a href="{{ product.get_absolute_url }}" style="color: #2222aa;text-decoration: underline;">кнопка</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>  
+            </div>      
         </div>
-        <div>
-            <a href="{% url 'logout' %}" style="color: #2F5CE8"> Выйти из аккаунта</a>
-        </div>
-    </div>
-    <br>
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text"  placeholder="название" name="name">
-            <input type="text"  placeholder="количество" name="numbers">
-            <input type="text"  placeholder="цвет" name="color">
-            <input type="text"  placeholder="размер" name="size">
-            <button type="submit" class="signin__btn">Добавить товар</button>
-        </form>
-    </div>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Количество</th>
-                    <th>Цвет</th>
-                    <th>Размер</th>
-                    <th>Статус</th>
-                    <th>Кнопка</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.numbers }}</td>
-                    <td>{{ product.color }}</td>
-                    <td>{{ product.size }}</td>
-                    <td>{{ product.status }}</td>
-                    <td><a href="{{ product.get_absolute_url }}" style="color: #2F5CE8">Подробнее</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div> -->
-
+    </main>
     <script src="{% static 'js/main/products/main.js' %}"></script>
 </body>
 </html>
