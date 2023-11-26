@@ -29,7 +29,7 @@
                         </li>
                         <li class="menu__item">
                             <a href="{% url 'main-bills'%}" class="menu__link
-                            {% if selected_page == 'счета' %}
+                            {% if selected_page == 'счета' %}input
                             selected__page
                             {% endif %}">счета</a>
                         <li class="menu__item">
@@ -40,12 +40,24 @@
                         </li>
                     </ul>
                 </nav>
+            </div>
+        </div>    
+    </header>
+    <main class="main">
+        <div class="table">
+            <div class="container">
                 <button class="cabinet__btn">
                     <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
                 </button> 
                 <div class="cabinet__popup-wrapper">
                     <div class="cabinet__popup">
+                        <div class="back-btn__container">
+                            <button class="back-btn-cabinet">
+                                <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                                назад
+                            </button>
+                        </div> 
                         <div class="cabinet__container">
                             <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
                             <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
@@ -57,12 +69,6 @@
                         </div>
                     </div>
                 </div>    
-            </div>
-        </div>    
-    </header>
-    <main class="main">
-        <div class="table">
-            <div class="container">
                 <div class="table__box">
                     <div class="table__wrapper">
                         <div class="filter">
@@ -100,9 +106,9 @@
                                 <tbody>
                                 {% for product in products %}
                                     <tr class="table__content-rows">
-                                        <td class="table__content-row__container">
-                                            <table class="table__content-row table__content-row--img" >*</table>
-                                            <table class="table__content-row table__content-row--name">{{ product.name }}</table>
+                                        <td class="table__content-row__container">kk
+                                            <!-- <table class="table__content-row table__content-row--img" >*</table>
+                                            <table class="table__content-row table__content-row--name">{{ product.name }}</table> -->
                                         </td>
                                         <td class="table__content-row--devider"></td>
                                         <td class="table__content-row table__content-row--article">{{ product.article }}</td>
@@ -133,30 +139,29 @@
                                     назад
                                 </button>
                             </div>    
-                            <form class="product-add__form" method="POST">
-                                {% csrf_token %}
+                            <form class="product-add__form">
                                 <div class="product-add__content">
                                     <div class="pruduct-add__name-container">
                                         <p class="pruduct-add__name-title">название товара</p>
-                                        <input type="text" class="product-add__name-input add-inp" name="name">
+                                        <input type="text" class="product-add__name-input add-inp">
                                     </div>
                                     <div class="pruduct-add__count-container">
                                         <p class="pruduct-add__count-title">количество</p>
-                                        <input type="text" class="product-add__count-input add-inp" name="numbers">
+                                        <input type="text" class="product-add__count-input add-inp">
                                     </div>
                                     <div class="pruduct-add__size-container">
                                         <p class="pruduct-add__size-title">размер</p>
                                         <div class="product-add__size-input-container">
-                                            <input type="text" class="product-add__size-input add-inp" name="size_1">
+                                            <input type="text" class="product-add__size-input add-inp">
                                             <img src="{% static 'img/main/products/product-add__count-input-img.png' %}" alt="img" class="product-add__size-input-img">
-                                            <input type="text" class="product-add__size-input add-inp" name="size_2">
+                                            <input type="text" class="product-add__size-input add-inp" >
                                             <img src="{% static 'img/main/products/product-add__count-input-img.png' %}" alt="img" class="product-add__size-input-img">
-                                            <input type="text" class="product-add__size-input add-inp" name="size_3">
+                                            <input type="text" class="product-add__size-input add-inp">
                                         </div>    
                                     </div>
                                     <div class="pruduct-add__color-container">
                                         <p class="pruduct-add__color-title">цвет</p>
-                                        <input type="text" class="product-add__color-input add-inp" name="color">
+                                        <input type="text" class="product-add__color-input add-inp">
                                     </div>
                                 </div>    
                                 <button type="submit" class="product-add__btn">добавить</button>
