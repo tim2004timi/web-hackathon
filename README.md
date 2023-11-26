@@ -37,7 +37,7 @@ git clone https://github.com/tim2004timi/web-hackathon.git
 cd web-hackathon
 ```
 
-3. Создать виртуальное окружение.
+3. Создать виртуальное окружение (python 3.10.9).
 
 ```shell 
 python -m venv venv
