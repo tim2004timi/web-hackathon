@@ -21,7 +21,8 @@ from fulfillmentapp.views import page_not_found_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("fulfillmentapp.urls"))
+    path("", include("fulfillmentapp.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 handler404 = page_not_found_view

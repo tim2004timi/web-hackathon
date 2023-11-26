@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest
 from django.shortcuts import render
-
+from django.core.cache import cache
 from fulfillmentapp.get_users import get_seller
 from fulfillmentapp.models import Product
 
@@ -24,11 +24,16 @@ def main_products_page_view(request: HttpRequest):
         Product.objects.create(name=name, numbers=numbers, color=color, size=size, status=status, seller=seller)
 
     seller = get_seller(user=request.user)
+    if cache.get("seller") is not None:
+        products = cache.get("seller").products
+    else:
+        products = Product.objects.filter(seller=seller)
+        cache.set(seller, products, timeout=60 * 60 * 24)
     data = {
         "filter": "все",
         "sorting": None,
         "selected_page": "товары",
-        "products": Product.objects.filter(seller=seller),
+        "products": products,
         "user": {
             "name": seller.name,
             "last_name": seller.last_name
