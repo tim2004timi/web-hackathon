@@ -1,13 +1,12 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest
 from django.shortcuts import render
-from django.core.cache import cache
 from fulfillmentapp.get_users import get_seller
 from fulfillmentapp.models import Product
 
 
 @user_passes_test(test_func=get_seller, login_url="/login/")
-def main_products_page_view(request: HttpRequest):
+def main_products_page_view(request: HttpRequest, seller=None):
     """View главной страницы продавца с товарами"""
 
     if request.method == "POST":
@@ -16,19 +15,21 @@ def main_products_page_view(request: HttpRequest):
         name = request.POST.get("name")
         numbers = request.POST.get("numbers")
         color = request.POST.get("color")
-        size = request.POST.get("size")
-        status = "В пути до нас"
+        size_1 = request.POST.get("size_1")
+        size_2 = request.POST.get("size_2")
+        size_3 = request.POST.get("size_3")
+
         seller = request.user.seller
 
-        # Создаем в БД новый товар
-        Product.objects.create(name=name, numbers=numbers, color=color, size=size, status=status, seller=seller)
+        size = f"{size_1}*{size_2}*{size_3}"
 
-    seller = get_seller(user=request.user)
-    if cache.get("seller") is not None:
-        products = cache.get("seller").products
-    else:
-        products = Product.objects.filter(seller=seller)
-        cache.set(seller, products, timeout=60 * 60 * 24)
+        # Создаем в БД новый товар
+        Product.objects.create(name=name, numbers=numbers, color=color, size=size, seller=seller)
+
+    if not seller:
+        seller = get_seller(user=request.user)
+    products = Product.objects.filter(seller=seller)
+
     data = {
         "filter": "все",
         "sorting": None,
