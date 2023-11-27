@@ -81,21 +81,21 @@
                         <div class="card__info-inner">
                             <div class="card__info-container">
                                 <p class="card__info-title card__info-title--article">Артикул</p>
-                                <p class="card__info-content">6f6d4f</p>
+                                <p class="card__info-content">{{ product.article }}</p>
                             </div>
                             <div class="card__info-container">
                                 <p class="card__info-title card__info-title--date">Дата создания</p>
-                                <p class="card__info-content">01. Ноября 2023</p>
+                                <p class="card__info-content">{{ product.time_created }}</p>
                             </div>
                             <div class="card__info-container">
                                 <p class="card__info-title card__info-title--color">Цвет</p>
-                                <p class="card__info-content">черный</p>
+                                <p class="card__info-content">{{ product.color }}</p>
                             </div>
                         </div>    
                         <div class="card__info-inner">
                             <div class="card__info-container">
                                 <p class="card__info-title card__info-title--count">Количество</p>
-                                <p class="card__info-content">200</p>
+                                <p class="card__info-content">{{ product.numbers }} шт</p>
                             </div>
                             <div class="card__info-container">
                                 <p class="card__info-title card__info-title--status">Статус</p>
@@ -103,12 +103,13 @@
                             </div>
                         </div>    
                     </div>
-                    <form class="card__form">
+                    <form class="card__form" method="POST">
+                        {% csrf_token %}
                         <div class="card__input-container">
                             <p class="card__input-text">Добавьте штрихкод:</p>
-                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса" name="marketplace_barcode">
                             <p class="card__input-text">Этикетка (необязательно):</p>
-                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса" name="label">
                         </div>
                         <button type="submit" class="confirm__btn">Подтвердить</button>
                     </form>
