@@ -64,7 +64,7 @@ class Product(models.Model):
     }
 
     BUTTON_COLORS_STYLES = {
-        'В пути до нас': '',
+        'В пути до нас': 'color: #3063c9',
         'Ожидает заявку на отгрузку': 'color: #C02F66',
         'В процессе подтверждения': 'color: #EF4284',
         'Ожидает штрихкод для тары': 'color: #824F77',
@@ -87,6 +87,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("product-slug", kwargs={"product_slug": f"product-{self.article}"})
 
+    def get_absolute_operator_url(self):
+        return reverse("operator-slug", kwargs={"product_slug": f"product-{self.article}"})
+
     def get_circle_style(self):
         return self.CIRCLE_COLORS_STYLES[self.status]
 
@@ -95,6 +98,14 @@ class Product(models.Model):
 
     def get_button_style(self):
         return self.BUTTON_COLORS_STYLES[self.status]
+
+    def get_button_for_operator(self):
+        if self.status == "В пути до нас":
+            return "Подтвердить получение"
+        elif self.status == "В процессе подтверждения":
+            return "Вписать данные отгрузки"
+        else:
+            return ""
 
     def __str__(self):
         return self.name

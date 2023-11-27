@@ -89,6 +89,10 @@ a{
     display: none;
     z-index: 20;
 }
+.back-btn__container{
+    text-align: left;
+    margin-bottom: 43px;
+}
 .back-btn-cabinet{
     border: none;
     background-color: transparent;
@@ -105,10 +109,11 @@ a{
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.25);
-    z-index: 1;
+    z-index: -1;
 }
 .cabinet__popup-open{
     display: block;
+    z-index: 10;
 }
 .cabinet__container{
     display: flex;
@@ -147,126 +152,67 @@ a{
     gap: 10px;
     margin-left: 12px;
 }
-.table{
-    margin-bottom: 100px;
+.bills{
     position: relative;
     z-index: 1;
 }
-.table__box{
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    gap: 19px;
-    align-items: end;
-}
-.filter{
+.btn__container{
     display: flex;
     gap: 40px;
-    margin: 0 0 21px 95px;
+    margin-bottom: 16px;
 }
-.filter__btn{
-    font-size: 24px;
+.selected__btn{
+    background: #000;
+    color: #fff;
+}
+.btn{
+    padding: 5px 30px;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+}
+.btn:hover{
+    background: #000;
+    color: #fff;
+}
+.bills__items{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.bill__item{
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    padding: 28px 140px 40px 121px;
+}
+.bill__item-title{
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 517px;
+}
+.bill__ticket{
+    color: #797979;
+    font-size: 20px;
     font-weight: 500;
     line-height: normal;
+    margin-right: 117px;
 }
-.selected__filter{
-    border: 2px solid rgba(0, 0, 0, 0.20);
-    background: #F0F0F0;
-}
-.table__content{
-    border-radius: 50px;
-    border: 2px solid rgba(0, 0, 0, 0.20);
+.bill__data{
     font-size: 20px;
-}
-.sorting{
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    padding: 25px 0 25px;
-    margin-left: 125px;
     font-weight: 500;
+    line-height: normal;
+    margin-right: 130px;
 }
-.sorting__title{
-    margin-right: 135px;
-}
-.selected__sorting{
-    background: #F0F0F0;
-}
-.table__head-rows{
-    background: #F8F8F8;
-    font-weight: 500;
-    border-top: 2px solid rgba(0, 0, 0, 0.20);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
-    position: relative;
-}
-.table__head-row{
-    color: #797979;
-    padding: 15px 0 15px;
-}
-.table__head-row--devider{
-    position: absolute;
-    content: '';
-    width: 1px;
-    height: 22px;
-    background: rgba(0, 0, 0, 0.50);
-    bottom: 16px;
-    opacity: 0.5;
-}
-.table__head-row--name{
-    width: 17.7vw;
-}
-.table__head-row--article{
-    width: 9.2vw;    
-}
-.table__head-row--date{
-    width: 14.6vw;
-}
-.table__head-row--status{
-    width: 16.3vw;
-}
-.table__head-row--count{
-    width: 11.3vw;
-}
-.table__head-row--actions{
-    width: 16vw;
-}
-.table__content-rows{
-    position: relative;
-}
-.table__content-row--devider{
-    width: 1px;
-    height: 22px;
-    background: rgba(0, 0, 0, 0.50);
-    opacity: 0.5;
-}
-.table__content-row__container{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 25px 0 25px 0;
-}
-.table__content-row--img{
-    width: 19px;
-    height: 19px;
-    border-radius: 50px;
-}
-.table__content-row--name{
+.bill__price{
+    color: #298200;
+    font-size: 32px;
     font-weight: 600;
+    line-height: normal;
 }
-.table__content-row--article,
-.table__content-row--date,
-.table__content-row--status,
-.table__content-row--count{
-    text-align: center;
-}
-.table__content-row--article{
+.bill__price-paidfor{
     color: #797979;
-}
-.table__content-row--actions{
-    text-align: center;
-    font-weight: 500;
-}
-.table__content-row--actions:hover{
-    text-decoration: underline;
 }
 .overlay__container{
     position: absolute;
