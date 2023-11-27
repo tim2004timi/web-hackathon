@@ -12,7 +12,9 @@ import logging
 
 logger = logging.getLogger("bot.events")
 
+#TODO: Добавить кэширование
 async def auth_handle(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Метод обрабатывающий запрос (в данный реализации это каждое новое сообщение) на авторизацию пользователя в системе"""
     message = update.message
     tg_username = message.from_user.name
     
@@ -23,6 +25,7 @@ async def auth_handle(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
 
 async def auth_user(user: Model, update: Update, message_if_first_auth: str) -> None:
+    """Метод реализующий авторизацию пользователя в системе"""
     message = update.message
     
     if not await get_telegram_chat_id(user=user, chat_id=message.chat_id):
