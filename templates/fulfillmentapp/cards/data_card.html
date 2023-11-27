@@ -8,10 +8,129 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'css/cards/data_card/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cards/data_card/style.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
 </head>
 <body>
-
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <a class="logo">
+                    <img src="{% static 'img/cards/application/logo.png' %}" alt="logo" class="logo__img">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="{% url 'main-products' %}" class="menu__link
+                            {% if selected_page == 'товары' %}
+                            selected__page
+                            {% endif %}">товары</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'main-bills'%}" class="menu__link
+                            {% if selected_page == 'счета' %}input
+                            selected__page
+                            {% endif %}">счета</a>
+                        <li class="menu__item">
+                            <a href="{% url 'main-requests'%}" class="menu__link
+                            {% if selected_page == 'запросы на отгрузку' %}
+                            selected__page
+                            {% endif %}">запросы на отгрузку</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="cabinet__btn">
+                    <span class="cabinet__btn-text">Оператор</span>
+                    <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
+                </button> 
+            </div>
+            <div class="cabinet__popup-wrapper">
+                <div class="cabinet__popup">
+                    <div class="back-btn__container">
+                        <button class="back-btn-cabinet">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </button>
+                    </div> 
+                    <div class="cabinet__container">
+                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                        <span class="cabinet__popup-text">Оператор</span>
+                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                    </div>
+                    <div class="telegram">
+                        <a href="https://t.me/FastWayNotification_bot" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
+                        <p class="telegram__text">телеграм бот для уведомлений</p>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    </header>
+    <main class="main">
+        <section class="card">
+            <div class="container">
+                <div class="card__wrapper">
+                    <div class="back-btn__container">
+                        <a href="{% url 'main-products' %}" class="back-btn">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </a>
+                    </div>
+                    <h1 class="card__title">Iphone 15</h1>
+                    <div class="card__info">
+                        <div class="card__info-inner">
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--article">Артикул</p>
+                                <p class="card__info-content">6f6d4f</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--date">Дата создания</p>
+                                <p class="card__info-content">01. Ноября 2023</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--color">Цвет</p>
+                                <p class="card__info-content">черный</p>
+                            </div>
+                        </div>    
+                        <div class="card__info-inner">
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--count">Количество</p>
+                                <p class="card__info-content">200</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--status">Статус</p>
+                                <p class="card__info-content">Ожидает заявку на отгрузку</p>
+                            </div>
+                        </div>    
+                    </div>
+                    <form class="card__form" method="POST">
+                        <!-- {% csrf_token %} -->
+                        <div class="card__input-items">
+                            <p class="card__input-text">Добавьте информацию:</p>
+                            <div class="card__input-item">
+                                <p class="card__input-item-text">адрес</p>
+                                <input type="text" class="card__input card__input--adress" name="wrapper_barcode">
+                            </div>
+                            <div class="card__input-item">
+                                <p class="card__input-item-text">ФИО водителя</p>
+                                <input type="text" class="card__input card__input--fio" name="wrapper_barcode">
+                            </div>
+                            <div class="card__input-item">
+                                <p class="card__input-item-text">номер машины</p>
+                                <input type="text" class="card__input card__input--number" name="wrapper_barcode">
+                            </div>
+                            <div class="card__input-item">
+                                <p class="card__input-item-text">дата</p>
+                                <input type="date" class="card__input card__input--date" name="wrapper_barcode">
+                            </div>
+                        </div>
+                        <button type="submit" class="confirm__btn">Подтвердить</button>
+                    </form>
+                </div>
+            </div>   
+            <div class="overlay__container"></div>
+        </section>
+    </main>
+    <script src="{% static 'js/cards/data_card/main.js' %}"></script>
 </body>
 </html>
