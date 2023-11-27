@@ -10,6 +10,8 @@ from fulfillmentapp.get_users import get_seller, get_operator
 def login_page_view(request: HttpRequest):
     """View страницы авторизации login.html"""
 
+    recaptcha_site_key = {"site_key": setting_secrets.RECAPTCHA_SITE_KEY}
+
     if request.method == "GET":
         user = request.user
 
@@ -25,9 +27,7 @@ def login_page_view(request: HttpRequest):
             elif get_operator(user=user):
                 return redirect('operator')
 
-        data = {"site_key": setting_secrets.RECAPTCHA_SITE_KEY}
-
-        return render(request=request, template_name="fulfillmentapp/login.html", context=data)  # Переход на login.html
+        return render(request=request, template_name="fulfillmentapp/login.html", context=recaptcha_site_key)
 
     if request.method == 'POST':
 
@@ -73,5 +73,9 @@ def login_page_view(request: HttpRequest):
 
         # Если пользователь не авторизовался
         else:
-            data = {"error": True}
+            data = {
+                "error": True,
+                **recaptcha_site_key
+            }
+
             return render(request=request, template_name="fulfillmentapp/login.html", context=data)
