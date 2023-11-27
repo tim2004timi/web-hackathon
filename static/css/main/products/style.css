@@ -267,6 +267,10 @@ a{
 }
 .table__content-row--actions{
     text-align: center;
+    font-weight: 600;
+}
+.table__content-row--actions:hover{
+    text-decoration: underline;
 }
 .product__btn{
     position: fixed;
@@ -319,7 +323,6 @@ a{
     line-height: normal;
     cursor: pointer;
     position: sticky;
-
 }
 .product-add__form{
     display: flex;

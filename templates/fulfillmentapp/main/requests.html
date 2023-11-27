@@ -8,8 +8,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/main/bills/reset.css' %}">
-        <link rel="stylesheet" href="{% static 'css/main/bills/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main/requests/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main/requests/style.css' %}">
         <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
     </head>
     <body>
@@ -45,9 +45,40 @@
         </header>
         <main class="main">
             <div class="container">
-                <div class="table">
-                    
-                </div>
+                <div class="table__wrapper">
+                    <table class="table__container">
+                        <thead class="table__head-rows__wrapper">
+                            <tr class="table__head-rows">
+                                <th class="table__head-row table__head-row--name">название</th>
+                                <th class="table__head-row--devider"></th>
+                                <th class="table__head-row table__head-row--adress">адрес</th>
+                                <th class="table__head-row--devider"></th>
+                                <th class="table__head-row table__head-row--date">дата</th>
+                                <th class="table__head-row--devider"></th>
+                                <th class="table__head-row table__head-row--driver">водитель</th>
+                                <th class="table__head-row--devider"></th>
+                                <th class="table__head-row table__head-row--carnumber">номер авто</th>
+                                <th class="table__head-row--devider"></th>
+                                <th class="table__head-row table__head-row--label">этикетка</th>
+                            </tr>
+                        </thead>    
+                        <tbody>
+                            <tr class="table__content-rows">
+                                <td class="table__content-row table__content-row__name">Перевозка 1</td>
+                                <td class="table__content-row--devider"></td>
+                                <td class="table__content-row table__content-row--adress">Тульская область, муниципальное образование Алексин</td>
+                                <td class="table__content-row--devider"></td>
+                                <td class="table__content-row table__content-row--date">24.11.23</td>
+                                <td class="table__content-row--devider"></td>
+                                <td class="table__content-row table__content-row--driver">Петрович П. А.</td>
+                                <td class="table__content-row--devider"></td>
+                                <td class="table__content-row table__content-row--carnumber">Е 100 ГХ  777</td>
+                                <td class="table__content-row--devider"></td>
+                                <td class="table__content-row table__content-row--label">+</td>
+                            </tr>
+                        </tbody>    
+                    </table>
+                </div>    
             </div>
         </main>
     </body>
