@@ -19,8 +19,30 @@ def operator_product_slug_page_view(request: HttpRequest, product_slug: str):
     product = Product.objects.get(article=article)
     seller = product.seller
 
-    if product.status == "В процессе подтверждения":
-        pass
+    if product.status == "В пути до нас":
+        product.status = "Ожидает заявку на отгрузку"
+        product.save()
+
+        # Отправка сообщения заявки в telegram бот
+        message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+        try:
+            asyncio.run(send_notification(message, seller.telegram_chat_id))
+        except (TimeoutError, NetworkError) as e:
+            print(e)
+
+        return redirect("operator-products")
+
+    elif product.status == "В процессе подтверждения":
+
+        if request.method == "POST":
+            pass
+
+        data = {
+            "product": product
+        }
+
+        return render(request=request, template_name="fulfillmentapp/cards/data_card.html", context=data)
+
 
 
 
