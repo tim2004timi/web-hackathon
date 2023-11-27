@@ -103,10 +103,11 @@
                             </div>
                         </div>    
                     </div>
-                    <form class="card__form">
+                    <form class="card__form" method="POST">
+                        {% csrf_token %}
                         <div class="card__input-container">
                             <p class="card__input-text">Добавьте штрихкод:</p>
-                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <input type="file" class="card__input" placeholder="штрихкод для тары" name="wrapper_barcode">
                         </div>
                         <button type="submit" class="confirm__btn">Подтвердить</button>
                     </form>
