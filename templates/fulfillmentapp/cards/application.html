@@ -17,7 +17,7 @@
         <div class="container">
             <div class="header__top">
                 <a class="logo">
-                    <img src="{% static 'img/main/products/logo.png' %}" alt="logo" class="logo__img">
+                    <img src="{% static 'img/cards/application/logo.png' %}" alt="logo" class="logo__img">
                 </a>
                 <nav class="menu">
                     <ul class="menu__list">
@@ -67,11 +67,54 @@
         </div>    
     </header>
     <main class="main">
-        <div class="container">
-            <section class="card">
-
-            </section>
-        </div>
+        <section class="card">
+            <div class="container">
+                <div class="card__wrapper">
+                    <div class="back-btn__container">
+                        <a href="{% url 'home' %}" class="back-btn">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </a>
+                    </div>
+                    <h1 class="card__title">Iphone 15</h1>
+                    <div class="card__info">
+                        <div class="card__info-inner">
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--article">Артикул</p>
+                                <p class="card__info-content">6f6d4f</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--date">Дата создания</p>
+                                <p class="card__info-content">01. Ноября 2023</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--color">Цвет</p>
+                                <p class="card__info-content">черный</p>
+                            </div>
+                        </div>    
+                        <div class="card__info-inner">
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--count">Количество</p>
+                                <p class="card__info-content">200</p>
+                            </div>
+                            <div class="card__info-container">
+                                <p class="card__info-title card__info-title--status">Статус</p>
+                                <p class="card__info-content">Ожидает заявку на отгрузку</p>
+                            </div>
+                        </div>    
+                    </div>
+                    <form class="card__form">
+                        <div class="card__input-container">
+                            <p class="card__input-text">Добавьте штрихкод:</p>
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <p class="card__input-text">Добавьте этикетку(необязательно):</p>
+                            <input type="file" class="card__input" placeholder="этикетка (необязательно)">
+                        </div>
+                        <button type="submit" class="confirm__btn">Подтвердить</button>
+                    </form>
+                </div>
+            </div>   
+        </section>
     </main>
 </body>
 </html>
