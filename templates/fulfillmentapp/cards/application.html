@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/cards/application/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cards/application/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <a class="logo">
+                    <img src="{% static 'img/main/products/logo.png' %}" alt="logo" class="logo__img">
+                </a>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="{% url 'main-products' %}" class="menu__link
+                            {% if selected_page == 'товары' %}
+                            selected__page
+                            {% endif %}">товары</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'main-bills'%}" class="menu__link
+                            {% if selected_page == 'счета' %}input
+                            selected__page
+                            {% endif %}">счета</a>
+                        <li class="menu__item">
+                            <a href="{% url 'main-requests'%}" class="menu__link
+                            {% if selected_page == 'запросы на отгрузку' %}
+                            selected__page
+                            {% endif %}">запросы на отгрузку</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="cabinet__btn">
+                    <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
+                    <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
+                </button> 
+            </div>
+            <div class="cabinet__popup-wrapper">
+                <div class="cabinet__popup">
+                    <div class="back-btn__container">
+                        <button class="back-btn-cabinet">
+                            <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                            назад
+                        </button>
+                    </div> 
+                    <div class="cabinet__container">
+                        <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
+                        <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                        <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
+                    </div>
+                    <div class="telegram">
+                        <a href="https://t.me/FastWayNotification_bot" class="telegram__link"><img src="{% static 'img/main/products/telegram.png' %}" alt="telegram" class="telegram__img"></a>
+                        <p class="telegram__text">телеграм бот для уведомлений</p>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    </header>
+    <main class="main">
+        <div class="container">
+            <section class="card">
+
+            </section>
+        </div>
+    </main>
+</body>
+</html>
