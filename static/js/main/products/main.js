@@ -6,18 +6,24 @@ const productBtn = document.querySelector('.product__btn');
 const productAddContainer = document.querySelector('.product-add__container');
 const backBtn = document.querySelector('.back-btn');
 const backBtnCabinet = document.querySelector('.back-btn-cabinet');
+const tableEl = document.querySelector('.table');
+// const header = document.querySelector('.body');
 
 
 cabinetBtn.addEventListener('click', ()=>{
     cabinetPopup.classList.add('cabinet__popup-open');
+    tableEl.style.zIndex = '-1';
     productAddWrapper.classList.add('product-add__overlay');
-    // cabinetPopupWrapper.classList.add('cabinet__overlay');
+    // header.classList.add('product-add__overlay');
+    cabinetPopupWrapper.classList.add('product-add__overlay');
 });
 
 backBtnCabinet.addEventListener('click', ()=>{
     cabinetPopup.classList.remove('cabinet__popup-open');
-    cabinetPopupWrapper.classList.remove('cabinet__overlay');
+    tableEl.style.zIndex = '1';
     productAddWrapper.classList.remove('product-add__overlay');
+    cabinetPopupWrapper.classList.remove('product-add__overlay');
+    // header.classList.remove('product-add__overlay');
 })
 
 productBtn.addEventListener('click', ()=>{
