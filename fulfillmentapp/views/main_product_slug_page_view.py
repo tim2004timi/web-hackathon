@@ -39,3 +39,7 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
         }
 
         return render(request=request, template_name="fulfillmentapp/cards/barcode.html", context=data)
+
+    elif product.status == "Отгружено, ожидает оплаты":
+
+        pass

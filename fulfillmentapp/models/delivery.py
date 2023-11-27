@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Delivery(models.Model):
@@ -47,10 +48,24 @@ class Delivery(models.Model):
     car_number = models.CharField(max_length=20, verbose_name="Номер авто")
     date = models.DateField(verbose_name="Дата")
     time_created = models.DateTimeField(auto_now_add=True)
-    label = models.FileField(default=None, null=True, blank=True, verbose_name="Этикетка")
-    marketplace_barcode = models.ImageField(null=True, verbose_name="Штрих-код для маркетплейса")
-    wrapper_barcode = models.ImageField(default=None, null=True, blank=True, verbose_name="Штрих-код для тары")
-    bill = models.FileField(default=None, null=True, blank=True, verbose_name="Счет")
+    label = models.FileField(upload_to='uploads/label_files/',
+                             default=None,
+                             null=True,
+                             blank=True,
+                             verbose_name="Этикетка")
+    marketplace_barcode = models.FileField(upload_to='uploads/marketplace_barcode_files/',
+                                           null=True,
+                                           verbose_name="Штрих-код для маркетплейса")
+    wrapper_barcode = models.FileField(upload_to='uploads/wrapper_barcode_files/',
+                                       default=None,
+                                       null=True,
+                                       blank=True,
+                                       verbose_name="Штрих-код для тары")
+    bill = models.FileField(upload_to='uploads/bill_files/',
+                            default=None,
+                            null=True,
+                            blank=True,
+                            verbose_name="Счет") 
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -60,6 +75,9 @@ class Delivery(models.Model):
 
         self.seller = self.product.seller
         super().save(*args, **kwargs)
+
+    def get_pdf_url(self):
+        return reverse('bill-pdf', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"Отгрузка ({self.product.name})"

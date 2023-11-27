@@ -10,4 +10,4 @@ from .main_redirect_view import *
 from .operator_redirect_view import *
 from .page_not_found_view import *
 from .main_products_clear_data_page_view import *
-from .main_product_request_page_view import *
+from .bill_pdf_page_view import *
