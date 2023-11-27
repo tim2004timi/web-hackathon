@@ -1,7 +1,9 @@
+import requests
 from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
+import setting_secrets
 from fulfillmentapp.get_users import get_seller, get_operator
 
 
@@ -23,9 +25,23 @@ def login_page_view(request: HttpRequest):
             elif get_operator(user=user):
                 return redirect('operator')
 
-        return render(request=request, template_name="fulfillmentapp/login.html")  # Переход на login.html
+        data = {"site_key": setting_secrets.RECAPTCHA_SITE_KEY}
+
+        return render(request=request, template_name="fulfillmentapp/login.html", context=data)  # Переход на login.html
 
     if request.method == 'POST':
+
+        # Верификация reCAPTCHA
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': setting_secrets.RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if not result['success']:
+            return HttpResponse("<h1>Проверка не пройдена</h1>")
 
         # Получаем данные из формы авторизации
         username = request.POST.get('username')
