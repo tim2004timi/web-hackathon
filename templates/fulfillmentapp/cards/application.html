@@ -71,7 +71,7 @@
             <div class="container">
                 <div class="card__wrapper">
                     <div class="back-btn__container">
-                        <a href="{% url 'home' %}" class="back-btn">
+                        <a href="{% url 'main-products' %}" class="back-btn">
                             <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
                             назад
                         </a>
@@ -103,12 +103,13 @@
                             </div>
                         </div>    
                     </div>
-                    <form class="card__form">
+                    <form class="card__form" method="POST">
+                        {% csrf_token %}
                         <div class="card__input-container">
                             <p class="card__input-text">Добавьте штрихкод:</p>
-                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса" name="marketplace_barcode">
                             <p class="card__input-text">Добавьте этикетку(необязательно):</p>
-                            <input type="file" class="card__input" placeholder="этикетка (необязательно)">
+                            <input type="file" class="card__input" placeholder="этикетка (необязательно)" name="label">
                         </div>
                         <button type="submit" class="confirm__btn">Подтвердить</button>
                     </form>

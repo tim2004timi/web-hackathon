@@ -1,24 +1,33 @@
-from datetime import datetime
-
 from django.contrib.auth.decorators import user_passes_test
-from django.db.models import DateTimeField
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
-from django.utils.formats import date_format
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
 
 from fulfillmentapp.get_users import get_seller
-from fulfillmentapp.models import Product
+from fulfillmentapp.models import Product, Delivery
 
 
 @user_passes_test(test_func=get_seller, login_url="/login/")
 def main_product_slug_page_view(request: HttpRequest, product_slug: str):
-    """View карточки товара 'добавить заявку' """
+    """View карточки товара"""
 
     article = int(product_slug.split("-")[1])
     product = Product.objects.get(article=article)
     seller = product.seller
 
     if product.status == "Ожидает заявку на отгрузку":
+
+        if request.method == "POST":
+
+            marketplace_barcode = request.POST.get("marketplace_barcode")
+            label = request.POST.get("label")
+
+            Delivery.objects.create(product=product,
+                                    seller=seller,
+                                    marketplace_barcode=marketplace_barcode,
+                                    label=label)
+
+            return redirect("/main/products/")
+
         data = {
             "product": product,
             "user": {

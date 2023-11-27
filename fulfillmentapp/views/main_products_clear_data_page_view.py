@@ -40,8 +40,8 @@ def main_products_clear_data_page_view(request: HttpRequest, seller=None, **kwar
             new_status = "в пути до нас"
         elif status == "ожидает штрихкод":
             new_status = "ожидает штрихкод для тары"
-        elif status == "ожидает штрихкод":
-            new_status = "ожидает штрихкод для тары"
+        elif status == "ожидает заявку на отгрузку":
+            new_status = "ожидает заявку на отгрузку"
         else:
             new_status = "отгружено, ожидает оплаты"
         products = products.filter(status=new_status.capitalize())

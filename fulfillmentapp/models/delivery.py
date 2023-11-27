@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 
 class Delivery(models.Model):
@@ -38,34 +37,35 @@ class Delivery(models.Model):
     product = models.OneToOneField("Product",
                                    on_delete=models.CASCADE,
                                    primary_key=True,
+                                   related_name="delivery",
                                    verbose_name="Товар")
     seller = models.ForeignKey("Seller",
                                on_delete=models.CASCADE,
                                related_name="deliveries",
                                verbose_name="Продавец")
-    address = models.TextField(verbose_name="Адрес")
-    driver_fio = models.CharField(max_length=50, verbose_name="ФИО водителя")
-    car_number = models.CharField(max_length=20, verbose_name="Номер авто")
-    date = models.DateField(verbose_name="Дата")
+    address = models.TextField(blank=True, null=True, verbose_name="Адрес")
+    driver_fio = models.CharField(blank=True, null=True, max_length=50, verbose_name="ФИО водителя")
+    car_number = models.CharField(blank=True, null=True, max_length=20, verbose_name="Номер авто")
+    date = models.DateField(blank=True, null=True, verbose_name="Дата")
     time_created = models.DateTimeField(auto_now_add=True)
-    label = models.FileField(upload_to='uploads/label_files/',
-                             default=None,
-                             null=True,
-                             blank=True,
-                             verbose_name="Этикетка")
-    marketplace_barcode = models.FileField(upload_to='uploads/marketplace_barcode_files/',
-                                           null=True,
-                                           verbose_name="Штрих-код для маркетплейса")
-    wrapper_barcode = models.FileField(upload_to='uploads/wrapper_barcode_files/',
-                                       default=None,
-                                       null=True,
-                                       blank=True,
-                                       verbose_name="Штрих-код для тары")
-    bill = models.FileField(upload_to='uploads/bill_files/',
-                            default=None,
-                            null=True,
-                            blank=True,
-                            verbose_name="Счет") 
+    label = models.BinaryField(default=None,
+                               null=True,
+                               blank=True,
+                               editable=True,
+                               verbose_name="Этикетка")
+    marketplace_barcode = models.BinaryField(null=True,
+                                             editable=True,
+                                             verbose_name="Штрих-код для маркетплейса")
+    wrapper_barcode = models.BinaryField(default=None,
+                                         null=True,
+                                         blank=True,
+                                         editable=True,
+                                         verbose_name="Штрих-код для тары")
+    bill = models.BinaryField(default=None,
+                              null=True,
+                              blank=True,
+                              editable=True,
+                              verbose_name="Счет")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -75,9 +75,6 @@ class Delivery(models.Model):
 
         self.seller = self.product.seller
         super().save(*args, **kwargs)
-
-    def get_pdf_url(self):
-        return reverse('bill-pdf', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"Отгрузка ({self.product.name})"
