@@ -50,7 +50,7 @@ a{
     line-height: normal;
 }
 .selected__page{
-    padding: 7px 18px 17px;
+    padding: 7px 18px 16px;
     border-radius: 20px 20px 0 0;
     background: #FFF;
 }
@@ -83,8 +83,8 @@ a{
     border: 2px solid rgba(0, 0, 0, 0.25);
     background-color: rgb(255, 255, 255);
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 6vw;
+    top: 3vw;
     padding: 55px 45px 45px 61px;
     display: none;
     z-index: 20;
