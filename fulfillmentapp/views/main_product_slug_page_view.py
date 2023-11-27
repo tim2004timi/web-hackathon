@@ -1,9 +1,14 @@
+import asyncio
+
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
 from fulfillmentapp.get_users import get_seller
 from fulfillmentapp.models import Product, Delivery
+from telegram.error import NetworkError
+
+from fulfillmentapp.management.commands.bot import send_notification
 
 
 @user_passes_test(test_func=get_seller, login_url="/login/")
@@ -34,7 +39,12 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             product.status = "В процессе подтверждения"
             product.save()
 
-            # Тут шлется уведомление пользователю в тг !!!!!
+            # Отправка сообщения заявки в telegram бот
+            message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+            try:
+                asyncio.run(send_notification(message))
+            except (TimeoutError, NetworkError) as e:
+                print(e)
 
             return redirect("main-products")
 
@@ -63,7 +73,12 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             product.status = "В процессе подтверждения"
             product.save()
 
-            # Тут шлется уведомление пользователю в тг
+            # Отправка сообщения заявки в telegram бот
+            message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+            try:
+                asyncio.run(send_notification(message))
+            except (TimeoutError, NetworkError) as e:
+                print(e)
 
             return redirect("main-products")
 
