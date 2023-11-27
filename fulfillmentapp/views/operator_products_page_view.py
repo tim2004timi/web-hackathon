@@ -11,7 +11,13 @@ def operator_products_page_view(request: HttpRequest):
     """View главной страницы оператора со всеми товарами"""
 
     products = Product.objects.all()
+
     data = {
-        "products": products
+        "filter": "все",
+        "sorting": None,
+        "selected_page": "товары",
+        "products": products,
     }
-    return render(request=request, template_name="fulfillmentapp/operator.html", context=data)
+
+    return render(request=request, template_name="fulfillmentapp/operator/products.html", context=data)
+

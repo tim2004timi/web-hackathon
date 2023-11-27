@@ -41,7 +41,7 @@
                     </ul>
                 </nav>
                 <button class="cabinet__btn">
-                    <span class="cabinet__btn-text">{{ user.name }} {{ user.last_name.0 }}.</span>
+                    <span class="cabinet__btn-text">Оператор</span>
                     <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__btn-img">
                 </button> 
                 <div class="cabinet__popup-wrapper">
@@ -54,7 +54,7 @@
                         </div> 
                         <div class="cabinet__container">
                             <img src="{% static 'img/main/products/cabinet.png' %}" alt="cabinet" class="cabinet__popup-img">
-                            <span class="cabinet__popup-text">{{ user.name }} {{ user.last_name }}</span>
+                            <span class="cabinet__popup-text">Оператор</span>
                             <a href="{% url 'logout' %}" class="exit__btn">выйти</a>
                         </div>
                         <div class="telegram">
@@ -131,11 +131,51 @@
                             </table>
                         </div> 
                     </div>   
+                    <button class="product__btn">
+                        <img src="{% static 'img/main/products/product__btn.png' %}" alt="add btn" class="product__img">
+                    </button>
+                    <div class="product-add__wrapper">
+                        <div class="product-add__container">
+                            <div class="back-btn__container">
+                                <button class="back-btn">
+                                    <img src="{% static 'img/login/back-btn__img.svg' %}" alt="back" class="back-btn__img">
+                                    назад
+                                </button>
+                            </div>    
+                            <form class="product-add__form" method="POST">
+                                {% csrf_token %}
+                                <div class="product-add__content">
+                                    <div class="pruduct-add__name-container">
+                                        <p class="pruduct-add__name-title">название товара</p>
+                                        <input type="text" class="product-add__name-input add-inp" name="name">
+                                    </div>
+                                    <div class="pruduct-add__count-container">
+                                        <p class="pruduct-add__count-title">количество</p>
+                                        <input type="text" class="product-add__count-input add-inp" name="numbers">
+                                    </div>
+                                    <div class="pruduct-add__size-container">
+                                        <p class="pruduct-add__size-title">размер</p>
+                                        <div class="product-add__size-input-container">
+                                            <input type="text" class="product-add__size-input add-inp" name="size_1">
+                                            <img src="{% static 'img/main/products/product-add__count-input-img.png' %}" alt="img" class="product-add__size-input-img">
+                                            <input type="text" class="product-add__size-input add-inp" name="size_2">
+                                            <img src="{% static 'img/main/products/product-add__count-input-img.png' %}" alt="img" class="product-add__size-input-img">
+                                            <input type="text" class="product-add__size-input add-inp" name="size_3">
+                                        </div>    
+                                    </div>
+                                    <div class="pruduct-add__color-container">
+                                        <p class="pruduct-add__color-title">цвет</p>
+                                        <input type="text" class="product-add__color-input add-inp" name="color">
+                                    </div>
+                                </div>    
+                                <button type="submit" class="product-add__btn">добавить</button>
+                            </form>
+                        </div>
+                    </div>    
                 </div>    
-            </div>   
-            <div class="overlay__container"></div>   
+            </div>      
         </div>
     </main>
-    <script src="{% static 'js/main/operator/main.js' %}"></script>
+    <script src="{% static 'js/main/products/main.js' %}"></script>
 </body>
 </html>
