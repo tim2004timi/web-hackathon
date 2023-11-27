@@ -27,8 +27,8 @@ SECRET_KEY = setting_secrets.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = setting_secrets.DEBUG
 
-if DEBUG:
-    INTERNAL_IPS = ["127.0.0.1"]
+#if DEBUG:
+#    INTERNAL_IPS = ["127.0.0.1"]
 
 ALLOWED_HOSTS = setting_secrets.ALLOWED_HOSTS
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fulfillmentapp',
-    "debug_toolbar", 
+    #"debug_toolbar", 
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware"
+    #"debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'config.urls'
