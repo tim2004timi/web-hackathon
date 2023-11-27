@@ -42,7 +42,7 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             # Отправка сообщения заявки в telegram бот
             message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
             try:
-                asyncio.run(send_notification(message))
+                asyncio.run(send_notification(message, seller.telegram_chat_id))
             except (TimeoutError, NetworkError) as e:
                 print(e)
 
@@ -76,7 +76,7 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             # Отправка сообщения заявки в telegram бот
             message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
             try:
-                asyncio.run(send_notification(message))
+                asyncio.run(send_notification(message, seller.telegram_chat_id))
             except (TimeoutError, NetworkError) as e:
                 print(e)
 

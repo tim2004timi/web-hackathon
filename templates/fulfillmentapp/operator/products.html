@@ -22,18 +22,18 @@
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="{% url 'main-products' %}" class="menu__link
+                            <a href="{% url 'operator-products' %}" class="menu__link
                             {% if selected_page == 'товары' %}
                             selected__page
                             {% endif %}">товары</a>
                         </li>
                         <li class="menu__item">
-                            <a href="{% url 'main-bills'%}" class="menu__link
-                            {% if selected_page == 'счета' %}input
+                            <a href="{% url 'operator-bills'%}" class="menu__link
+                            {% if selected_page == 'счета' %}
                             selected__page
                             {% endif %}">счета</a>
                         <li class="menu__item">
-                            <a href="{% url 'main-requests'%}" class="menu__link
+                            <a href="{% url 'operator-requests'%}" class="menu__link
                             {% if selected_page == 'запросы на отгрузку' %}
                             selected__page
                             {% endif %}">запросы на отгрузку</a>
@@ -72,20 +72,20 @@
                 <div class="table__box">
                     <div class="table__wrapper">
                         <div class="filter">
-                            <a href="{% url 'main-products-clear-data' filter='все' sorting=sorting %}" class="all__btn btn filter__btn {% if filter == 'все' %} selected__filter {% endif %}">все</a>
-                            <a href="{% url 'main-products-clear-data' filter='в пути' sorting=sorting %}" class="way__btn btn filter__btn {% if filter == 'в пути' %} selected__filter {% endif %}">в пути</a>
-                            <a href="{% url 'main-products-clear-data' filter='ожидает заявку на отгрузку' sorting=sorting %}" class="wait-application__btn btn filter__btn {% if filter == 'ожидает заявку на отгрузку' %} selected__filter {% endif %}">ожидает заявку на отгрузку</a>
-                            <a href="{% url 'main-products-clear-data' filter='ожидает штрихкод' sorting=sorting %}" class="wait-barcode__btn btn filter__btn {% if filter == 'ожидает штрихкод' %} selected__filter {% endif %}">ожидает штрихкод</a>
-                            <a href="{% url 'main-products-clear-data' filter='ожидает оплаты' sorting=sorting %}" class="wait-pay__btn btn filter__btn {% if filter == 'ожидает оплаты' %} selected__filter {% endif %}">ожидает оплаты</a>
+                            <a href="{% url 'operator-products-clear-data' filter='все' sorting=sorting %}" class="all__btn btn filter__btn {% if filter == 'все' %} selected__filter {% endif %}">все</a>
+                            <a href="{% url 'operator-products-clear-data' filter='в пути' sorting=sorting %}" class="way__btn btn filter__btn {% if filter == 'в пути' %} selected__filter {% endif %}">в пути</a>
+                            <a href="{% url 'operator-products-clear-data' filter='ожидает заявку на отгрузку' sorting=sorting %}" class="wait-application__btn btn filter__btn {% if filter == 'ожидает заявку на отгрузку' %} selected__filter {% endif %}">ожидает заявку на отгрузку</a>
+                            <a href="{% url 'operator-products-clear-data' filter='ожидает штрихкод' sorting=sorting %}" class="wait-barcode__btn btn filter__btn {% if filter == 'ожидает штрихкод' %} selected__filter {% endif %}">ожидает штрихкод</a>
+                            <a href="{% url 'operator-products-clear-data' filter='ожидает оплаты' sorting=sorting %}" class="wait-pay__btn btn filter__btn {% if filter == 'ожидает оплаты' %} selected__filter {% endif %}">ожидает оплаты</a>
                         </div>
                         <div class="table__content">
                             <div class="sorting">
                                 <p class="sorting__title">сортировка:</p>
-                                <a href="{% url 'main-products-clear-data' filter=filter sorting='name' %}" class="name__btn btn {% if sorting == 'name' %} selected__sorting {% endif %}">название</a>
-                                <a href="{% url 'main-products-clear-data' filter=filter sorting='article' %}" class="article__btn btn {% if sorting == 'article' %} selected__sorting {% endif %}">артикул</a>
-                                <a href="{% url 'main-products-clear-data' filter=filter sorting='time_created' %}" class="date__btn btn {% if sorting == 'time_created' %} selected__sorting {% endif %}">дата создания</a>
-                                <a href="{% url 'main-products-clear-data' filter=filter sorting='status' %}" class="status__btn btn {% if sorting == 'status' %} selected__sorting {% endif %}">статус</a>
-                                <a href="{% url 'main-products-clear-data' filter=filter sorting='numbers' %}" class="count__btn btn {% if sorting == 'numbers' %} selected__sorting {% endif %}">количество</a>
+                                <a href="{% url 'operator-products-clear-data' filter=filter sorting='name' %}" class="name__btn btn {% if sorting == 'name' %} selected__sorting {% endif %}">название</a>
+                                <a href="{% url 'operator-products-clear-data' filter=filter sorting='article' %}" class="article__btn btn {% if sorting == 'article' %} selected__sorting {% endif %}">артикул</a>
+                                <a href="{% url 'operator-products-clear-data' filter=filter sorting='time_created' %}" class="date__btn btn {% if sorting == 'time_created' %} selected__sorting {% endif %}">дата создания</a>
+                                <a href="{% url 'operator-products-clear-data' filter=filter sorting='status' %}" class="status__btn btn {% if sorting == 'status' %} selected__sorting {% endif %}">статус</a>
+                                <a href="{% url 'operator-products-clear-data' filter=filter sorting='numbers' %}" class="count__btn btn {% if sorting == 'numbers' %} selected__sorting {% endif %}">количество</a>
                             </div>
                             <table class="table__container">
                                 <thead>

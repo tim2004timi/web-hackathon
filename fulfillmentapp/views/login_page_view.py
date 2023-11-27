@@ -26,7 +26,7 @@ def login_page_view(request: HttpRequest):
                 return redirect('main-products')
 
             elif get_operator(user=user):
-                return redirect('operator')
+                return redirect('operator-products')
 
         return render(request=request, template_name="fulfillmentapp/login.html", context=recaptcha_site_key)
 
