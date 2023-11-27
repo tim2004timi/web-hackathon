@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/cards/application/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cards/application/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cards/barcode/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cards/barcode/style.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}"> -->
 </head>
 <body>
@@ -103,19 +103,20 @@
                             </div>
                         </div>    
                     </div>
-                    <form class="card__form" method="POST">
-                        {% csrf_token %}
+                    <form class="card__form">
                         <div class="card__input-container">
                             <p class="card__input-text">Добавьте штрихкод:</p>
-                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса" name="marketplace_barcode">
-                            <p class="card__input-text">Добавьте этикетку(необязательно):</p>
-                            <input type="file" class="card__input" placeholder="этикетка (необязательно)" name="label">
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
+                            <p class="card__input-text">Этикетка (необязательно):</p>
+                            <input type="file" class="card__input" placeholder="штрихкод от маркетплейса">
                         </div>
                         <button type="submit" class="confirm__btn">Подтвердить</button>
                     </form>
                 </div>
             </div>   
+            <div class="overlay__container"></div>
         </section>
     </main>
+    <script src="{% static 'js/cards/barcode/main.js' %}"></script>
 </body>
 </html>

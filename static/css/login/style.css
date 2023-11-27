@@ -81,5 +81,5 @@ a{
     cursor: pointer;
 }
 .signin__btn:hover{
-    background-image: linear-gradient(to right, #29323c, #4e4376);
+    background-image: linear-gradient(to right, #212223, #3b1bb0);
 }
