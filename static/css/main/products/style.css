@@ -75,6 +75,8 @@ a{
 }
 .cabinet__popup-wrapper{
     position: absolute;
+    right: 0;
+    bottom: 0;
 }
 .cabinet__popup{
     border-radius: 50px;
@@ -155,6 +157,8 @@ a{
 }
 .table{
     margin-bottom: 100px;
+    position: relative;
+    z-index: 1;
 }
 .table__box{
     display: flex;
