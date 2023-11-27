@@ -8,6 +8,8 @@ html {
     box-sizing: inherit;
 }
 body{
+    background-image: url(../../../img/cards/application/body-bg.png);
+    background-size: cover;
     font-family: 'Montserrat', sans-serif;
     color: #000;
     font-size: 20px;
@@ -144,4 +146,123 @@ a{
     align-items: center;
     gap: 10px;
     margin-left: 12px;
+}
+.card__wrapper{
+    max-width: 1311px;
+    margin: 0 auto;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    background: #F8F8F8;
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+    padding: 1.5vw 2.5vw 2.5vw;
+}
+.back-btn{
+    color: #6A6A6A;
+    font-weight: 400;
+    line-height: normal;
+}
+.card__title{
+    font-size: 64px;
+    font-weight: 600;
+}
+.card__info{
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+    margin: 60px 0 70px;
+}
+.card__info-inner{
+    display: flex;
+    align-items: center;
+    gap: 6.1vw;
+}
+.card__info-inner + .card__info-inner{
+    gap: 7.1vw;
+}
+.card__info-container{
+    display: flex;
+    align-items: center;
+}
+.card__info-title{
+    color: #797979;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+}
+.card__info-title--article{
+    margin-right: 5vw;
+}
+.card__info-title--date{
+    margin-right: 1vw;
+}
+.card__info-title--color{
+    margin-right: 2vw;
+}
+.card__info-title--count{
+    margin-right: 2.8vw;
+}
+.card__info-title--status{
+    margin-right: 3.7vw;
+}
+.card__info-content{
+    font-weight: 500;
+    line-height: normal;
+}
+.card__info-content:last-child{
+    width: 176px;
+    text-align: center;
+}
+.card__form{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.card__input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.card__input-text{
+    color: #797979;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+}
+.card__input{
+    padding: 1vw 5vw;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    background: #FFF;
+    color: #797979;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 544px;
+}
+.card__input::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: linear-gradient(180deg, #5341C5 0%, #14BBFD 100%);;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.card__input::file-selector-button:hover {
+    background: #0d45a5;
+}
+.confirm__btn{
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    background: #000;
+    color: #FFF;
+    padding: 20px 50px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
+.confirm__btn:hover{
+    background: #fff;
+    color: #000;
 }
