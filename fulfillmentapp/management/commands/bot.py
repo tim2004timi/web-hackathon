@@ -6,27 +6,21 @@ from telegram.ext import (
     filters,
     MessageHandler,
     CommandHandler,
-    CallbackQueryHandler,
-    ConversationHandler,
-    ContextTypes,
-    CallbackContext,
     )
-from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove
-from fulfillmentapp.models import CallAssistant
-from asgiref.sync import sync_to_async
+from telegram import Update, Bot
 from django.db.models import Q
-from functools import lru_cache
 import logging
 from .auth_user import auth_handle
 from .db_queries_wrapper import get_assistants_chat_ids
 from .menu import bot_menu
 import logging
-# Логирование заявок на регистрацию
+
 logger = logging.getLogger("bot.events")
 
 bot = Bot(token=settings.TOKEN)
 
 async def send_registration_request(message: str) -> None:
+    """Отправка уведомления всем ассистентам о новой заявке на регистрацию в системе"""
     assistants_chat_ids = await get_assistants_chat_ids()
     
     logger.info(f"New registration request was sent to call center:\n\t{message}")
@@ -34,13 +28,13 @@ async def send_registration_request(message: str) -> None:
     for chat_id in assistants_chat_ids:
         await bot.send_message(chat_id=chat_id, text=message)
 
-
-@lru_cache(maxsize=None)
 async def send_notification(message: str, chat_id: str) -> None:
-    await bot.send_message(chat_id=chat_id, text=message)
+    """Отправка уведомления пользователю"""
+    await bot.send_message(chat_id=chat_id, text=message, parse_mode="HTML")
     
 
 class Command(BaseCommand):
+    """Инизилиазция бота"""
     def handle(self, *args, **options):
         application = Application.builder().token(settings.TOKEN).build()
         bot_main_menu = bot_menu()
