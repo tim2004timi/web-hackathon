@@ -26,7 +26,7 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
                                     marketplace_barcode=marketplace_barcode,
                                     label=label)
 
-            return redirect("/main/products/")
+            return redirect("main-products")
 
         data = {
             "product": product,

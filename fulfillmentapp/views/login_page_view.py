@@ -10,6 +10,7 @@ from fulfillmentapp.get_users import get_seller, get_operator
 def login_page_view(request: HttpRequest):
     """View страницы авторизации login.html"""
 
+    # Ключ для reCAPTCHA
     recaptcha_site_key = {"site_key": setting_secrets.RECAPTCHA_SITE_KEY}
 
     if request.method == "GET":
@@ -41,7 +42,7 @@ def login_page_view(request: HttpRequest):
         result = r.json()
 
         if not result['success']:
-            return HttpResponse("<h1>Проверка не пройдена</h1>")
+            return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
 
         # Получаем данные из формы авторизации
         username = request.POST.get('username')
