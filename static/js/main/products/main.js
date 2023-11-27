@@ -14,7 +14,6 @@ cabinetBtn.addEventListener('click', ()=>{
     cabinetPopup.classList.add('cabinet__popup-open');
     tableEl.style.zIndex = '-1';
     productAddWrapper.classList.add('product-add__overlay');
-    // header.classList.add('product-add__overlay');
     cabinetPopupWrapper.classList.add('product-add__overlay');
 });
 
@@ -23,7 +22,6 @@ backBtnCabinet.addEventListener('click', ()=>{
     tableEl.style.zIndex = '1';
     productAddWrapper.classList.remove('product-add__overlay');
     cabinetPopupWrapper.classList.remove('product-add__overlay');
-    // header.classList.remove('product-add__overlay');
 })
 
 productBtn.addEventListener('click', ()=>{
