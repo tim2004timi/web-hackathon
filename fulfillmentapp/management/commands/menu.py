@@ -23,9 +23,9 @@ class bot_menu:
         self.START_OVER = map(chr, range(11, 12))
         # Короткое название для ConversationHandler.END
         self.END = ConversationHandler.END
-        
+        # Instance для логирования 
         self.logger = logging.getLogger("bot.events")
-        
+    
         self.conv_handler = ConversationHandler(
             entry_points=[CommandHandler('menu', self.show_menu)],
             states={
