@@ -52,4 +52,4 @@ class Operator(models.Model):
 
     class Meta:
         verbose_name = "Оператор"
-        verbose_name_plural = "Операторы"
+        verbose_name_plural = "Операторы склада"

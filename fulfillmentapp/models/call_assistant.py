@@ -28,4 +28,4 @@ class CallAssistant(models.Model):
 
     class Meta:
         verbose_name = "Ассистент"
-        verbose_name_plural = "Ассистенты"
+        verbose_name_plural = "Ассистенты (колл-центр)"

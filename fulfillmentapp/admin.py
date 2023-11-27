@@ -3,8 +3,9 @@
 """
 from django.contrib import admin
 from django.forms import ModelForm
+from django.contrib.auth.models import User, Group
 
-from .models import *
+from .models import Seller, Operator, Product, CallAssistant, Delivery
 
 
 class ProductAdminForm(ModelForm):
@@ -24,10 +25,15 @@ class DeliveryAdminForm(ModelForm):
         model = Delivery
         exclude = ["seller"]
 
+    def __init__(self, *args, **kwargs):
+        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
+        # Ограничиваем выбор Product только незанятыми объектами
+        self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
+
 
 class DeliveryAdmin(admin.ModelAdmin):
     form = DeliveryAdminForm
-    list_display = ("product", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
+    list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
 
 
@@ -67,8 +73,13 @@ class AssistantAdmin(admin.ModelAdmin):
     search_fields = ['telegram']
 
 
+# Добавляем модели на админ модель
 admin.site.register(Operator, OperatorAdmin)
 admin.site.register(Seller, SellerAdmin)
 admin.site.register(CallAssistant, AssistantAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Delivery, DeliveryAdmin)
+
+# Убираем модель User и Group
+admin.site.unregister(User)
+admin.site.unregister(Group)

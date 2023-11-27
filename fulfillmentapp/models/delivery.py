@@ -55,6 +55,12 @@ class Delivery(models.Model):
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
 
+    def save(self, *args, **kwargs):
+        """Переопределение функции для добавления seller"""
+
+        self.seller = self.product.seller
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Отгрузка ({self.product.name})"
 

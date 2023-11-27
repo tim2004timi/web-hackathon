@@ -15,7 +15,7 @@ urlpatterns = [
          name="main-products-clear-data"),
     path(route='main/bills/', view=main_bills_page_view, name="main-bills"),
     path(route='main/requests', view=main_requests_page_view, name="main-requests"),
-    path(route="main/product/<slug:product_slug>/", view=main_product_slug_page_view, name="product-slug"),
+    path(route="main/<slug:product_slug>/", view=main_product_slug_page_view, name="product-slug"),
 
     path(route="operator/", view=operator_redirect_view, name="operator-redirect"),
     path(route="operator/products", view=operator_products_page_view, name="operator-products")
