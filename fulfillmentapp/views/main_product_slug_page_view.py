@@ -16,17 +16,26 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
 
     article = int(product_slug.split("-")[1])
     product = Product.objects.get(article=article)
+    seller = product.seller
 
     if product.status == "Ожидает заявку на отгрузку":
         data = {
-            "product": product
+            "product": product,
+            "user": {
+                "name": seller.name,
+                "last_name": seller.last_name
+            },
         }
 
         return render(request=request, template_name="fulfillmentapp/cards/application.html", context=data)
 
     elif product.status == "Ожидает штрихкод для тары":
         data = {
-            "product": product
+            "product": product,
+            "user": {
+                "name": seller.name,
+                "last_name": seller.last_name
+            },
         }
 
         return render(request=request, template_name="fulfillmentapp/cards/barcode.html", context=data)
