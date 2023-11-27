@@ -267,7 +267,7 @@ a{
 }
 .table__content-row--actions{
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
 }
 .table__content-row--actions:hover{
     text-decoration: underline;
