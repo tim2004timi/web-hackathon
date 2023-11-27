@@ -24,18 +24,29 @@ def operator_product_slug_page_view(request: HttpRequest, product_slug: str):
         product.save()
 
         # Отправка сообщения заявки в telegram бот
-        message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
-        try:
-            asyncio.run(send_notification(message, seller.telegram_chat_id))
-        except (TimeoutError, NetworkError) as e:
-            print(e)
+        # message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+        # try:
+        #     asyncio.run(send_notification(message, seller.telegram_chat_id))
+        # except (TimeoutError, NetworkError) as e:
+        #     print(e)
 
         return redirect("operator-products")
 
     elif product.status == "В процессе подтверждения":
 
         if request.method == "POST":
-            pass
+            delivery = product.delivery
+            delivery.address = request.POST.get("address")
+            delivery.driver_fio = request.POST.get("driver_fio")
+            delivery.car_number = request.POST.get("car_number")
+            delivery.date = request.POST.get("date")
+
+            delivery.save()
+
+            product.status = "Ожидает штрихкод для тары"
+            product.save()
+
+            return redirect("operator-products")
 
         data = {
             "product": product
