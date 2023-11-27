@@ -39,7 +39,10 @@ def operator_product_slug_page_view(request: HttpRequest, product_slug: str):
             delivery.address = request.POST.get("address")
             delivery.driver_fio = request.POST.get("driver_fio")
             delivery.car_number = request.POST.get("car_number")
-            delivery.date = request.POST.get("date")
+            try:
+                delivery.date = request.POST.get("date")
+            except:
+                pass
 
             delivery.save()
 
