@@ -304,6 +304,9 @@ h3{
     font-weight: 700;
     margin-bottom: 5px;
 }
+.footer__form-container{
+    margin-bottom: 77px;
+}
 .footer__input{
     width: 306px;
     height: 30px;
@@ -311,9 +314,10 @@ h3{
     border: 1px solid #FFF;
     background: rgba(255, 255, 255, 0.30);
     font-size: 18px;
+    padding-left: 5px;
 }
-.footer__form-container{
-    margin-bottom: 77px;
+.footer__input--name{
+    text-transform: capitalize;
 }
 .footer-application__btn-wrapper{
     text-align: center;
