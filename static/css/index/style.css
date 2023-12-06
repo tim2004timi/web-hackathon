@@ -48,6 +48,9 @@ h3{
 .header + .header{
     position: static;
     padding: 140px 0 45px;
+    backdrop-filter: blur(150px);
+    background-image: url(../../img/index/header-bg.png);
+    background-size: cover;
 }
 .container{
     max-width: 1520px;
@@ -267,6 +270,7 @@ h3{
 .footer__items{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 46px;
     margin-bottom: 78px;
 }
@@ -286,16 +290,18 @@ h3{
     border: 1px solid #FFF;
     background: rgba(255, 255, 255, 0.30);
     backdrop-filter: blur(25px);
-    padding: 29px 65px 35px 65px;
+    padding: 29px 35px 35px 35px;
     width: 477px;
 }
 .footer__form-title{
-    margin-bottom: 39px;
+    margin-bottom: 36px;
 }
 .footer__form-container{
     display: flex;
     flex-direction: column;
     gap: 40px;
+    justify-content: center;
+    align-items: center;
 }
 .tel__input-text,
 .mail__input-text,

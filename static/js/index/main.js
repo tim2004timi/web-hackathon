@@ -38,4 +38,5 @@ const setReplacer = (target, expression) => {
     });
 };
 
+
 setReplacer(document.querySelector('.footer__input--name'), /[^A-Za-zА-Яа-я\s]/g);
