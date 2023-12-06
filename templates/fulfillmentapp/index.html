@@ -19,18 +19,18 @@
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="#uslugi" class="menu__link">услуги</a>
+                            <a href="#uslugi" class="menu__link">Услуги</a>
                         </li>
                         <li class="menu__item">
-                            <a href="#cena" class="menu__link">цены</a>
+                            <a href="#cena" class="menu__link">Цены</a>
                         </li>
                     </ul>
                 </nav>
                 <a class="logo">
                     <img src="{% static 'img/index/Лого.png' %}" alt="logo" class="logo__img">
                 </a>
-                <a href="#contacti" class="contacts">контакты</a>
-                <a href="{% url 'login' %}" class="signin__btn">войти</a>
+                <a href="#contacti" class="contacts">Контакты</a>
+                <a href="{% url 'login' %}" class="signin__btn">Войти</a>
             </div>
         </div>
     </header>
@@ -39,7 +39,7 @@
             <div class="header__content">
                 <h1 class="header__title">ДОСТАВКА И УПАКОВКА<br>ДЛЯ МАРКЕТПЛЕЙСОВ</h1>
                 <p class="header__text"><b>FastWay</b> - это надёжный фулфилмент сервис. Мы осуществляем полный<br>комплекс услуг по логистике ваших товаров</p>
-                <a href="#contacti" class="application__btn btn">оставить заявку</a>
+                <a href="#contacti" class="application__btn btn">Оставить заявку</a>
                 <div class="header__img-wrapper">
                     <img src="{% static 'img/index/header__img.png' %}" alt="header img" class="header__img">
                 </div>
@@ -49,7 +49,7 @@
     <main class="main">
         <section class="work" id="uslugi">
             <div class="container">
-                <h2 class="work__title title">как мы работаем?</h2>
+                <h2 class="work__title title">Как мы работаем?</h2>
                 <div class="work__items">
                     <div class="work__item">
                         <div class="work__content">
@@ -92,7 +92,7 @@
         </section>
         <section class="price" id="cena">
             <div class="container">
-                <h2 class="price__title title">цены</h2>
+                <h2 class="price__title title">Цены</h2>
                 <div class="price__columns">
                     <div class="price__column">
                         <div class="price__item">
@@ -165,18 +165,18 @@
         <div class="container">
             <div class="footer__booking">
                 <div class="footer__contacts">
-                    <h3 class="footer__contacts-title">контакты</h3>
+                    <h3 class="footer__contacts-title">Контакты</h3>
                     <div class="footer__items">
                         <div class="footer__tel">
                             <p class="footer__tel-text">Контактный телефон:</p>
                             <a href="tel:+79999999999" class="footer__tel-link">+7 999 999 99 99</a>
                         </div>
                         <div class="footer__mail">
-                            <p class="footer__mail-text">почта:</p>
+                            <p class="footer__mail-text">Почта:</p>
                             <a href="mailto:example@yandex.ru" class="footer__mail-link">example@yandex.ru</a>
                         </div>
                         <div class="footer__adress">
-                            <p class="footer__adress-text">склад:</p>
+                            <p class="footer__adress-text">Склад:</p>
                             <p class="footer__adress-geo">Москва, 1-й пр. Перова поля 5</p>
                         </div>
                     </div>
@@ -194,23 +194,23 @@
                 </div>
                 <form class="footer__form" method="POST">
                     {% csrf_token %}
-                    <h3 class="footer__form-title">свяжитесь с нами</h3>
+                    <h3 class="footer__form-title">Свяжитесь с нами</h3>
                     <div class="footer__form-container">
                         <div class="footer__input-wrapper">
-                            <p class="tel__input-text">ваш номер телефона:</p>
+                            <p class="tel__input-text">Ваш номер телефона:</p>
                             <input type="text" class="footer__input" name="phone_number" required>
                         </div>
                         <div class="footer__input-wrapper">
-                            <p class="mail__input-text">почта:</p>
+                            <p class="mail__input-text">Почта:</p>
                             <input type="email" class="footer__input" name="email" required>
                         </div>
                         <div class="footer__input-wrapper">
-                            <p class="product__input-text">ваше имя:</p>
+                            <p class="product__input-text">Ваше имя:</p>
                             <input type="text" class="footer__input" name="name" required>
                         </div>
                     </div>
                     <div class="footer-application__btn-wrapper">
-                        <button type="submit" class="footer-application__btn btn">оставить заявку</button>
+                        <button type="submit" class="footer-application__btn btn">Оставить заявку</button>
                     </div>    
                 </form>
             </div>
