@@ -48,20 +48,20 @@ class Delivery(models.Model):
     car_number = models.CharField(blank=True, null=True, max_length=20, verbose_name="Номер авто")
     date = models.DateField(blank=True, null=True, verbose_name="Дата")
     time_created = models.DateTimeField(auto_now_add=True)
-    label = models.BinaryField(default=None,
+    label = models.FileField(default=None,
                                null=True,
                                blank=True,
                                editable=True,
                                verbose_name="Этикетка")
-    marketplace_barcode = models.BinaryField(null=True,
+    marketplace_barcode = models.FileField(null=True,
                                              editable=True,
                                              verbose_name="Штрих-код для маркетплейса")
-    wrapper_barcode = models.BinaryField(default=None,
+    wrapper_barcode = models.FileField(default=None,
                                          null=True,
                                          blank=True,
                                          editable=True,
                                          verbose_name="Штрих-код для тары")
-    bill = models.BinaryField(default=None,
+    bill = models.FileField(default=None,
                               null=True,
                               blank=True,
                               editable=True,

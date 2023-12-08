@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
-import setting_secrets
 from fulfillmentapp.get_users import get_seller, get_operator
 
 import os
