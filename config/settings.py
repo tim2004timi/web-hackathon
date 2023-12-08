@@ -14,6 +14,11 @@ from pathlib import Path
 
 import setting_secrets
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv(".env.app")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,15 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = setting_secrets.SECRET_KEY
+SECRET_KEY = os.getenv("SECRET_KEY")#setting_secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = setting_secrets.DEBUG
+DEBUG = os.getenv("DEBUG", 1)#setting_secrets.DEBUG
 
 #if DEBUG:
 #    INTERNAL_IPS = ["127.0.0.1"]
 
-ALLOWED_HOSTS = setting_secrets.ALLOWED_HOSTS
+ALLOWED_HOSTS = ["*"]#setting_secrets.ALLOWED_HOSTS
 
 
 # Application definition
@@ -82,7 +87,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = setting_secrets.DATABASES
+DATABASES = {
+        'default': {
+        'ENGINE': os.environ.get("SQL_ENGINE"),
+        'NAME': os.environ.get("SQL_DB"),
+        'USER': os.environ.get("SQL_USER"),
+        'PASSWORD': os.environ.get("SQL_PASSWORD"),
+        'HOST': os.environ.get("SQL_HOST"),
+        'PORT': os.environ.get("SQL_PORT"),
+    }
+}#setting_secrets.DATABASES
 
 # Logging
 LOGGING = {
@@ -134,7 +148,16 @@ LOGGING = {
     },
 }
 
-CACHES = setting_secrets.CACHES
+CACHES = {
+    "default": {
+        "BACKEND": os.getenv("REDIS_ENGINE"),
+        "LOCATION": os.getenv("REDIS_URI"),
+        "OPTIONS": {
+            "CLIENT_CLASS": os.getenv("REDIS_CLIENT_CLASS")
+        },
+        "KEY_PREFIX": os.getenv("REDIDS_KEY_PREFIX")
+    }
+}#setting_secrets.CACHES
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -171,7 +194,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+#STATIC_ROOT = str(BASE_DIR.joinpath('static'))
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 # Default primary key field type
@@ -183,4 +206,4 @@ LOGIN_REDIRECT_URL = "/main/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Токен telegram бота
-TOKEN = setting_secrets.TOKEN
+TOKEN = os.getenv("BOT_TOKEN")#setting_secrets.TOKEN
