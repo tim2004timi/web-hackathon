@@ -8,3 +8,4 @@ venv
 .venv
 *.log
 setting_secrets.py
+media
