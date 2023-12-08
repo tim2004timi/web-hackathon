@@ -2,12 +2,10 @@
 Модуль с классами для редактирования админ панели
 """
 from django.contrib import admin
-from django.forms import ModelForm
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 
-import copy
-
-from .models import Seller, Operator, Product, CallAssistant, Delivery
+from .forms import *
+from .models import Seller, Operator, CallAssistant
 
 
 class ProductAdminForm(ModelForm):
@@ -22,32 +20,19 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
 
 
-class DeliveryAdminForm(ModelForm):
-    class Meta:
-        model = Delivery
-        exclude = ["seller"]
-
-    def __init__(self, *args, **kwargs):
-        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
-        # Ограничиваем выбор Product только незанятыми объектами
-        try:
-            self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
-        except Exception as e:
-            print(e)
-
-
 class DeliveryAdmin(admin.ModelAdmin):
-    # form = DeliveryAdminForm
     list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
 
     def get_form(self, request, obj=None, form=None, **kwargs):
-
-        # form.base_fields["first_name"].label = "First Name (Humans only!):"
-        if obj.product.status == "Ожидает заявку на отгрузку":
-            form = copy.deepcopy(DeliveryAdminForm)
-            form.Meta.exclude += ["label", "marketplace_barcode", "wrapper_barcode", "bill"]
-        print(type(obj), obj)
+        if request.user.is_superuser:
+            form = DeliveryAdminForm
+        elif obj.product.status == "Ожидает заявку на отгрузку":
+            form = AdminWaitingDeliveryForm
+        elif obj.product.status == "В процессе подтверждения":
+            form = AdminWaitingConfirmForm
+        elif obj.product.status == "Ожидает штрихкод для тары":
+            form = AdminWaitingWrapperBarcodeForm
         return form
 
 
