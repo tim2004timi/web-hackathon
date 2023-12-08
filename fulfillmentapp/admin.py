@@ -10,7 +10,8 @@ from django.contrib.auth.models import User, Group
 from django.http.request import HttpRequest
 from .get_users import get_seller
 
-from .models import Seller, Operator, Product, CallAssistant, Delivery
+from .forms import *
+from .models import Seller, Operator, CallAssistant
 
 
 class ProductAdminForm(ModelForm):
@@ -47,9 +48,18 @@ class DeliveryAdminForm(ModelForm):
 
 
 class DeliveryAdmin(admin.ModelAdmin):
-    form = DeliveryAdminForm
     list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
+    def get_form(self, request, obj=None, form=None, **kwargs):
+        if request.user.is_superuser:
+            form = DeliveryAdminForm
+        elif obj.product.status == "Ожидает заявку на отгрузку":
+            form = AdminWaitingDeliveryForm
+        elif obj.product.status == "В процессе подтверждения":
+            form = AdminWaitingConfirmForm
+        elif obj.product.status == "Ожидает штрихкод для тары":
+            form = AdminWaitingWrapperBarcodeForm
+        return form
     
     def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
         #Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется

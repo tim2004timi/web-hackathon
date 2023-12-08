@@ -49,23 +49,23 @@ class Delivery(models.Model):
     date = models.DateField(blank=True, null=True, verbose_name="Дата")
     time_created = models.DateTimeField(auto_now_add=True)
     label = models.FileField(default=None,
-                               null=True,
-                               blank=True,
-                               editable=True,
-                               verbose_name="Этикетка")
+                             null=True,
+                             blank=True,
+                             editable=True,
+                             verbose_name="Этикетка")
     marketplace_barcode = models.FileField(null=True,
-                                             editable=True,
-                                             verbose_name="Штрих-код для маркетплейса")
+                                           editable=True,
+                                           verbose_name="Штрих-код для маркетплейса")
     wrapper_barcode = models.FileField(default=None,
-                                         null=True,
-                                         blank=True,
-                                         editable=True,
-                                         verbose_name="Штрих-код для тары")
+                                       null=True,
+                                       blank=True,
+                                       editable=True,
+                                       verbose_name="Штрих-код для тары")
     bill = models.FileField(default=None,
-                              null=True,
-                              blank=True,
-                              editable=True,
-                              verbose_name="Счет")
+                            null=True,
+                            blank=True,
+                            editable=True,
+                            verbose_name="Счет")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
