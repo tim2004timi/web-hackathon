@@ -1,6 +1,8 @@
 """
 Модуль с классами для редактирования админ панели
 """
+import copy
+
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
@@ -11,13 +13,29 @@ from .models import Seller, Operator, CallAssistant
 class ProductAdminForm(ModelForm):
     class Meta:
         model = Product
-        exclude = []
+        exclude = ["seller"]
 
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
     list_display = ("name", "article", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
+
+    # def get_form(self, request, obj=None, form=None, **kwargs):
+    #     form = copy.deepcopy(ProductAdminForm)
+    #     if not request.user.is_superuser:
+    #         print(type(form.base_fields["seller"]))
+    #         # form.base_fields["seller"] = get_users.get_seller(request.user)
+    #
+    #         # form.base_fields["seller"].widget = HiddenInput()
+    #         form.base_fields["seller"].initial = get_users.get_seller(request.user)
+    #         print(type(form.base_fields["seller"].initial), form.base_fields["seller"].initial)
+    #
+    #     return form
+
+    def save_model(self, request, obj, form, change):
+        obj.seller = request.user.seller
+        super().save_model(request, obj, form, change)
 
 
 class DeliveryAdmin(admin.ModelAdmin):
