@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django.contrib.auth.models import User, Group
 
+import copy
+
 from .models import Seller, Operator, Product, CallAssistant, Delivery
 
 
@@ -35,9 +37,18 @@ class DeliveryAdminForm(ModelForm):
 
 
 class DeliveryAdmin(admin.ModelAdmin):
-    form = DeliveryAdminForm
+    # form = DeliveryAdminForm
     list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
+
+    def get_form(self, request, obj=None, form=None, **kwargs):
+
+        # form.base_fields["first_name"].label = "First Name (Humans only!):"
+        if obj.product.status == "Ожидает заявку на отгрузку":
+            form = copy.deepcopy(DeliveryAdminForm)
+            form.Meta.exclude += ["label", "marketplace_barcode", "wrapper_barcode", "bill"]
+        print(type(obj), obj)
+        return form
 
 
 class SellerAdminForm(ModelForm):
