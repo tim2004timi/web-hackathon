@@ -22,10 +22,8 @@ def home_page_view(request: HttpRequest):
         # Отправка сообщения заявки в telegram бот
         try:
             asyncio.run(send_registration_request(message))
+            print(f"[INFO] {message}")
         except (TimeoutError, NetworkError) as e:
-            print(e)
-
-        # Вывод в консоль информации о заявке
-        print(f"[INFO] {message}")
+            print(f"[INFO] Заявка не отправлена ({e})")
 
     return render(request=request, template_name="fulfillmentapp/index.html")  # Переход на index.html

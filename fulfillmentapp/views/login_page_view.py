@@ -65,7 +65,8 @@ def login_page_view(request: HttpRequest):
                 return redirect('/admin/')
 
             elif get_seller(user=user):
-                return redirect('main-products')
+                # return redirect('main-products')
+                return redirect('/admin/')
 
             elif get_operator(user=user):
                 return redirect('operator-products')

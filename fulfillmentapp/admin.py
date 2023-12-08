@@ -16,7 +16,7 @@ class ProductAdminForm(ModelForm):
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ("article", "name", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
+    list_display = ("name", "article", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
 
 
@@ -28,7 +28,10 @@ class DeliveryAdminForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(DeliveryAdminForm, self).__init__(*args, **kwargs)
         # Ограничиваем выбор Product только незанятыми объектами
-        self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
+        try:
+            self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
+        except Exception as e:
+            print(e)
 
 
 class DeliveryAdmin(admin.ModelAdmin):
@@ -81,5 +84,5 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Delivery, DeliveryAdmin)
 
 # Убираем модель User и Group
-admin.site.unregister(User)
+# admin.site.unregister(User)
 admin.site.unregister(Group)
