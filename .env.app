@@ -3,10 +3,10 @@ SECRET_KEY='django-insecure-@emmn%cc&o&0pt*rc)wu0+varw#&r(2f8j6t@jzyp=ocbg_=!6'
 BOT_TOKEN='6655276522:AAEeZjYI6-iNB3fQmDci9Ho7Ybv0HgMoirg'
 SQL_ENGINE=django.db.backends.postgresql_psycopg2
 SQL_DATABASE=fastway
-SQL_USER=pst
-SQL_PASSWORD=111
+SQL_USER=main
+SQL_PASSWORD='zxcvb'
 SQL_DB=fastway
-SQL_HOST=db
+SQL_HOST='192.168.1.138'
 SQL_PORT=5432
 REDIS_ENGINE=django_redis.cache.RedisCache
 REDIS_URI=redis://:Qwerty123@192.168.1.138:6379
