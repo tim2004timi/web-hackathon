@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+import config.settings as settings
+from django.conf.urls.static import static
 from fulfillmentapp.views import page_not_found_view
 
 urlpatterns = [
@@ -26,3 +27,6 @@ urlpatterns = [
 ]
 
 handler404 = page_not_found_view
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

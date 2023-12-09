@@ -30,6 +30,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")#setting_secrets.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", 1)#setting_secrets.DEBUG
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
+
 #if DEBUG:
 #    INTERNAL_IPS = ["127.0.0.1"]
 
