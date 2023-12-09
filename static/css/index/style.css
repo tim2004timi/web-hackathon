@@ -49,7 +49,7 @@ h3{
     position: static;
     padding: 140px 0 45px;
     backdrop-filter: blur(150px);
-    background-image: url(../../img/index/header-bg.png);
+    /*background-image: url(../../img/index/header-bg.png); */
     background-size: cover;
 }
 .container{
