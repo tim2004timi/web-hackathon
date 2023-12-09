@@ -18,12 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 import config.settings as settings
 from django.conf.urls.static import static
-from fulfillmentapp.views import page_not_found_view
-from fulfillmentapp.panel_forms.admin_panel import admin_panel
+from fulfillmentapp.views import page_not_found_view, logout_page_view
+from fulfillmentapp.admin_panels import *
 
 urlpatterns = [
     path('admin_panel/', admin_panel.urls),
+    path(route="admin_panel/logout/", view=logout_page_view, name="logout"),
+
+    path('operator_panel/', operator_panel.urls),
+    path(route="operator_panel/logout/", view=logout_page_view, name="logout"),
+
+    path('seller_panel/', seller_panel.urls),
+    path(route="seller_panel/logout/", view=logout_page_view, name="logout"),
+
     path("", include("fulfillmentapp.urls")),
+
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 

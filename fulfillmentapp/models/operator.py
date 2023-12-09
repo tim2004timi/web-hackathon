@@ -48,7 +48,7 @@ class Operator(models.Model):
                 password=make_password(self.password),
                 is_staff=True
             )
-            # self.add_permissions_to_user(user)
+            self.add_permissions_to_user(user)
             self.user = user
         super().save(*args, **kwargs)
 
@@ -56,8 +56,12 @@ class Operator(models.Model):
     def add_permissions_to_user(user: User):
         user.user_permissions.add(Permission.objects.get(codename="view_product"))
         user.user_permissions.add(Permission.objects.get(codename="change_product"))
+
         user.user_permissions.add(Permission.objects.get(codename="view_delivery"))
         user.user_permissions.add(Permission.objects.get(codename="change_delivery"))
+
+        user.user_permissions.add(Permission.objects.get(codename="view_producttype"))
+        user.user_permissions.add(Permission.objects.get(codename="change_producttype"))
 
     def __str__(self):
         return self.username

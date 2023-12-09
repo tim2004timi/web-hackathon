@@ -85,11 +85,11 @@ class AssistantAdmin(admin.ModelAdmin):
 
 
 # Добавляем модели на админ модель
-admin.site.register(Operator, OperatorAdmin)
-admin.site.register(Seller, SellerAdmin)
-admin.site.register(CallAssistant, AssistantAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductType, ProductTypeAdmin)
+# admin.site.register(Operator, OperatorAdmin)
+# admin.site.register(Seller, SellerAdmin)
+# admin.site.register(CallAssistant, AssistantAdmin)
+# admin.site.register(Product, ProductAdmin)
+# admin.site.register(ProductType, ProductTypeAdmin)
 # admin.site.register(Delivery, DeliveryAdmin)
 
 # Убираем модель User и Group

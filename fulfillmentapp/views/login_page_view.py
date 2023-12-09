@@ -25,13 +25,13 @@ def login_page_view(request: HttpRequest):
         if user.is_authenticated:
 
             if user.is_superuser:
-                return redirect("/admin/")
+                return redirect("/admin_panel/")
 
             elif get_seller(user=user):
-                return redirect('main-products')
+                return redirect('/seller_panel/')
 
             elif get_operator(user=user):
-                return redirect('operator-products')
+                return redirect('/operator_panel/')
 
         return render(request=request, template_name="fulfillmentapp/login.html", context=recaptcha_site_key)
 
@@ -72,11 +72,11 @@ def login_page_view(request: HttpRequest):
 
             elif get_seller(user=user):
                 # return redirect('main-products')
-                return redirect('/admin/')
+                return redirect('/seller_panel/')
 
             elif get_operator(user=user):
                 # return redirect('operator-products')
-                return redirect('/admin/')
+                return redirect('/operator_panel/')
             
             #TODO: Добавить вьюшку
             return HttpResponse("<h1>Пользователь не найден</h1>")
