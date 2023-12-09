@@ -40,3 +40,70 @@ const setReplacer = (target, expression) => {
 
 
 setReplacer(document.querySelector('.footer__input--name'), /[^A-Za-zА-Яа-я\s]/g);
+
+
+const menuBtn = document.querySelector('.menu__btn');
+const headerPopup = document.querySelector('.header__popup');
+const headerPopupLink = document.querySelectorAll('.header__popup-link');
+
+menuBtn.addEventListener('click', ()=>{
+    headerPopup.classList.toggle('header__popup-open');
+});
+
+headerPopupLink.forEach((btn) => {
+    btn.addEventListener('click', ()=>{
+        headerPopup.classList.remove('header__popup-open');
+    });
+});
+
+const workSwiper = new Swiper('.work__swiper', {
+    direction: 'horizontal',
+    loop: false,
+    spaceBetween: 35,
+  
+    pagination: {
+      el: '.work__pagination',
+      clickable: true,
+    },
+  
+  });
+
+const warehouseSwiper = new Swiper('.warehouse__swiper', {
+    direction: 'horizontal',
+    loop: true,
+    spaceBetween: 35,
+    
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+  
+  });
+
+
+const priceApplicationBtn = document.querySelector('.price-application__btn');
+const pricePopup = document.querySelector('.price-popup');
+const priceExitBtn = document.querySelector('.price-exit__btn');
+const pricePopupWrapper = document.querySelector('.price__popup-wrapper');
+const header = document.querySelector('.header');
+const warehouse = document.querySelector('.warehouse');
+const work = document.querySelector('.work');
+const footer = document.querySelector('.footer');
+
+priceApplicationBtn.addEventListener('click', ()=>{
+    pricePopup.classList.add('price-popup-open');
+    pricePopupWrapper.classList.add('price-popup-wrapper-open');
+    header.style.position = 'static';
+    work.style.display = 'none';
+    warehouse.style.display = 'none';
+    footer.style.display = 'none';
+});
+
+priceExitBtn.addEventListener('click', ()=>{
+    pricePopup.classList.remove('price-popup-open');
+    pricePopupWrapper.classList.remove('price-popup-wrapper-open');
+    header.style.position ='sticky';
+    work.style.display = 'block';
+    warehouse.style.display = 'block';
+    footer.style.display = 'block';
+});

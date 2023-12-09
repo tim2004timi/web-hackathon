@@ -19,6 +19,9 @@ a{
     color: #000;
     font-weight: 500;
 }
+ul{
+    list-style: none;
+}
 .btn{
     padding: 15px;
     border-radius: 100px;
@@ -37,13 +40,18 @@ h3{
     font-weight: 700;
 }
 .header{
-    /* padding: 20px 0 15px; */
     position: sticky;
     top: 0;
     background-color: #FFF;
     z-index: 10;
     background: rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(15px);
+}
+#header__top2{
+    display: none;
+}
+.header__popup{
+    display: none;
 }
 .header + .header{
     position: static;
@@ -53,21 +61,20 @@ h3{
     background-size: cover;
 }
 .container{
-    max-width: 1520px;
+    max-width: 1540px;
+    padding: 0 10px;
     margin: 0 auto;
 }
 .header__top{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     padding: 20px 0 20px;
 }
-.menu{
-    margin-right: 892px;
-}
 .menu__list{
     display: flex;
-    gap: 160px;
+    gap: 8.4vw;
 }
 .menu__link:hover{
     text-decoration: underline;
@@ -81,8 +88,10 @@ h3{
 .logo__img{
     height: 100px;
 }
-.contacts{
-    margin-right: 160px;
+.header__link-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 8.4vw;
 }
 .contacts:hover{
     text-decoration: underline;
@@ -102,15 +111,31 @@ h3{
     text-align: center;
     margin-bottom: 68px;
 }
+#header__content2{
+    display: none;
+}
+.header__content-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.header__content-text{
+    text-align: left;
+}
 .header__title{
-    font-size: 70px;
+    font-size: 65px;
     font-weight: 700;
     line-height: normal;
     margin-bottom: 30px;
+    max-width: 892px;
+    width: 100%;
 }
 .header__text{
     font-weight: 500;
     margin-bottom: 100px;
+}
+.application__wrapper{
+    height: 100%;
 }
 .application__btn:hover{
     border: 1px solid rgba(255, 255, 255, 0.50);
@@ -129,6 +154,9 @@ h3{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+#work__items2{
+    display: none;
 }
 .work__item{
     display: flex;
@@ -167,6 +195,9 @@ h3{
     align-items: center;
     text-align: center;
 }
+.warehouse{
+    display: none;
+}
 .price{
     padding: 48px 64px;
 }
@@ -177,10 +208,13 @@ h3{
     display: flex;
     gap: 20px;
 }
+#price__columns2{
+    display: none;
+}
 .price__column{
     display: flex;
     flex-direction: column;
-    gap: 58px;
+    gap: 52px;
 }
 .price__item{
     max-width: 750px;
@@ -244,11 +278,17 @@ h3{
 .price__wrapper--kontent{
     padding: 19px 127px 9px 44px;
 }
+.price__popup-wrapper{
+    display: none;
+}
 .footer{
     padding: 82px 0 26px;
     background-image: url(../../img/index/footer__bg.png);
     background-repeat: no-repeat;
     background-size: cover;
+}
+#footer__content2{
+    display: none;
 }
 .footer__booking{
     display: flex;
@@ -295,6 +335,7 @@ h3{
 }
 .footer__form-title{
     margin-bottom: 36px;
+    font-size: 28px;
 }
 .footer__form-container{
     display: flex;
@@ -335,7 +376,9 @@ h3{
     cursor: pointer;
 }
 .footer-application__btn:hover{
-    background-image: linear-gradient(to right, #29323c, #4e4376);
+    background-color: rgba(255, 255, 255, 0.30);
+    color: #000;
+    transition: .2s;
 }
 .footer__logo-wrapper{
     text-align: center;

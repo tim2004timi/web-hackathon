@@ -57,3 +57,16 @@
         padding: 8px;
     }
 }
+
+@media (max-width: 430px) {
+    #booking1{
+        display: none;
+    }
+    #booking2{
+        display: block;
+    }
+    .container{
+        max-width: 390px;
+        padding: 0 10px;
+    }
+}
