@@ -284,11 +284,11 @@
     }
     .header__popup{
         position: absolute;
-        left: 95px;
+        left: 170px;
         top: 0;
         bottom: -100vh;
         right: 0;
-        background: rgba(0, 5, 48);
+        background: rgba(0, 5, 48, 0.80);
         backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
@@ -300,7 +300,7 @@
         transform: translateY(0);
     }
     .header__popup-item:first-child{
-        padding-top: 40px;
+        padding-top: 26px;
         margin-bottom: 87px;
     }
     .header__popup-item + .header__popup-item{
