@@ -376,8 +376,8 @@ h3{
     cursor: pointer;
 }
 .footer-application__btn:hover{
-    background-color:#fff;
-    color: #000;
+    background-color:rgba(255, 255, 255, 0.30);;
+    color: #fff;
     transition: .2s;
 }
 .footer__logo-wrapper{
