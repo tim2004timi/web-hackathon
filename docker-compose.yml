@@ -10,6 +10,9 @@ services:
     restart: always
   web:  
     build: .
+    volumes:
+      - ./static:/var/web/staticfiles
+      - ./media:/var/web/mediafiles
     command: gunicorn --bind 0.0.0.0:8000 config.wsgi
     env_file:
       - ./.env.app
@@ -22,6 +25,7 @@ services:
     build: ./nginx
     volumes:
       - ./static:/var/web/staticfiles
+      - ./media:/var/web/mediafiles
     ports:
       - 80:80
     depends_on:
@@ -30,3 +34,4 @@ services:
 volumes:
   data:
   static:
+  media:
