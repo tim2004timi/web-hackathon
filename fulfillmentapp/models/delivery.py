@@ -34,15 +34,7 @@ class Delivery(models.Model):
         Поле для даты регистрации товара.
         Заполняется автоматически.
     """
-    product = models.OneToOneField("Product",
-                                   on_delete=models.CASCADE,
-                                   primary_key=True,
-                                   related_name="delivery",
-                                   verbose_name="Товар")
-    seller = models.ForeignKey("Seller",
-                               on_delete=models.CASCADE,
-                               related_name="deliveries",
-                               verbose_name="Продавец")
+
     address = models.TextField(blank=True, null=True, verbose_name="Адрес")
     driver_fio = models.CharField(blank=True, null=True, max_length=50, verbose_name="ФИО водителя")
     car_number = models.CharField(blank=True, null=True, max_length=20, verbose_name="Номер авто")
@@ -59,7 +51,7 @@ class Delivery(models.Model):
                                            editable=True,
                                            verbose_name="Штрих-код для маркетплейса")
     wrapper_barcode = models.FileField(default=None,
-                                       upload_to="tare_barcodes/",
+                                       upload_to="wrapper_barcodes/",
                                        null=True,
                                        blank=True,
                                        editable=True,
@@ -70,18 +62,24 @@ class Delivery(models.Model):
                             blank=True,
                             editable=True,
                             verbose_name="Счет")
+    seller = models.ForeignKey("Seller",
+                               on_delete=models.CASCADE,
+                               null=True,
+                               default=None,
+                               related_name="deliveries",
+                               verbose_name="Продавец")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
 
     def save(self, *args, **kwargs):
         """Переопределение функции для добавления seller"""
-
-        self.seller = self.product.seller
+        if not self.seller:
+            self.seller = self.products.first().seller
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Отгрузка ({self.product.name})"
+        return f"Отгрузка ({self.products.product_type})"
 
     class Meta:
         verbose_name = "Отгрузка"

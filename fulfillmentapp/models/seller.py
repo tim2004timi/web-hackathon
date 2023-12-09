@@ -66,7 +66,8 @@ class Seller(models.Model):
             user = User.objects.create(
                 username=self.username,
                 email=self.email,
-                password=make_password(self.password)
+                password=make_password(self.password),
+                is_staff=True
             )
             self.user = user
         super().save(*args, **kwargs)
