@@ -79,7 +79,7 @@ class Product(models.Model):
     numbers = models.IntegerField(default=1, verbose_name="Кол-во")
     seller = models.ForeignKey("Seller", on_delete=models.CASCADE, related_name="products", verbose_name="Продавец")
     status = models.CharField(max_length=40, default="В пути до нас", choices=STATUSES, verbose_name="Статус")
-    time_created = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
