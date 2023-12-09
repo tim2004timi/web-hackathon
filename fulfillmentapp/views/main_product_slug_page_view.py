@@ -1,8 +1,12 @@
+import asyncio
+
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
+from telegram.error import NetworkError
 
 from fulfillmentapp.get_users import get_seller
+from fulfillmentapp.management.commands.bot import send_notification
 from fulfillmentapp.models import Product, Delivery
 
 
@@ -19,7 +23,6 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
         if request.method == "POST":
 
             delivery = Delivery.objects.create(product=product, seller=seller)
-            # delivery.marketplace_barcode = delivery.label = bin(1)
 
             try:
                 delivery.marketplace_barcode = request.FILES["marketplace_barcode"].read()
@@ -35,11 +38,11 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             product.save()
 
             # Отправка сообщения заявки в telegram бот
-            # message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
-            # try:
-            #     asyncio.run(send_notification(message, seller.telegram_chat_id))
-            # except (TimeoutError, NetworkError) as e:
-            #     print(e)
+            message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+            try:
+                asyncio.run(send_notification(message, seller.telegram_chat_id))
+            except (TimeoutError, NetworkError) as e:
+                print(e)
 
             return redirect("main-products")
 
@@ -69,11 +72,11 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
             product.save()
 
             # Отправка сообщения заявки в telegram бот
-            # message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
-            # try:
-            #     asyncio.run(send_notification(message, seller.telegram_chat_id))
-            # except (TimeoutError, NetworkError) as e:
-            #     print(e)
+            message = f"Продукт: <b>{product}</b>\nИзмененный статус: <b>{product.status}</b>"
+            try:
+                asyncio.run(send_notification(message, seller.telegram_chat_id))
+            except (TimeoutError, NetworkError) as e:
+                print(e)
 
             return redirect("main-products")
 

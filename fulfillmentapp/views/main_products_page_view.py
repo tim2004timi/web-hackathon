@@ -1,7 +1,12 @@
+import asyncio
+
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest
 from django.shortcuts import render
+from telegram.error import NetworkError
+
 from fulfillmentapp.get_users import get_seller
+from fulfillmentapp.management.commands.bot import send_notification
 from fulfillmentapp.models import Product
 
 
@@ -24,7 +29,14 @@ def main_products_page_view(request: HttpRequest, seller=None):
         size = f"{size_1}*{size_2}*{size_3}"
 
         # Создаем в БД новый товар
-        Product.objects.create(name=name, numbers=numbers, color=color, size=size, seller=seller)
+        product = Product.objects.create(name=name, numbers=numbers, color=color, size=size, seller=seller)
+
+        # Уведомление в телеграм
+        message = f"Продукт добавлен: <b>{name}</b>\nСтатус: <b>{product.status}</b>"
+        try:
+            asyncio.run(send_notification(message, seller.telegram_chat_id))
+        except (TimeoutError, NetworkError) as e:
+            print(e)
 
     if not seller:
         seller = get_seller(user=request.user)
