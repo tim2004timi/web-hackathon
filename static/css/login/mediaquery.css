@@ -59,14 +59,66 @@
 }
 
 @media (max-width: 430px) {
+    body{
+        background: #fff;
+    }
     #booking1{
         display: none;
     }
     #booking2{
         display: block;
+        padding-top: 42px;
     }
     .container{
         max-width: 390px;
         padding: 0 10px;
+    }
+    .login__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10vh;
+    }
+    .login-exit__btn{
+        background-color: transparent;
+        border: none;
+    }
+    .login__form{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .login__input{
+        width: 100%;
+        height: 41px;
+        border: 1px solid #000;
+        color: #606060;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: normal;
+        font-family: 'Montserrat', sans-serif;
+        padding-left: 10px;
+    }
+    .login__input + .login__input{
+        margin: 20px 0 50px;
+    }
+    .invalid-text{
+        margin-bottom: 10px;
+    }
+    .signin__btn{
+        font-size: 32px;
+        font-weight: 500;
+        line-height: normal;
+        color: #fff;
+        padding: 15px;
+        background: linear-gradient(270deg, #5341C5 0%, #14BBFD 87.83%);
+        margin-bottom: 29px;
+    }
+    .login__subtext{
+        font-size: 16px;
+        font-weight: 300;
+        line-height: normal;
+        text-align: center;
+        color: #000;
     }
 }

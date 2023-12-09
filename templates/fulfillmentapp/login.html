@@ -48,16 +48,16 @@
                 </div>    
             </div>
         </section>
-        <!-- <section class="login" id="booking2">
+        <section class="login" id="booking2">
             <div class="container">
                 <div class="login__header">
-                    <div class="price-login__header-item">
-                        <img src="{% static 'img/index/header logo 430.png' %}" alt="login logo" class="login-logo">
+                    <div class="login__header-item">
+                        <img src="{% static 'img/login/header logo 430.png' %}" alt="login logo" class="login-logo">
                     </div>   
-                    <div class="login-__header-item">
-                        <button class="login-exit__btn">
-                            <img src="{% static 'img/index/exit img.svg' %}" alt="login exit" class="login-exit__btn-img">
-                        </button>
+                    <div class="login__header-item">
+                        <a href="{% url 'home' %}" class="login-exit__btn">
+                            <img src="{% static 'img/login/exit img.svg' %}" alt="login exit" class="login-exit__btn-img">
+                        </a>
                     </div>
                 </div>
                 <form class="login__form" method="POST">
@@ -68,10 +68,11 @@
                     <p class="invalid-text">Неверный логин или пароль</p>
                     {% endif %}
                     <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-                    <button type="submit" class="signin__btn">войти</button>
+                    <button type="submit" class="signin__btn">Войти</button>
+                    <a href="#" class="login__subtext">Забыли пароль ?</p>
                 </form>
             </div>
-        </section> -->
+        </section>
     </main>
 </body>
 </html>
