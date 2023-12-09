@@ -1,6 +1,13 @@
 from django.urls import path
 from .views import *
+from django.contrib import admin
 
+class Test(admin.AdminSite):
+    site_header = "Test"
+    site_title = "Test"
+    index_title = "Test"
+
+test = Test(name="test")
 
 urlpatterns = [
     path(route="", view=home_page_view, name="home"),
@@ -29,4 +36,6 @@ urlpatterns = [
     path(route="operator/<slug:product_slug>/", view=main_product_slug_page_view, name="operator-slug"),
 
     path(route='pdf/<int:pk>/', view=BillPdfPageView.as_view(), name='bill-pdf'),
+    
+     path(route="test/", view=test.urls),
 ]

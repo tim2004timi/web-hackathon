@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from fulfillmentapp.models import Delivery, Product, Seller, Operator, ProductType
+from fulfillmentapp.models import Delivery, Product, Seller, Operator, ProductType, CallAssistant
 
 
 class DeliveryAdminForm(ModelForm):
@@ -63,6 +63,6 @@ class OperatorAdminForm(ModelForm):
 
 class AssistantAdminForm(ModelForm):
     class Meta:
-        model = Operator
+        model = CallAssistant
         exclude = ['telegram_chat_id']
 

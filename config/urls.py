@@ -19,9 +19,10 @@ from django.urls import path, include
 import config.settings as settings
 from django.conf.urls.static import static
 from fulfillmentapp.views import page_not_found_view
+from fulfillmentapp.panel_forms.admin_panel import admin_panel
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin_panel/', admin_panel.urls),
     path("", include("fulfillmentapp.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

@@ -46,6 +46,7 @@ def login_page_view(request: HttpRequest):
         r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         result = r.json()
 
+        #TODO: сделать вьюшку
         if not result['success']:
             return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
 
@@ -67,7 +68,7 @@ def login_page_view(request: HttpRequest):
             print(f"[INFO] Пользователь вошел")
 
             if user.is_superuser:
-                return redirect('/admin/')
+                return redirect('/admin_panel/')
 
             elif get_seller(user=user):
                 # return redirect('main-products')
@@ -76,7 +77,8 @@ def login_page_view(request: HttpRequest):
             elif get_operator(user=user):
                 # return redirect('operator-products')
                 return redirect('/admin/')
-
+            
+            #TODO: Добавить вьюшку
             return HttpResponse("<h1>Пользователь не найден</h1>")
 
         # Если пользователь не авторизовался
