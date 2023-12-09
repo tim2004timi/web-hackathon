@@ -46,7 +46,7 @@ def login_page_view(request: HttpRequest):
         r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         result = r.json()
 
-        #TODO: сделать вьюшку
+        # TODO: сделать вьюшку
         if not result['success']:
             return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
 
@@ -78,7 +78,7 @@ def login_page_view(request: HttpRequest):
                 # return redirect('operator-products')
                 return redirect('/operator_panel/')
             
-            #TODO: Добавить вьюшку
+            # TODO: Добавить вьюшку
             return HttpResponse("<h1>Пользователь не найден</h1>")
 
         # Если пользователь не авторизовался
