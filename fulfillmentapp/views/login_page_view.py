@@ -8,7 +8,9 @@ from fulfillmentapp.get_users import get_seller, get_operator
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv(".env.app")
+
 
 def login_page_view(request: HttpRequest):
     """View страницы авторизации login.html"""
@@ -44,8 +46,8 @@ def login_page_view(request: HttpRequest):
         r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         result = r.json()
 
-        # if not result['success']:
-        #     return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
+        if not result['success']:
+            return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
 
         # Получаем данные из формы авторизации
         username = request.POST.get('username')
@@ -72,7 +74,8 @@ def login_page_view(request: HttpRequest):
                 return redirect('/admin/')
 
             elif get_operator(user=user):
-                return redirect('operator-products')
+                # return redirect('operator-products')
+                return redirect('/admin/')
 
             return HttpResponse("<h1>Пользователь не найден</h1>")
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 
 
 class Operator(models.Model):
@@ -41,11 +41,20 @@ class Operator(models.Model):
         if not self.user:
             user = User.objects.create(
                 username=self.username,
-                email=self.username,
-                password=make_password(self.password)
+                email=f"{self.username}@example.ru",
+                password=make_password(self.password),
+                is_staff=True
             )
+            self.add_permissions_to_user(user)
             self.user = user
         super().save(*args, **kwargs)
+
+    @staticmethod
+    def add_permissions_to_user(user: User):
+        user.user_permissions.add(Permission.objects.get(codename="view_product"))
+        user.user_permissions.add(Permission.objects.get(codename="change_product"))
+        user.user_permissions.add(Permission.objects.get(codename="view_delivery"))
+        user.user_permissions.add(Permission.objects.get(codename="change_delivery"))
 
     def __str__(self):
         return self.username
