@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/index/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index/swiper.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/index/mediaquery.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <div class="header__top">
+            <div class="header__top" id="header__top1">
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item">
@@ -29,17 +30,65 @@
                 <a class="logo">
                     <img src="{% static 'img/index/Лого.png' %}" alt="logo" class="logo__img">
                 </a>
-                <a href="#contacti" class="contacts">Контакты</a>
-                <a href="{% url 'login' %}" class="signin__btn">Войти</a>
+                <div class="header__link-wrapper">
+                    <a href="#contacti" class="contacts">Контакты</a>
+                    <a href="{% url 'login' %}" class="signin__btn">Войти</a>
+                </div>    
+            </div>
+            <div class="header__top" id="header__top2">
+                <a class="logo">
+                    <img src="{% static 'img/index/logo 430.png' %}" alt="logo" class="logo__img">
+                </a>
+                <button class="menu__btn">
+                    <img src="{% static 'img/index/menu btn.svg' %}" alt="menu btn" class="menu__btn-img">
+                </button>  
             </div>
         </div>
+        <ul class="header__popup">
+            <li class="header__popup-item">
+                <a href="{% url 'login' %}" class="signin__btn">Войти</a>
+            </li>
+            <li class="header__popup-item">
+                <a href="#uslugi" class="header__popup-link">Услуги</a>
+            </li>
+            <li class="header__popup-item">
+                <a href="#cena" class="header__popup-link">Цены</a>
+            </li>
+            <li class="header__popup-item">
+                <a href="#contacti" class="header__popup-link">Контакты</a>
+            </li>
+        </ul>
     </header>
     <header class="header">
         <div class="container">
-            <div class="header__content">
-                <h1 class="header__title">ДОСТАВКА И УПАКОВКА<br>ДЛЯ МАРКЕТПЛЕЙСОВ</h1>
-                <p class="header__text"><b>FastWay</b> - это надёжный фулфилмент сервис. Мы осуществляем полный<br>комплекс услуг по логистике ваших товаров</p>
-                <a href="#contacti" class="application__btn btn">Оставить заявку</a>
+            <div class="header__content" id="header__content1">
+                <div class="header__content-wrapper">
+                    <div class="header__content-text">
+                        <h1 class="header__title">ДОСТАВКА И УПАКОВКА<br>ДЛЯ МАРКЕТПЛЕЙСОВ</h1>
+                        <p class="header__text"><b>FastWay</b> - это надёжный фулфилмент сервис. Мы осуществляем полный<br>комплекс услуг по логистике ваших товаров</p>
+                        <div class="application__wrapper">
+                            <a href="#contacti" class="application__btn btn">Оставить заявку</a>
+                        </div>    
+                    </div>
+                    <div class="header__content-img-wrapper">
+                        <img src="{% static 'img/index/header__content-img.png' %}" alt="header img" class="header__img">
+                    </div>    
+                </div>    
+                <div class="header__img-wrapper">
+                    <img src="{% static 'img/index/header__img.png' %}" alt="header img" class="header__img">
+                </div>
+            </div>
+            <div class="header__content" id="header__content2">
+                <div class="header__content-wrapper">
+                    <h1 class="header__title">ДОСТАВКА И УПАКОВКА<br>ДЛЯ МАРКЕТПЛЕЙСОВ</h1>
+                    <div class="header__content-img-wrapper">
+                        <img src="{% static 'img/index/header__content-img.png' %}" alt="header img" class="header__img">
+                    </div>
+                    <p class="header__text"><b>FastWay</b> - это надёжный фулфилмент сервис. Мы осуществляем полный<br>комплекс услуг по логистике ваших товаров</p>
+                    <div class="application__wrapper">
+                        <a href="#contacti" class="application__btn btn">Оставить заявку</a>
+                    </div>       
+                </div>    
                 <div class="header__img-wrapper">
                     <img src="{% static 'img/index/header__img.png' %}" alt="header img" class="header__img">
                 </div>
@@ -50,7 +99,7 @@
         <section class="work" id="uslugi">
             <div class="container">
                 <h2 class="work__title title">КАК МЫ РАБОТАЕМ?</h2>
-                <div class="work__items">
+                <div class="work__items" id="work__items1">
                     <div class="work__item">
                         <div class="work__content">
                             <p class="work__number">1</p>
@@ -88,12 +137,77 @@
                         </div>
                     </div>
                 </div>
+                <div class="work__items" id="work__items2">
+                    <div class="work__swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="work__item">
+                                    <div class="work__content">
+                                        <p class="work__info-title">ПРИЁМ ТОВАРА</p>
+                                        <p class="work__info-text">Мы заберём ваш товар с Садовода, ТЯК Москва или Южных ворот, либо вы можете привезти его сами. Если вы находитесь не в Москве, вы можете отправить нам товар любой транспортной компанией и мы его примем.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">  
+                                <div class="work__item">
+                                    <div class="work__content">
+                                        <div class="work__info">
+                                            <p class="work__info-title">ИНСПЕКЦИЯ ПОСТАВКИ</p>
+                                            <p class="work__info-text">Мы пересчитаем ваш товар и тщательно проверим каждую единицу на брак, убедимся что товарный вид и качество соответствуют всем стандартам.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">   
+                                <div class="work__item">
+                                    <div class="work__content">
+                                        <div class="work__info">
+                                            <p class="work__info-title">УПАКОВКА И ДОСТАВКА</p>
+                                            <p class="work__info-text">Поможем подобрать лучший тип упаковки для вашего товара, рассортируем, упакуем согласно всем требованиям маркетплейс, промаркируем,и доставим в кратчайшие сроки.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>    
+                        <div class="work__pagination"></div>
+                    </div>    
+                </div>
+            </div>
+        </section>
+        <section class="warehouse">
+            <div class="container">
+                <h2 class="warehouse__title title">НАШ СКЛАД</h2>
+                <div class="warehouse__swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="warehouse__img-wrapper">
+                                <img src="{% static 'img/index/warehouse-img1.png' %}" alt="warehouse img" class="warehouse__img-wrapper">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="warehouse__img-wrapper">
+                                <img src="{% static 'img/index/warehouse-img-2.png' %}" alt="warehouse img" class="warehouse__img-wrapper">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="warehouse__img-wrapper">
+                                <img src="{% static 'img/index/warehouse-img-3.png' %}" alt="warehouse img" class="warehouse__img-wrapper">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="warehouse__info-wrapper">
+                    <img class="warehouse__info-img" src="{% static 'img/index/warehouse-info-img.png' %}" alt="info img">
+                    <p class="warehouse__info-text">Москва, 1-й пр. Перова поля 5</p>
+                </div>
             </div>
         </section>
         <section class="price" id="cena">
             <div class="container">
                 <h2 class="price__title title">ЦЕНЫ</h2>
-                <div class="price__columns">
+                <div class="price__columns" id="price__columns1">
                     <div class="price__column">
                         <div class="price__item">
                             <p class="price__item-title">ТАРИФЫ FBO</p>
@@ -158,69 +272,192 @@
                         </div>
                     </div>
                 </div>
+                <div class="price__columns" id="price__columns2">
+                    <div class="price__column">
+                        <div class="price__item">
+                            <p class="price__item-title">ТАРИФЫ FBO</p>
+                            <p class="price__text">Тариф включает: приемку, пересчет, маркировку, внешняя визуальную проверку на брак, короба 40*40*60<br>
+                                8 - от 2000 шт (для товаров, которым требуется только маркировка, до 40 см по сумме сторон)</p>
+                            <div class="price__wrapper">
+                                <p class="price__price-number">от 1000 шт <span class="price__price-number--tochki">.....................................</span> <span class="price__price-number--cifri">17</span>₽</p>
+                                <p class="price__price-number">от 500 шт <span class="price__price-number--tochki">.......................................</span> <span class="price__price-number--cifri">23</span>₽</p>
+                                <p class="price__price-number">от 250 шт <span class="price__price-number--tochki">.......................................</span> <span class="price__price-number--cifri">29</span>₽</p>
+                                <p class="price__price-number">от 100 шт <span class="price__price-number--tochki">........................................</span> <span class="price__price-number--cifri">37</span>₽</p>
+                                <p class="price__price-number">от 1 шт <span class="price__price-number--tochki">..............................................</span> <span class="price__price-number--cifri">60</span>₽</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price__column"> 
+                        <div class="price__item">
+                            <p class="price__item-title">ТАРИФЫ FBS</p>
+                            <div class="price__wrapper">
+                                <p class="price__price-number">маркировка, доставка <span class="price__price-number--tochki">.......</span> <span class="price__price-number--cifri">15</span>₽</p>
+                                <p class="price__price-number">упаковка, маркировка, доставка <span class="price__price-number--tochki">..........................................</span><span class="price__price-number--cifri">23</span>₽</p>
+                            </div>
+                            <p class="price__item-title price__item-title--chranenie">ХРАНЕНИЕ</p>
+                            <div class="price__wrapper">
+                                <p class="price__price-number">сутки за 1 палету (16 коробов 60*40) <span class="price__price-number--tochki">............................................</span> <span class="price__price-number--cifri">300</span>₽</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price__column">
+                        <div class="price__item">
+                            <p class="price__item-title">УПАКОВКА</p>
+                            <div class="price__wrapper">
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">мупаковка в вашу тару</span><span class="price__price-number--tochki">...................</span><span class="price__price-number--cifri">3</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">вложение визитки / подарка </span><span class="price__price-number--tochki">.......</span><span class="price__price-number--cifri">3</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16"> дополнительный пересчет</span><span class="price__price-number--tochki">..........</span><span class="price__price-number--cifri">4</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">комплектовка набора</span><span class="price__price-number--tochki">.....................</span><span class="price__price-number--cifri">5</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">навес маркировка бирки / 2 - белая бирка</span><span class="price__price-number--tochki">......................................................</span><span class="price__price-number--cifri">5</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">сборка коробки / 2 - скотч</span><span class="price__price-number--tochki">.............</span><span class="price__price-number--cifri">7</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">детальная проверка товара</span><span class="price__price-number--tochki">.......</span> <span class="price__price-number--cifri">13</span>₽</p>
+                            </div>
+                            <p class="price__item-title price__item-title--content">КОНТЕНТ</p>
+                            <div class="price__wrapper">
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">самовыкуп с отзывом с живого аккаунта</span><span class="price__price-number--tochki">..........................................</span><span class="price__price-number--cifri">300</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">создание карточки товара</span><span class="price__price-number--tochki">.....</span><span class="price__price-number--cifri">700</span>₽</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">ведение личного кабинета один месяц</span><span class="price__price-number--tochki">.............................. </span><span class="price__price-number--cifri">15000</span>₽ + <span class="price__price-number--cifri">2</span>%</p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">> создание карточек товара</span></p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">> аналитика конкурентов, ведение поставок</span></p>
+                                <p class="price__price-number"><span class="price__price-number--fontsize16">> достройка внутренней и внешней рекламы</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application__wrapper">
+                        <button class="price-application__btn application__btn btn">Оставить заявку</button>
+                    </div> 
+                </div>
+            </div>    
+        </section>
+        <section class="price__popup-wrapper">
+            <div class="price-popup">
+                <div class="price-popup__header">
+                    <div class="price-popup__header-item">
+                        <img src="{% static 'img/index/price popup logo.png' %}" alt="price logo" class="price__popup-logo">
+                    </div>   
+                    <div class="price-popup__header-item">
+                        <button class="price-exit__btn">
+                            <img src="{% static 'img/index/exit__price-popup.png' %}" alt="" class="price-exit__btn-img">
+                        </button>
+                    </div>
+                </div>
+                <form class="price-popup__form" method="POST">
+                    {% csrf_token %}
+                    <div class="price__input-container">
+                        <div class="price-popup__input-wrapper">
+                            <p class="price-tel__input-text">Ваш номер телефона</p>
+                            <input type="text" class="price__input" name="phone_number" data-phone-pattern required>
+                        </div>
+                        <div class="price-popup__input-wrapper">
+                            <p class="price-mail__input-text">Почта</p>
+                            <input type="email" class="price__input" name="email" required>
+                        </div>
+                        <div class="price-popup__input-wrapper">
+                            <p class="price-product__input-text">Ваше имя</p>
+                            <input type="text" class="price__input footer__input--name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="price-application__btn-wrapper">
+                        <button type="submit" class="application__btn btn">Оставить заявку</button>
+                    </div>   
+                    <p class="price__subtext">Нажимая кнопку «Отправить» вы даете согласие на обработку ваших персональных данных</p>
+                </form>
             </div>
         </section>
     </main>
     <footer class="footer" id="contacti">
         <div class="container">
-            <div class="footer__booking">
-                <div class="footer__contacts">
-                    <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
-                    <div class="footer__items">
-                        <div class="footer__tel">
-                            <p class="footer__tel-text">Контактный телефон:</p>
-                            <a href="tel:+79999999999" class="footer__tel-link">+7 999 999 99 99</a>
+            <div class="footer__content" id="footer__content1">
+                <div class="footer__booking">
+                    <div class="footer__contacts">
+                        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+                        <div class="footer__items">
+                            <div class="footer__tel">
+                                <p class="footer__tel-text">Контактный телефон:</p>
+                                <a href="tel:+79999999999" class="footer__tel-link">+7 999 999 99 99</a>
+                            </div>
+                            <div class="footer__mail">
+                                <p class="footer__mail-text">Почта:</p>
+                                <a href="mailto:example@yandex.ru" class="footer__mail-link">example@yandex.ru</a>
+                            </div>
+                            <div class="footer__adress">
+                                <p class="footer__adress-text">Склад:</p>
+                                <p class="footer__adress-geo">Москва, 1-й пр. Перова поля 5</p>
+                            </div>
                         </div>
-                        <div class="footer__mail">
-                            <p class="footer__mail-text">Почта:</p>
-                            <a href="mailto:example@yandex.ru" class="footer__mail-link">example@yandex.ru</a>
+                        <div class="socials__container">
+                            <a href="https://t.me/FastWayNotification_bot" class="telegram__btn">
+                                <img src="{% static 'img/index/telegram__btn.png' %}" alt="telegram" class="telegram__img">
+                            </a>
+                            <a href="#" class="whatsapp__btn">
+                                <img src="{% static 'img/index/whatsapp__btn.png' %}" alt="whatsapp" class="whatsapp__img">
+                            </a>
+                            <a href="https://vk.com/alfa.timoha" class="vk__btn">
+                                <img src="{% static 'img/index/vk__btn.png' %}" alt="vk" class="vk__img">
+                            </a>
                         </div>
-                        <div class="footer__adress">
-                            <p class="footer__adress-text">Склад:</p>
-                            <p class="footer__adress-geo">Москва, 1-й пр. Перова поля 5</p>
+                    </div>
+                    <form class="footer__form" method="POST">
+                        {% csrf_token %}
+                        <h3 class="footer__form-title">СВЯЖИТЕСЬ С НАМИ</h3>
+                        <div class="footer__form-container">
+                            <div class="footer__input-wrapper">
+                                <p class="tel__input-text">Ваш номер телефона:</p>
+                                <input type="text" class="footer__input" name="phone_number" data-phone-pattern required>
+                            </div>
+                            <div class="footer__input-wrapper">
+                                <p class="mail__input-text">Почта:</p>
+                                <input type="email" class="footer__input" name="email" required>
+                            </div>
+                            <div class="footer__input-wrapper">
+                                <p class="product__input-text">Ваше имя:</p>
+                                <input type="text" class="footer__input footer__input--name" name="name" required>
+                            </div>
                         </div>
+                        <div class="footer-application__btn-wrapper">
+                            <button type="submit" class="footer-application__btn btn">Оставить заявку</button>
+                        </div>    
+                    </form>
+                </div>
+                <div class="footer__logo-wrapper">
+                    <a class="footer__logo">
+                        <img src="{% static 'img/index/logo__footer.png' %}" alt="logo" class="footer__logo-img">
+                    </a>
+                </div>  
+            </div>
+            <div class="footer__content" id="footer__content2">
+                <div class="footer__wrapper">
+                    <div class="footer__tel-wrapper">
+                        <p class="footer__tel-text">Контактный телефон:</p>
+                        <a href="tel:+79999999999" class="footer__tel-link">+7 999 999 99 99</a>
                     </div>
                     <div class="socials__container">
                         <a href="https://t.me/FastWayNotification_bot" class="telegram__btn">
-                            <img src="{% static 'img/index/telegram__btn.png' %}" alt="telegram" class="telegram__img">
+                            <img src="{% static 'img/index/footer telegram 430.png' %}" alt="telegram" class="footer__content-telegram__img">
                         </a>
                         <a href="#" class="whatsapp__btn">
-                            <img src="{% static 'img/index/whatsapp__btn.png' %}" alt="whatsapp" class="whatsapp__img">
+                            <img src="{% static 'img/index/footer whatsapp 430.png' %}" alt="whatsapp" class="footer__content-whatsapp__img">
                         </a>
                         <a href="https://vk.com/alfa.timoha" class="vk__btn">
-                            <img src="{% static 'img/index/vk__btn.png' %}" alt="vk" class="vk__img">
+                            <img src="{% static 'img/index/footer vk 430.png' %}" alt="vk" class="footer__content-vk__img">
                         </a>
                     </div>
                 </div>
-                <form class="footer__form" method="POST">
-                    {% csrf_token %}
-                    <h3 class="footer__form-title">СВЯЖИТЕСЬ С НАМИ</h3>
-                    <div class="footer__form-container">
-                        <div class="footer__input-wrapper">
-                            <p class="tel__input-text">Ваш номер телефона:</p>
-                            <input type="text" class="footer__input" name="phone_number" data-phone-pattern required>
-                        </div>
-                        <div class="footer__input-wrapper">
-                            <p class="mail__input-text">Почта:</p>
-                            <input type="email" class="footer__input" name="email" required>
-                        </div>
-                        <div class="footer__input-wrapper">
-                            <p class="product__input-text">Ваше имя:</p>
-                            <input type="text" class="footer__input footer__input--name" name="name" required>
-                        </div>
+                <div class="footer__wrapper">
+                    <div class="footer__mail-wrapper">
+                        <p class="footer__mail-text">Почта:</p>
+                        <a href="mailto:hakaton.com" class="footer__mail-link">hakaton.com</a>
                     </div>
-                    <div class="footer-application__btn-wrapper">
-                        <button type="submit" class="footer-application__btn btn">Оставить заявку</button>
-                    </div>    
-                </form>
+                    <div class="footer__logo-wrapper">
+                        <a class="footer__logo">
+                            <img src="{% static 'img/index/footer logo 430.png' %}" alt="logo" class="footer__content__logo-img">
+                        </a>
+                    </div>  
+                </div>
             </div>
-            <div class="footer__logo-wrapper">
-                <a class="footer__logo">
-                    <img src="{% static 'img/index/logo__footer.png' %}" alt="logo" class="footer__logo-img">
-                </a>
-            </div>    
         </div>
     </footer>
-    <script src="../../static/js/index/main.js"></script>
+    <script src="{% static 'js/index/swiper.min.js' %}"></script>
+    <script src="{% static 'js/index/main.js' %}"></script>
 </body>
 </html>

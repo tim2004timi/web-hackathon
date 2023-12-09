@@ -23,7 +23,7 @@
               });
             });
          </script>
-        <section class="booking">
+        <section class="booking" id="booking1">
             <div class="container">
                 <div class="booking__wrapper">
                     <div class="back-btn__container">
@@ -48,6 +48,30 @@
                 </div>    
             </div>
         </section>
+        <!-- <section class="login" id="booking2">
+            <div class="container">
+                <div class="login__header">
+                    <div class="price-login__header-item">
+                        <img src="{% static 'img/index/header logo 430.png' %}" alt="login logo" class="login-logo">
+                    </div>   
+                    <div class="login-__header-item">
+                        <button class="login-exit__btn">
+                            <img src="{% static 'img/index/exit img.svg' %}" alt="login exit" class="login-exit__btn-img">
+                        </button>
+                    </div>
+                </div>
+                <form class="login__form" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="login__input" placeholder="логин" name="username">
+                    <input type="password" class="login__input" placeholder="пароль" name="password">
+                    {% if error %}
+                    <p class="invalid-text">Неверный логин или пароль</p>
+                    {% endif %}
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <button type="submit" class="signin__btn">войти</button>
+                </form>
+            </div>
+        </section> -->
     </main>
 </body>
 </html>

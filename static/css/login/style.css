@@ -30,6 +30,9 @@ a{
     top: 50%;
     transform: translate(0, -50%);
 }
+#booking2{
+    display: none;
+}
 .back-btn__container{
     position: absolute;
     top: 37px;
