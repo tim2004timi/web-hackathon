@@ -41,24 +41,6 @@ class ProductAdminForm(ModelForm):
         exclude = ["seller"]
 
 
-class DeliveryAdminForm(ModelForm):
-    class Meta:
-        model = Delivery
-        exclude = ["seller"]
-
-    def __init__(self, *args, **kwargs):
-        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
-        # Ограничиваем выбор Product только незанятыми объектами
-        try:
-            self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
-        except Exception as e:
-            print(e)
-
-    def save_model(self, request, obj, form, change):
-        obj.seller = request.user.seller
-        super().save_model(request, obj, form, change)
-
-
 class SellerAdminForm(ModelForm):
     class Meta:
         model = Seller
