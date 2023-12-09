@@ -1,46 +1,62 @@
 """
 Модуль с классами для редактирования админ панели
 """
+from typing import Any
+
 from django.contrib import admin
-from django.forms import ModelForm
-from django.contrib.auth.models import User, Group
+from django.db.models.query import QuerySet
+from django.contrib.auth.models import Group, User
+from django.http.request import HttpRequest
+from django.utils.html import format_html
 
-from .models import Seller, Operator, Product, CallAssistant, Delivery
+from .get_users import get_seller
 
-
-class ProductAdminForm(ModelForm):
-    class Meta:
-        model = Product
-        exclude = []
+from .forms import *
+from .models import Seller, Operator, CallAssistant
 
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ("article", "name", "size", "color", "numbers", "seller", "time_created", "status", "delivery")
+    list_display = ("name", "article", "color", "numbers", "seller", "colored_status", "delivery")
     search_fields = ["article", "name", "size", "color", "numbers", "status"]
+    list_filter = ["status"]
 
+    def colored_status(self, obj):
+        # Замените 'В пути до нас' на тот статус, который вам нужно выделить красным
+        return format_html('<span style="{}">{}</span>', obj.get_button_style(), obj.status)
 
-class DeliveryAdminForm(ModelForm):
-    class Meta:
-        model = Delivery
-        exclude = ["seller"]
+    colored_status.short_description = 'Статус'
 
-    def __init__(self, *args, **kwargs):
-        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
-        # Ограничиваем выбор Product только незанятыми объектами
-        self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
+    def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
+        # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
+        if get_seller(request.user):
+            return super().get_queryset(request).filter(seller=request.user.username)
+        else:
+            return super().get_queryset(request)
 
 
 class DeliveryAdmin(admin.ModelAdmin):
-    form = DeliveryAdminForm
-    list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode", "wrapper_barcode", "bill")
+    list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode",
+                    "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
 
-
-class SellerAdminForm(ModelForm):
-    class Meta:
-        model = Seller
-        exclude = ['user', "telegram_chat_id"]
+    def get_form(self, request, obj=None, form=None, **kwargs):
+        if request.user.is_superuser:
+            form = DeliveryAdminForm
+        elif obj.product.status == "Ожидает заявку на отгрузку":
+            form = AdminWaitingDeliveryForm
+        elif obj.product.status == "В процессе подтверждения":
+            form = AdminWaitingConfirmForm
+        elif obj.product.status == "Ожидает штрихкод для тары":
+            form = AdminWaitingWrapperBarcodeForm
+        return form
+    
+    def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
+        # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
+        if get_seller(request.user):
+            return super().get_queryset(request).filter(seller=request.user.username)
+        else:
+            return super().get_queryset(request)
 
 
 class SellerAdmin(admin.ModelAdmin):
@@ -49,22 +65,10 @@ class SellerAdmin(admin.ModelAdmin):
     search_fields = ["name", "last_name", "username", "email", "telegram"]
 
 
-class OperatorAdminForm(ModelForm):
-    class Meta:
-        model = Operator
-        exclude = ['user']
-
-
 class OperatorAdmin(admin.ModelAdmin):
     form = OperatorAdminForm
     list_display = ('username', 'password')
     search_fields = ['username']
-
-
-class AssistantAdminForm(ModelForm):
-    class Meta:
-        model = Operator
-        exclude = ['telegram_chat_id']
 
 
 class AssistantAdmin(admin.ModelAdmin):

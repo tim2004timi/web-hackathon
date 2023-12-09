@@ -3,15 +3,20 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
-import setting_secrets
 from fulfillmentapp.get_users import get_seller, get_operator
+
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv(".env.app")
 
 
 def login_page_view(request: HttpRequest):
     """View страницы авторизации login.html"""
 
     # Ключ для reCAPTCHA
-    recaptcha_site_key = {"site_key": setting_secrets.RECAPTCHA_SITE_KEY}
+    recaptcha_site_key = {"site_key": os.getenv("RECAPTCHA_SITE_KEY")}
 
     if request.method == "GET":
         user = request.user
@@ -35,7 +40,7 @@ def login_page_view(request: HttpRequest):
         # Верификация reCAPTCHA
         recaptcha_response = request.POST.get('g-recaptcha-response')
         data = {
-            'secret': setting_secrets.RECAPTCHA_SECRET_KEY,
+            'secret': os.getenv("RECAPTCHA_SECRET_KEY"),
             'response': recaptcha_response
         }
         r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
@@ -66,9 +71,11 @@ def login_page_view(request: HttpRequest):
 
             elif get_seller(user=user):
                 return redirect('main-products')
+                return redirect('/admin/')
 
             elif get_operator(user=user):
                 return redirect('operator-products')
+                return redirect('/admin/')
 
             return HttpResponse("<h1>Пользователь не найден</h1>")
 

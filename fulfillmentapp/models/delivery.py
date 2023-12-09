@@ -48,24 +48,28 @@ class Delivery(models.Model):
     car_number = models.CharField(blank=True, null=True, max_length=20, verbose_name="Номер авто")
     date = models.DateField(blank=True, null=True, verbose_name="Дата")
     time_created = models.DateTimeField(auto_now_add=True)
-    label = models.BinaryField(default=None,
-                               null=True,
-                               blank=True,
-                               editable=True,
-                               verbose_name="Этикетка")
-    marketplace_barcode = models.BinaryField(null=True,
-                                             editable=True,
-                                             verbose_name="Штрих-код для маркетплейса")
-    wrapper_barcode = models.BinaryField(default=None,
-                                         null=True,
-                                         blank=True,
-                                         editable=True,
-                                         verbose_name="Штрих-код для тары")
-    bill = models.BinaryField(default=None,
-                              null=True,
-                              blank=True,
-                              editable=True,
-                              verbose_name="Счет")
+    label = models.FileField(default=None,
+                             upload_to="labels/",
+                             null=True,
+                             blank=True,
+                             editable=True,
+                             verbose_name="Этикетка")
+    marketplace_barcode = models.FileField(null=True,
+                                           upload_to="marketplace_barcodes/",
+                                           editable=True,
+                                           verbose_name="Штрих-код для маркетплейса")
+    wrapper_barcode = models.FileField(default=None,
+                                       upload_to="tare_barcodes/",
+                                       null=True,
+                                       blank=True,
+                                       editable=True,
+                                       verbose_name="Штрих-код для тары")
+    bill = models.FileField(default=None,
+                            upload_to="bills/",
+                            null=True,
+                            blank=True,
+                            editable=True,
+                            verbose_name="Счет")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()

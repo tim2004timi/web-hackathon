@@ -7,3 +7,5 @@ __*
 venv
 *.log
 setting_secrets.py
+media
+.venv

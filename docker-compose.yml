@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres
+    env_file:
+      - ./.env.db
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./var/psql/data:/var/lib/postgresql/data  
+    restart: always
+  web:  
+    build: .
+    volumes:
+      - ./static:/var/web/staticfiles
+      - ./media:/var/web/mediafiles
+    command: gunicorn --bind 0.0.0.0:8000 config.wsgi
+    env_file:
+      - ./.env.app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./static:/var/web/staticfiles
+      - ./media:/var/web/mediafiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+    restart: always
+volumes:
+  data:
+  static:
+  media:
