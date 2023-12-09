@@ -24,14 +24,28 @@ def main_product_slug_page_view(request: HttpRequest, product_slug: str):
 
             delivery = Delivery.objects.create(product=product, seller=seller)
 
-            try:
-                delivery.marketplace_barcode = request.FILES["marketplace_barcode"].read()
-            except Exception as e:
-                print(e)
-            try:
-                delivery.label = request.FILES["label"].read()
-            except Exception:
-                pass
+            # try:
+            #     delivery.marketplace_barcode = request.FILES.get["marketplace_barcode"].read()
+            #     print(delivery.marketplace_barcode)
+            # except Exception as e:
+            #     print("Exception", e)
+            # try:
+            #     delivery.label = request.FILES["label"].read()
+            # except Exception:
+            #     pass
+
+            # Обработка marketplace_barcode
+            print(request.FILES)
+            marketplace_barcode_file = request.FILES.get('marketplace_barcode')
+            if marketplace_barcode_file:
+                print(type(marketplace_barcode_file))
+                delivery.marketplace_barcode.save(marketplace_barcode_file.name, marketplace_barcode_file)
+
+            # Обработка label
+            label_file = request.FILES.get('label')
+            if label_file:
+                print(type(label_file))
+                delivery.label.save(label_file.name, label_file)
 
             delivery.save()
             product.status = "В процессе подтверждения"
