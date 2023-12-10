@@ -120,6 +120,9 @@
         margin-bottom: 5px;
         font-size: 20px;
     }
+    .footer__logo-img{
+        height: 160px;
+    }
 }
 @media (max-width: 1280px) {
     body{
@@ -234,6 +237,9 @@
     }
     .footer-application__btn{
         font-size: 18px;
+    }
+    .footer__logo-img{
+        height: 140px;
     }
 }
 @media (max-width: 1103px) {
@@ -536,8 +542,9 @@
         background: rgba(255, 255, 255, 0.30);
         backdrop-filter: blur(1.5px);
         width: 86vw;
-        height: 29px;
-        font-size: 24px
+        height: 34px;
+        font-size: 24px;
+        padding-left: 10px;
     }
     .price-application__btn-wrapper{
         text-align: center;

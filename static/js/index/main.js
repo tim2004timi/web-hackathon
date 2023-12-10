@@ -58,7 +58,7 @@ headerPopupLink.forEach((btn) => {
 
 const workSwiper = new Swiper('.work__swiper', {
     direction: 'horizontal',
-    loop: false,
+    loop: true,
     spaceBetween: 35,
   
     pagination: {

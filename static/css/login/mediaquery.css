@@ -100,7 +100,7 @@
         padding-left: 10px;
     }
     .login__input + .login__input{
-        margin: 20px 0 50px;
+        margin: 20px 0 80px;
     }
     .invalid-text{
         margin-bottom: 10px;
@@ -113,12 +113,5 @@
         padding: 15px;
         background: linear-gradient(270deg, #5341C5 0%, #14BBFD 87.83%);
         margin-bottom: 29px;
-    }
-    .login__subtext{
-        font-size: 16px;
-        font-weight: 300;
-        line-height: normal;
-        text-align: center;
-        color: #000;
     }
 }
