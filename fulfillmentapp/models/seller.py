@@ -1,6 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 
 
 class Seller(models.Model):
@@ -66,10 +66,26 @@ class Seller(models.Model):
             user = User.objects.create(
                 username=self.username,
                 email=self.email,
-                password=make_password(self.password)
+                password=make_password(self.password),
+                is_staff=True
             )
+            self.add_permissions_to_user(user)
             self.user = user
         super().save(*args, **kwargs)
+
+    @staticmethod
+    def add_permissions_to_user(user: User):
+        user.user_permissions.add(Permission.objects.get(codename="add_product"))
+        user.user_permissions.add(Permission.objects.get(codename="view_product"))
+        user.user_permissions.add(Permission.objects.get(codename="change_product"))
+
+        user.user_permissions.add(Permission.objects.get(codename="add_delivery"))
+        user.user_permissions.add(Permission.objects.get(codename="view_delivery"))
+        user.user_permissions.add(Permission.objects.get(codename="change_delivery"))
+
+        user.user_permissions.add(Permission.objects.get(codename="add_producttype"))
+        user.user_permissions.add(Permission.objects.get(codename="view_producttype"))
+        user.user_permissions.add(Permission.objects.get(codename="change_producttype"))
 
     def __str__(self):
         return self.username

@@ -1,20 +1,20 @@
 from django.forms import ModelForm
 
-from fulfillmentapp.models import Delivery, Product, Seller, Operator
+from fulfillmentapp.models import Delivery, Product, Seller, Operator, ProductType, CallAssistant
 
 
 class DeliveryAdminForm(ModelForm):
     class Meta:
         model = Delivery
-        exclude = ["seller"]
+        exclude = []
 
-    def __init__(self, *args, **kwargs):
-        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
-        # Ограничиваем выбор Product только незанятыми объектами
-        try:
-            self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
-        except Exception as e:
-            print(e)
+    # def __init__(self, *args, **kwargs):
+    #     super(DeliveryAdminForm, self).__init__(*args, **kwargs)
+    #     # Ограничиваем выбор Product только незанятыми объектами
+    #     try:
+    #         self.fields['product'].queryset = Product.objects.filter(delivery__isnull=True)
+    #     except Exception as e:
+    #         print(e)
 
 
 class AdminWaitingDeliveryForm(DeliveryAdminForm):
@@ -38,7 +38,13 @@ class AdminWaitingWrapperBarcodeForm(DeliveryAdminForm):
 class ProductAdminForm(ModelForm):
     class Meta:
         model = Product
-        exclude = ["seller"]
+        exclude = []
+
+
+class ProductTypeAdminForm(ModelForm):
+    class Meta:
+        model = ProductType
+        exclude = []
 
 
 class SellerAdminForm(ModelForm):
@@ -57,6 +63,6 @@ class OperatorAdminForm(ModelForm):
 
 class AssistantAdminForm(ModelForm):
     class Meta:
-        model = Operator
+        model = CallAssistant
         exclude = ['telegram_chat_id']
 

@@ -17,46 +17,53 @@ from .models import Seller, Operator, CallAssistant
 
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ("name", "article", "color", "numbers", "seller", "colored_status", "delivery")
-    search_fields = ["article", "name", "size", "color", "numbers", "status"]
-    list_filter = ["status"]
+    list_display = ("product_type", "status")
+    search_fields = ["product_type", "status"]
+    list_filter = ["product_type", "status"]
 
-    def colored_status(self, obj):
-        # Замените 'В пути до нас' на тот статус, который вам нужно выделить красным
-        return format_html('<span style="{}">{}</span>', obj.get_button_style(), obj.status)
+    # def colored_status(self, obj):
+    #     # Замените 'В пути до нас' на тот статус, который вам нужно выделить красным
+    #     return format_html('<span style="{}">{}</span>', obj.get_button_style(), obj.status)
+    #
+    # colored_status.short_description = 'Статус'
+    #
+    # def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
+    #     # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
+    #     if get_seller(request.user):
+    #         return super().get_queryset(request).filter(seller=request.user.username)
+    #     else:
+    #         return super().get_queryset(request)
 
-    colored_status.short_description = 'Статус'
 
-    def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
-        # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
-        if get_seller(request.user):
-            return super().get_queryset(request).filter(seller=request.user.username)
-        else:
-            return super().get_queryset(request)
+class ProductTypeAdmin(admin.ModelAdmin):
+    form = ProductTypeAdminForm
+    list_display = ("name", "article")
+    search_fields = ["name", "article"]
+    list_filter = ["name", "article"]
 
 
 class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ("product", "seller", "address", "date", "driver_fio", "label", "marketplace_barcode",
+    list_display = ("address", "date", "driver_fio", "label", "marketplace_barcode",
                     "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
 
-    def get_form(self, request, obj=None, form=None, **kwargs):
-        if request.user.is_superuser:
-            form = DeliveryAdminForm
-        elif obj.product.status == "Ожидает заявку на отгрузку":
-            form = AdminWaitingDeliveryForm
-        elif obj.product.status == "В процессе подтверждения":
-            form = AdminWaitingConfirmForm
-        elif obj.product.status == "Ожидает штрихкод для тары":
-            form = AdminWaitingWrapperBarcodeForm
-        return form
-    
-    def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
-        # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
-        if get_seller(request.user):
-            return super().get_queryset(request).filter(seller=request.user.username)
-        else:
-            return super().get_queryset(request)
+    # def get_form(self, request, obj=None, form=None, **kwargs):
+    #     if request.user.is_superuser:
+    #         form = DeliveryAdminForm
+    #     elif obj.product.status == "Ожидает заявку на отгрузку":
+    #         form = AdminWaitingDeliveryForm
+    #     elif obj.product.status == "В процессе подтверждения":
+    #         form = AdminWaitingConfirmForm
+    #     elif obj.product.status == "Ожидает штрихкод для тары":
+    #         form = AdminWaitingWrapperBarcodeForm
+    #     return form
+    #
+    # def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
+    #     # Получаем набор данных конкретно для продавца, для админов и операторов набор данных не фильтруется
+    #     if get_seller(request.user):
+    #         return super().get_queryset(request).filter(seller=request.user.username)
+    #     else:
+    #         return super().get_queryset(request)
 
 
 class SellerAdmin(admin.ModelAdmin):
@@ -67,8 +74,8 @@ class SellerAdmin(admin.ModelAdmin):
 
 class OperatorAdmin(admin.ModelAdmin):
     form = OperatorAdminForm
-    list_display = ('username', 'password')
-    search_fields = ['username']
+    list_display = ('username', 'name', 'last_name', 'email')
+    search_fields = ['username', 'name', 'last_name']
 
 
 class AssistantAdmin(admin.ModelAdmin):
@@ -78,11 +85,12 @@ class AssistantAdmin(admin.ModelAdmin):
 
 
 # Добавляем модели на админ модель
-admin.site.register(Operator, OperatorAdmin)
-admin.site.register(Seller, SellerAdmin)
-admin.site.register(CallAssistant, AssistantAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(Delivery, DeliveryAdmin)
+# admin.site.register(Operator, OperatorAdmin)
+# admin.site.register(Seller, SellerAdmin)
+# admin.site.register(CallAssistant, AssistantAdmin)
+# admin.site.register(Product, ProductAdmin)
+# admin.site.register(ProductType, ProductTypeAdmin)
+# admin.site.register(Delivery, DeliveryAdmin)
 
 # Убираем модель User и Group
 admin.site.unregister(User)

@@ -72,14 +72,24 @@ class Product(models.Model):
         'Оплата подтверждена': '',
     }
 
-    article = models.AutoField(primary_key=True, verbose_name="Артикль")
-    name = models.CharField(default=None, max_length=30, verbose_name="Название")
-    size = models.CharField(default=None, max_length=30, verbose_name="Размер (20*20*30)")
-    color = models.CharField(default=None, max_length=30, verbose_name="Цвет")
-    numbers = models.IntegerField(default=1, verbose_name="Кол-во")
-    seller = models.ForeignKey("Seller", on_delete=models.CASCADE, related_name="products", verbose_name="Продавец")
+    product_type = models.ForeignKey("ProductType",
+                                     on_delete=models.CASCADE,
+                                     related_name="products",
+                                     verbose_name="Тип товара")
     status = models.CharField(max_length=40, default="В пути до нас", choices=STATUSES, verbose_name="Статус")
-    time_created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    delivery = models.ForeignKey("Delivery",
+                                 on_delete=models.CASCADE,
+                                 blank=True,
+                                 null=True,
+                                 default=None,
+                                 related_name="products",
+                                 verbose_name="Отгрузка")
+    seller = models.ForeignKey("Seller",
+                               on_delete=models.CASCADE,
+                               null=True,
+                               default=None,
+                               related_name="products",
+                               verbose_name="Продавец")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -107,8 +117,14 @@ class Product(models.Model):
         else:
             return ""
 
+    def save(self, *args, **kwargs):
+        """Переопределение функции для добавления seller"""
+        if not self.seller:
+            self.seller = self.product_type.seller
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return self.product_type.name
 
     class Meta:
         verbose_name = "Товар"

@@ -30,8 +30,11 @@ class Operator(models.Model):
                                 blank=True,
                                 related_name="operator")
 
-    username = models.CharField(max_length=20, primary_key=True, unique=True, verbose_name="Логин")
-    password = models.CharField(max_length=20, verbose_name="Пароль")
+    name = models.CharField(max_length=30, verbose_name="Имя")
+    last_name = models.CharField(max_length=30, verbose_name="Фамилия")
+    email = models.EmailField(default=None, verbose_name="Почта")
+    username = models.CharField(max_length=30, primary_key=True, unique=True, verbose_name="Логин")
+    password = models.CharField(max_length=30, verbose_name="Пароль")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -41,7 +44,7 @@ class Operator(models.Model):
         if not self.user:
             user = User.objects.create(
                 username=self.username,
-                email=f"{self.username}@example.ru",
+                email=self.email,
                 password=make_password(self.password),
                 is_staff=True
             )
@@ -53,8 +56,12 @@ class Operator(models.Model):
     def add_permissions_to_user(user: User):
         user.user_permissions.add(Permission.objects.get(codename="view_product"))
         user.user_permissions.add(Permission.objects.get(codename="change_product"))
+
         user.user_permissions.add(Permission.objects.get(codename="view_delivery"))
         user.user_permissions.add(Permission.objects.get(codename="change_delivery"))
+
+        user.user_permissions.add(Permission.objects.get(codename="view_producttype"))
+        user.user_permissions.add(Permission.objects.get(codename="change_producttype"))
 
     def __str__(self):
         return self.username
