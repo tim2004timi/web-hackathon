@@ -99,34 +99,11 @@ class ProductType(models.Model):
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
 
-    # def get_absolute_url(self):
-    #     return reverse("product-slug", kwargs={"product_slug": f"product-{self.article}"})
-    #
-    # def get_absolute_operator_url(self):
-    #     return reverse("operator-slug", kwargs={"product_slug": f"product-{self.article}"})
-    #
-    # def get_circle_style(self):
-    #     return self.CIRCLE_COLORS_STYLES[self.status]
-    #
-    # def get_button_text(self):
-    #     return self.BUTTONS[self.status]
-    #
-    # def get_button_style(self):
-    #     return self.BUTTON_COLORS_STYLES[self.status]
-    #
-    # def get_button_for_operator(self):
-    #     if self.status == "В пути до нас":
-    #         return "Подтвердить получение"
-    #     elif self.status == "В процессе подтверждения":
-    #         return "Вписать данные отгрузки"
-    #     else:
-    #         return ""
-
     def __str__(self):
         return self.name
 
-    def available_count(self):
-        return ProductType.products.filter(~Q(status="Ожидает заявку на отгрузку")).count()
+    def available_count(self, product_type):
+        return ProductType.objects.filter(product_type=product_type, products__status="Ожидает заявку на отгрузку").count()
 
     class Meta:
         verbose_name = "Тип товара"

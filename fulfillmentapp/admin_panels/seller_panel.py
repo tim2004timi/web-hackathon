@@ -1,6 +1,7 @@
 from copy import deepcopy
 
 from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.utils.html import format_html
 
 from fulfillmentapp.admin_panels.seller_forms import ProductAdminForm, ProductTypeAdminForm, WaitingDeliveryAdminForm
@@ -22,7 +23,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("product_type", "status")
     search_fields = ["product_type", "status"]
     list_filter = []
-    # autocomplete_fields = ("status",)
 
     def save_model(self, request, obj, form, change):
         # Устанавливаем seller из текущего пользователя при создании объекта
@@ -73,32 +73,28 @@ class DeliveryAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         # Устанавливаем seller из текущего пользователя при создании объекта
-        obj.seller = request.user.seller
-
-        products = obj.products
-        if products and products.first().status == "Ожидает заявку на отгрузку":
+        if obj is not None:
             amount = form.cleaned_data.get("amount")
-            # products = а !!!!!!!!!
+            if amount < 1 or amount > obj.product_type.available_count():
+                raise ValidationError("Не допустимое число")
 
-            Product.objects.bulk_create(products)
-            products.all().update(status="В процессе подтверждения")
-
+        #     products = products.objects.filter(product_type=obj, status="Ожидает заявку на отгрузку")[:amount]
+        #     products.update(status="В процессе подтверждения", delivery=obj)
+        #
+        obj.seller = request.user.seller
         obj.save()
 
     def name(self, obj):
         return obj
 
     def get_form(self, request, obj=None, **kwargs):
-        if obj is None or obj.products:
+        if obj:
             form = deepcopy(WaitingDeliveryAdminForm)
-            form.base_fields["amount"].label = f"Кол-во (доступно {obj.product_type.available_count()} шт)"
+            form.base_fields["amount"].label = f"Кол-во (доступно {obj.available_count()} шт)"
             return form
-            # return super().get_form(request, obj, **kwargs)
+        else:
+            return super().get_form(request, obj, **kwargs)
 
-        # if obj.products.first().status == "Ожидает заявку на отгрузку":
-        #     form = deepcopy(WaitingDeliveryAdminForm)
-        #     form.amount.label = f"Кол-во (доступно {obj.product_type.avaible_count} шт)"
-        #     return form
 
     name.short_description = "Название"
 

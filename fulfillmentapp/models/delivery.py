@@ -83,7 +83,7 @@ class Delivery(models.Model):
         super().save(*args, **kwargs)
 
     def available_count(self):
-        return self.product_type.available_count()
+        return self.product_type.available_count(self)
 
     def __str__(self):
         return f"Отгрузка ({self.product_type})"
