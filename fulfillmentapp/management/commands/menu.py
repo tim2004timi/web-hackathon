@@ -10,6 +10,7 @@ from telegram import (
 from typing import Type
 import logging
 from .db_queries_wrapper import get_products_by_telegram_chat_id
+from .auth_user import check_auth
 
 class bot_menu:
     def __init__(self):
@@ -53,6 +54,8 @@ class bot_menu:
         )
         
     async def show_menu(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        if not await check_auth(update=update):
+            return self.END
         """Отображение начального состояния меню"""
         keyboard = [
             [

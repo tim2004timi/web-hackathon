@@ -31,3 +31,11 @@ async def auth_user(user: Model, update: Update, message_if_first_auth: str) -> 
     if not await get_telegram_chat_id(user=user, chat_id=message.chat_id):
         await set_telegram_chat_id(user=user, chat_id=message.chat_id)
         await message.reply_text(message_if_first_auth)
+        
+async def check_auth(update: Update) -> bool:
+    """Проверка авторизации пользователя"""
+    message = update.message
+    if not await get_user_by_telegram(tg_username=message.from_user.name, model=Seller):
+        await message.reply_text("Вы не авторизированы в системе!")
+        return False
+    return True

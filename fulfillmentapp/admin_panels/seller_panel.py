@@ -99,6 +99,6 @@ class DeliveryAdmin(admin.ModelAdmin):
     name.short_description = "Название"
 
 
-seller_panel.register(Product, ProductAdmin)
+#seller_panel.register(Product, ProductAdmin)
 seller_panel.register(ProductType, ProductTypeAdmin)
 seller_panel.register(Delivery, DeliveryAdmin)
