@@ -79,6 +79,9 @@ class Product(models.Model):
     status = models.CharField(max_length=40, default="В пути до нас", choices=STATUSES, verbose_name="Статус")
     delivery = models.ForeignKey("Delivery",
                                  on_delete=models.CASCADE,
+                                 blank=True,
+                                 null=True,
+                                 default=None,
                                  related_name="products",
                                  verbose_name="Отгрузка")
     seller = models.ForeignKey("Seller",

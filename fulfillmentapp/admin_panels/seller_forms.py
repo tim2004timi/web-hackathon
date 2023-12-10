@@ -6,18 +6,18 @@ from fulfillmentapp.models import Product, ProductType
 class ProductAdminForm(ModelForm):
     class Meta:
         model = Product
-        exclude = []
+        exclude = ["seller", "delivery"]
 
 
 class ProductTypeAdminForm(ModelForm):
     class Meta:
         model = ProductType
-        exclude = []
+        exclude = ["seller"]
 
 
 class DeliveryAdminForm(ModelForm):
     class Meta:
         model = ProductType
-        exclude = []
+        exclude = ["seller"]
 
 

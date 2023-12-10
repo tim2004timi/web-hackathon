@@ -6,7 +6,7 @@ from fulfillmentapp.models import Product, Seller, Operator, CallAssistant, Prod
 class ProductAdminForm(ModelForm):
     class Meta:
         model = Product
-        exclude = []
+        exclude = ["delivery"]
 
 
 class ProductTypeAdminForm(ModelForm):

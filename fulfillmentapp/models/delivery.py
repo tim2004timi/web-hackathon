@@ -68,6 +68,10 @@ class Delivery(models.Model):
                                default=None,
                                related_name="deliveries",
                                verbose_name="Продавец")
+    product_type = models.ForeignKey("ProductType",
+                                     on_delete=models.CASCADE,
+                                     related_name="deliveries",
+                                     verbose_name="Тип товара")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -79,7 +83,7 @@ class Delivery(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Отгрузка ({self.products.product_type})"
+        return f"Отгрузка ({self.product_type})"
 
     class Meta:
         verbose_name = "Отгрузка"

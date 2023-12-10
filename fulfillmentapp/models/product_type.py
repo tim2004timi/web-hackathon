@@ -74,7 +74,7 @@ class ProductType(models.Model):
 
     article = models.CharField(default=None,
                                max_length=30,
-                               verbose_name="Артикль с маркетплейса")
+                               verbose_name="Артикул маркетплейса")
     name = models.CharField(default=None,
                             max_length=30,
                             verbose_name="Название")
@@ -86,7 +86,7 @@ class ProductType(models.Model):
     size = models.CharField(default=None,
                             max_length=30,
                             verbose_name="Размер (20*20*30)")
-    weight = models.IntegerField(default=1000,
+    weight = models.IntegerField(default=1,
                                  verbose_name="Вес (кг)")
     seller = models.ForeignKey("Seller",
                                on_delete=models.CASCADE,
@@ -126,4 +126,4 @@ class ProductType(models.Model):
 
     class Meta:
         verbose_name = "Тип товара"
-        verbose_name_plural = "Тип товаров"
+        verbose_name_plural = "Типы товаров"

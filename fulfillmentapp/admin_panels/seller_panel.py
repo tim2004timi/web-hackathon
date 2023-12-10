@@ -20,6 +20,12 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("product_type", "status")
     search_fields = ["product_type", "status"]
     list_filter = []
+    autocomplete_fields = ("status",)
+
+    def save_model(self, request, obj, form, change):
+        # Устанавливаем seller из текущего пользователя при создании объекта
+        obj.seller = request.user.seller
+        obj.save()
 
 
 class ProductTypeAdmin(admin.ModelAdmin):
@@ -27,6 +33,11 @@ class ProductTypeAdmin(admin.ModelAdmin):
     list_display = ("name", "color_article", "size", "price", "available_amount")
     search_fields = ["name", "article"]
     list_filter = []
+
+    def save_model(self, request, obj, form, change):
+        # Устанавливаем seller из текущего пользователя при создании объекта
+        obj.seller = request.user.seller
+        obj.save()
 
     def color_article(self, obj):
         return format_html('<span style="color: #8615CB">{}</span>', obj.article)
@@ -41,9 +52,20 @@ class ProductTypeAdmin(admin.ModelAdmin):
 
 class DeliveryAdmin(admin.ModelAdmin):
     form = DeliveryAdminForm
-    list_display = ("address", "date", "driver_fio", "label", "marketplace_barcode",
+    list_display = ("name", "address", "date", "driver_fio", "label", "marketplace_barcode",
                     "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
+    autocomplete_fields = ("product_type", )
+
+    def save_model(self, request, obj, form, change):
+        # Устанавливаем seller из текущего пользователя при создании объекта
+        obj.seller = request.user.seller
+        obj.save()
+
+    def name(self, obj):
+        return obj
+
+    name.short_description = "Название"
 
 
 seller_panel.register(Product, ProductAdmin)
