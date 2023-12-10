@@ -46,9 +46,9 @@ def login_page_view(request: HttpRequest):
         r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         result = r.json()
 
-        # TODO: сделать вьюшку
-        if not result['success']:
-            return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
+        # # TODO: сделать вьюшку
+        # if not result['success']:
+        #     return HttpResponse("<h1>Извините, замечены подозрительные действия. Попробуйте еще раз</h1>")
 
         # Получаем данные из формы авторизации
         username = request.POST.get('username')

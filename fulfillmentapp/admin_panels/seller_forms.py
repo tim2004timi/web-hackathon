@@ -21,9 +21,9 @@ class ProductTypeAdminForm(ModelForm):
 class WaitingDeliveryAdminForm(ModelForm):
     class Meta:
         model = Delivery
-        fields = ["label", "marketplace_barcode"]
+        fields = ["label", "marketplace_barcode", "product_type"]
 
-    amount = forms.IntegerField(label="Кол-во")
+    # amount = forms.IntegerField(label="Кол-во")
 
     # def __init__(self, *args, **kwargs):
     #     form = deepcopy(WaitingDeliveryAdminForm)
