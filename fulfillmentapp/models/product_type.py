@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.urls import reverse
 
 
@@ -93,7 +94,7 @@ class ProductType(models.Model):
                                related_name="product_types",
                                verbose_name="Продавец")
     price = models.IntegerField(default=0,
-                                verbose_name="Цена")
+                                verbose_name="Цена (руб)")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
@@ -123,6 +124,9 @@ class ProductType(models.Model):
 
     def __str__(self):
         return self.name
+
+    def available_count(self):
+        return ProductType.products.filter(~Q(status="Ожидает заявку на отгрузку")).count()
 
     class Meta:
         verbose_name = "Тип товара"
