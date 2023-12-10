@@ -15,7 +15,7 @@
         font-size: 16px;
     }
     .logo__img{
-        height: 75px;
+        height: 45px;
     }
     .contacts{
         font-size: 16px;
@@ -144,7 +144,7 @@
         max-width: 1120px;
     }
     .logo__img{
-        height: 70px;
+        height: 40px;
     }
     .header__content{
         margin-bottom: 20px;
@@ -266,7 +266,8 @@
         display: flex;
     }
     .header__top{
-        padding: 22px 0 26px;
+        padding: 12px 0 11px;
+        align-items: center;
     }
     .container{
         max-width: 390px;
@@ -283,10 +284,47 @@
     .menu__btn{
         background-color: transparent;
         border: none;
-        padding: 0;
-        margin: 0;
         cursor: pointer;
         z-index: 10;
+    }
+    .btn-line-wrapper{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        order: 1;
+        position: relative;
+    }
+    .btn-line{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #1C82DE;
+        height: 2px;
+        transition: .2s;
+    }
+    .btn-line:nth-child(1){
+        top: 0px
+    }
+    .btn-line:nth-child(2){
+        top: 20px      
+    }
+    .btn-line:nth-child(3){
+        top: 20px
+    }
+    .btn-line:nth-child(4){
+        top: 40px
+    }
+    .menu-btn-open .btn-line:nth-child(1){
+        transform: scaleX(0);
+    }
+    .menu-btn-open .btn-line:nth-child(2){
+        transform: rotate(45deg);
+    }
+    .menu-btn-open .btn-line:nth-child(3){
+        transform: rotate(-45deg);
+    }
+    .menu-btn-open .btn-line:nth-child(4){
+        transform: scaleX(0);
     }
     .header__popup{
         position: absolute;
@@ -339,7 +377,7 @@
         margin-bottom: 70px;
     }
     .application__btn{
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 500;
         line-height: normal;
     }

@@ -41,20 +41,33 @@ const setReplacer = (target, expression) => {
 
 setReplacer(document.querySelector('.footer__input--name'), /[^A-Za-zА-Яа-я\s]/g);
 
-
+const headerTop = document.querySelector('#header__top2');
 const menuBtn = document.querySelector('.menu__btn');
 const headerPopup = document.querySelector('.header__popup');
 const headerPopupLink = document.querySelectorAll('.header__popup-link');
 
 menuBtn.addEventListener('click', ()=>{
     headerPopup.classList.toggle('header__popup-open');
+    headerTop.classList.toggle('menu-btn-open');
 });
 
 headerPopupLink.forEach((btn) => {
     btn.addEventListener('click', ()=>{
         headerPopup.classList.remove('header__popup-open');
+        headerTop.classList.remove('menu-btn-open');
     });
 });
+
+window.addEventListener('click', function(){
+    if (headerPopup.classList.contains('menu-btn-open')) {
+        headerPopup.classList.remove('header__popup-open');
+        headerTop.classList.remove('menu-btn-open');
+
+        headerPopup.addEventListener('click', function(e){
+            e.stopPropagation();
+         });
+    }
+ });
 
 const workSwiper = new Swiper('.work__swiper', {
     direction: 'horizontal',

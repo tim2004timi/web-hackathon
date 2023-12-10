@@ -22,7 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("product_type", "status")
     search_fields = ["product_type", "status"]
     list_filter = []
-    autocomplete_fields = ("status",)
+    # autocomplete_fields = ("status",)
 
     def save_model(self, request, obj, form, change):
         # Устанавливаем seller из текущего пользователя при создании объекта
@@ -32,7 +32,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class ProductTypeAdmin(admin.ModelAdmin):
     form = ProductTypeAdminForm
-    list_display = ("name", "color_article", "size", "price", "available_amount")
+    list_display = ("style_name", "style_article", "style_size", "style_price", "style_amount")
     search_fields = ["name", "article"]
     list_filter = []
 
@@ -41,15 +41,27 @@ class ProductTypeAdmin(admin.ModelAdmin):
         obj.seller = request.user.seller
         obj.save()
 
-    def color_article(self, obj):
-        return format_html('<span style="color: #8615CB">{}</span>', obj.article)
+    def style_name(self, obj):
+        return format_html('<span style="font-size: 14px; height: 100px">{}</span>', obj.name)
+    
+    def style_article(self, obj):
+        return format_html('<span style="color: #8615CB; font-size: 14px; height: 100px">{}</span>', obj.article)
+    
+    def style_size(self, obj):
+        return format_html('<span style="color: #8615CB; font-size: 14px; height: 100px">{}</span>', obj.size)
 
-    def available_amount(self, obj):
+    def style_price(self, obj):
+        return format_html('<span style="color: #8615CB; font-size: 14px; height: 100px">{}</span>', obj.price)
+
+    def style_amount(self, obj):
         amount = Product.objects.filter(product_type=obj).count()
-        return amount
+        return format_html('<span style="color: #8615CB; font-size: 14px; height: 100px">{}</span>', amount)
 
-    color_article.short_description = "Артикул"
-    available_amount.short_description = "Доступно"
+    style_name.short_description = "Название"
+    style_article.short_description = "Артикул"
+    style_size.short_description = 'Размер'
+    style_price.short_description = 'Цена'
+    style_amount.short_description = "Доступно"
 
 
 class DeliveryAdmin(admin.ModelAdmin):

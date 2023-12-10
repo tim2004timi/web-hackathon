@@ -86,7 +86,7 @@ h3{
     transform: translateX(-50%);
 }
 .logo__img{
-    height: 100px;
+    height: 60px;
 }
 .header__link-wrapper{
     display: flex;
