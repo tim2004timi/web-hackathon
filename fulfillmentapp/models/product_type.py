@@ -87,13 +87,13 @@ class ProductType(models.Model):
                             max_length=30,
                             verbose_name="Размер (20*20*30)")
     weight = models.IntegerField(default=1000,
-                                 verbose_name="Вес (г.)")
+                                 verbose_name="Вес (кг)")
     seller = models.ForeignKey("Seller",
                                on_delete=models.CASCADE,
                                related_name="product_types",
                                verbose_name="Продавец")
     price = models.IntegerField(default=0,
-                                verbose_name="Цена (руб.)")
+                                verbose_name="Цена")
 
     # Объявление дефолтного manager для ORM
     objects = models.Manager()
