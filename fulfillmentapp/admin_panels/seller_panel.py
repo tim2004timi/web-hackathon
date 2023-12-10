@@ -1,7 +1,9 @@
+from copy import deepcopy
+
 from django.contrib import admin
 from django.utils.html import format_html
 
-from fulfillmentapp.admin_panels.seller_forms import ProductAdminForm, ProductTypeAdminForm, DeliveryAdminForm
+from fulfillmentapp.admin_panels.seller_forms import ProductAdminForm, ProductTypeAdminForm, WaitingDeliveryAdminForm
 from fulfillmentapp.models import Product, ProductType, Delivery
 
 
@@ -51,19 +53,40 @@ class ProductTypeAdmin(admin.ModelAdmin):
 
 
 class DeliveryAdmin(admin.ModelAdmin):
-    form = DeliveryAdminForm
+    form = WaitingDeliveryAdminForm
     list_display = ("name", "address", "date", "driver_fio", "label", "marketplace_barcode",
                     "wrapper_barcode", "bill")
     search_fields = ["product", "address", "date", "driver_fio"]
-    autocomplete_fields = ("product_type", )
+    autocomplete_fields = ("product_type",)
 
     def save_model(self, request, obj, form, change):
         # Устанавливаем seller из текущего пользователя при создании объекта
         obj.seller = request.user.seller
+
+        products = obj.products
+        if products and products.first().status == "Ожидает заявку на отгрузку":
+            amount = form.cleaned_data.get("amount")
+            # products = а !!!!!!!!!
+
+            Product.objects.bulk_create(products)
+            products.all().update(status="В процессе подтверждения")
+
         obj.save()
 
     def name(self, obj):
         return obj
+
+    def get_form(self, request, obj=None, **kwargs):
+        if obj is None or obj.products:
+            form = deepcopy(WaitingDeliveryAdminForm)
+            form.base_fields["amount"].label = f"Кол-во (доступно {obj.product_type.available_count()} шт)"
+            return form
+            # return super().get_form(request, obj, **kwargs)
+
+        # if obj.products.first().status == "Ожидает заявку на отгрузку":
+        #     form = deepcopy(WaitingDeliveryAdminForm)
+        #     form.amount.label = f"Кол-во (доступно {obj.product_type.avaible_count} шт)"
+        #     return form
 
     name.short_description = "Название"
 
@@ -71,4 +94,3 @@ class DeliveryAdmin(admin.ModelAdmin):
 seller_panel.register(Product, ProductAdmin)
 seller_panel.register(ProductType, ProductTypeAdmin)
 seller_panel.register(Delivery, DeliveryAdmin)
-

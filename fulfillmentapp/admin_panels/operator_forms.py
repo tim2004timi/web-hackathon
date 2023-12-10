@@ -23,14 +23,14 @@ class DeliveryAdminForm(ModelForm):
         model = ProductType
         exclude = []
 
-    def __init__(self, *args, **kwargs):
-        super(DeliveryAdminForm, self).__init__(*args, **kwargs)
-        # Ограничиваем выбор Product только незанятыми объектами
-        product_types = forms.ChoiceField(choices=[
-        ('значение1', 'Отображаемое значение 1'),
-        ('значение2', 'Отображаемое значение 2'),
-        ('значение3', 'Отображаемое значение 3'),
-        # Добавьте свои варианты значений и отображаемых названий
-    ], widget=forms.Select(attrs={'class': 'ваш_класс_стиля'}))
+    # def __init__(self, *args, **kwargs):
+    #     super(DeliveryAdminForm, self).__init__(*args, **kwargs)
+    #     # Ограничиваем выбор Product только незанятыми объектами
+    #     product_types = forms.ChoiceField(choices=[
+    #     ('значение1', 'Отображаемое значение 1'),
+    #     ('значение2', 'Отображаемое значение 2'),
+    #     ('значение3', 'Отображаемое значение 3'),
+    #     # Добавьте свои варианты значений и отображаемых названий
+    # ], widget=forms.Select(attrs={'class': 'ваш_класс_стиля'}))
 
 
