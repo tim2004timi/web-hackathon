@@ -31,6 +31,10 @@ services:
     depends_on:
       - web
     restart: always
+  redis:
+    image: redislabs/redismod
+    ports:
+    - '6379:6379'
 volumes:
   data:
   static:
